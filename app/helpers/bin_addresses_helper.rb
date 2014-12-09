@@ -1,0 +1,2 @@
+module BinAddressesHelper
+end

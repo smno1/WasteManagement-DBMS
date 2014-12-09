@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Waste Management | <%= yield(:title)%></title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a href="#"> DataManagement </a>
+					</li>
+					<li>
+						<%= link_to 'Client Company', companies_path %>
+					</li>
+					<li>
+						<%= link_to 'Sites', sites_path%>
+					</li>
+					<li>
+						<%= link_to 'Commentaries', commentaries_path%>
+					</li>
+				</ul>
+			</div>
+			<!-- /#sidebar-wrapper -->
+
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+
+							<h2><%= yield(:title)%></h2>
+							<%= yield %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /#page-content-wrapper -->
+
+		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+
+		</div>
+
+		<!-- Menu Toggle Script -->
+		<script>
+			$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+			});
+		</script>
+
+	</body>
+	</body>
+</html>

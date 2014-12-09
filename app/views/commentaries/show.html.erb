@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @commentary.comments %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @commentary.month %>
+</p>
+
+<%= link_to 'Edit', edit_commentary_path(@commentary) %> |
+<%= link_to 'Back', sites_path %>

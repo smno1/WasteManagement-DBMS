@@ -1,0 +1,25 @@
+<%= form_for(@commentary,:url=>commentaries_path(:site_id=>params[:site_id])) do |f| %>
+  <% if @commentary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commentary.errors.count, "error") %> prohibited this commentary from being saved:</h2>
+
+      <ul>
+      <% @commentary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.date_select :month %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
