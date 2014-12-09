@@ -4,7 +4,8 @@ class CommentariesController < ApplicationController
   # GET /commentaries
   # GET /commentaries.json
   def index
-    @commentaries = Commentary.where("site_id=#{params[:site_id]}")#find_by(site_id: params[:site_id])
+  
+    @commentaries = params[:site_id].nil? ? Commentary.all : Commentary.where("site_id=#{params[:site_id]}")
   end
 
   # GET /commentaries/1
