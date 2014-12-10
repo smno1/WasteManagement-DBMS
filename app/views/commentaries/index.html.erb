@@ -3,9 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th class='col-md-2'>Comments</th>
-      <th class='col-md-2'>Month</th>
       <th class='col-md-2'>Site Name</th>
+      <th class='col-md-2'>Month</th>
+      <th class='col-md-2'>Comments</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,22 +13,28 @@
   <% unless @commentaries.nil?%>
   <tbody>
     <% @commentaries.each do |commentary| %>
-      <tr>
-        <td class='col-md-2'><%= commentary.comments %></td>
-        <td class='col-md-2'><%= commentary.month %></td>        
+      <tr class='commentary'>      
         <td class='col-md-2'>
         <%unless commentary.site.nil?%>
         <%= commentary.site.site_name %>
         <%end%>
         </td>
+        <td class='col-md-2'><%= commentary.month %></td>
+        <td class='col-md-2'><%= commentary.comments.truncate(20)+'...' %></td>
         <td><%= link_to 'Show', commentary %></td>
         <td><%= link_to 'Edit', edit_commentary_path(commentary) %></td>
         <td><%= link_to 'Destroy', commentary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <tr class='description-toggle'>
+      <td/>
+      <td>Commentary detail:</td>
+      <td colspan="6" class='commentary-detail'><%= commentary.comments %>
+      </td>
       </tr>
     <% end %>
   </tbody>
   <%end%>
 </table>
-
+<script src="custom.js"></script>
 <br>
 
