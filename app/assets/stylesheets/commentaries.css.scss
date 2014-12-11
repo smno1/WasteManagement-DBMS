@@ -11,6 +11,9 @@
   font-size: 12px; 
   margin: 0;
 }
+tbody{
+  background-color: #AAF55B;
+}
 tr {
   color: #222;
   background: rgba(255,255,255,.9);
@@ -18,4 +21,8 @@ tr {
   border-color: gray;
   font-family: arial,sans-serif;
   border-bottom: 1px #e5e5e5 solid;
+  &:hover {
+    color: #fff;
+    background-color: rgba(255,255,255,0.2);
+  }
 }
