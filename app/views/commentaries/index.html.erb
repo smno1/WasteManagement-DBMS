@@ -11,7 +11,7 @@
   </thead>
 
   <% unless @commentaries.nil?%>
-  <tbody>
+  <tbody class="select-table">
     <% @commentaries.each do |commentary| %>
       <tr class='commentary'>      
         <td class='col-md-2'>
@@ -27,7 +27,7 @@
       </tr>
       <tr class='description-toggle'>
       <td/>
-      <td>Commentary detail:</td>
+      <td>Commentary Detail:</td>
       <td colspan="6" class='commentary-detail'><%= commentary.comments %>
       </td>
       </tr>
