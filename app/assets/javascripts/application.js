@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require ../../../vendor/assets/javascripts/bootstrap.js
 //= require ../../../vendor/assets/javascripts/jquery.js
+//= require ../../../vendor/assets/javascripts/metisMenu.js
 //= require_tree .

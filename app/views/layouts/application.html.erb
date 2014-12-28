@@ -10,21 +10,29 @@
 		<div id="wrapper">
 
 			<!-- Sidebar -->
-			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav">
-					<li class="sidebar-brand">
-						<a href="#"> DataManagement </a>
-					</li>
-					<li>
-						<%= link_to 'Client Company', companies_path %>
-					</li>
-					<li>
-						<%= link_to 'Sites', sites_path%>
-					</li>
-					<li>
-						<%= link_to 'Commentaries', commentaries_path%>
-					</li>
-				</ul>
+			<div class="sidebar-nav navbar-collapse">
+				<div id="sidebar-wrapper">
+					<ul class="sidebar-nav" id='side-menu'>
+						<li class="sidebar-brand">
+							<%= link_to 'WasteManagement', root_path %>
+						</li>
+
+						<li>
+							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
+							<ul class="nav nav-second-level description-toggle">
+								<li>
+									<%= link_to 'Client Company', companies_path %>
+								</li>
+								<li>
+									<%= link_to 'Sites', sites_path%>
+								</li>
+								<li>
+									<%= link_to 'Commentaries', commentaries_path%>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<!-- /#sidebar-wrapper -->
 
@@ -42,15 +50,15 @@
 			</div>
 			<!-- /#page-content-wrapper -->
 
-		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 
 		</div>
 
 		<!-- Menu Toggle Script -->
 		<script>
 			$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
+				e.preventDefault();
+				$("#wrapper").toggleClass("toggled");
 			});
 		</script>
 

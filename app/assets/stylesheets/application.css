@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require ../../../vendor/assets/stylesheets/bootstrap.css
+ *= require ../../../vendor/assets/stylesheets/metisMenu.css
+ *= require ../../../vendor/assets/stylesheets/font-awesome.css
+ *= require_self
  */
