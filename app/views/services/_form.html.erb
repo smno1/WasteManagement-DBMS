@@ -1,0 +1,45 @@
+<%= form_for(@service) do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% @service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bin_type %><br>
+    <%= f.select :bin_type, options_from_collection_for_select(@bin_type,'selection_item','selection_item') %>
+  </div>
+  <div class="field">
+    <%= f.label :is_recycle %><br>
+    <%= f.check_box :is_recycle %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity_cubic_meters %><br>
+    <%= f.number_field :capacity_cubic_meters %>
+  </div>
+  <div class="field">
+    <%= f.label :max_load %><br>
+    <%= f.number_field :max_load %>
+  </div>
+  <div class="field">
+    <%= f.label :highest_actual_load %><br>
+    <%= f.number_field :highest_actual_load %>
+  </div>
+  <div class="field">
+    <%= f.label :density_of_waste %><br>
+    <%= f.number_field :density_of_waste %>
+  </div>
+  <div class="field">
+    <%= f.label :site_id %><br>
+    <%= f.select :site_id, options_from_collection_for_select(@sites,'id','site_name') %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

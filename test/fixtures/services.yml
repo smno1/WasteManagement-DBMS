@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  bin_type: MyString
+  is_recycle: false
+  capacity_cubic_meters: 1
+  max_load: 1
+  highest_actual_load: 1
+  density_of_waste: 1
+  site_id: 
+
+two:
+  bin_type: MyString
+  is_recycle: false
+  capacity_cubic_meters: 1
+  max_load: 1
+  highest_actual_load: 1
+  density_of_waste: 1
+  site_id: 

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bin type:</strong>
+  <%= @service.bin_type %>
+</p>
+
+<p>
+  <strong>Is recycle:</strong>
+  <%= @service.is_recycle %>
+</p>
+
+<p>
+  <strong>Capacity cubic meters:</strong>
+  <%= @service.capacity_cubic_meters %>
+</p>
+
+<p>
+  <strong>Max load:</strong>
+  <%= @service.max_load %>
+</p>
+
+<p>
+  <strong>Highest actual load:</strong>
+  <%= @service.highest_actual_load %>
+</p>
+
+<p>
+  <strong>Density of waste:</strong>
+  <%= @service.density_of_waste %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @service.site.site_name %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
