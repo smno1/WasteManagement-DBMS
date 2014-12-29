@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208040745) do
+ActiveRecord::Schema.define(version: 20141229022628) do
+
+  create_table "collection_of_selections", force: true do |t|
+    t.string   "selection_type"
+    t.string   "selection_item"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "commentaries", force: true do |t|
     t.text     "comments"
@@ -32,6 +39,20 @@ ActiveRecord::Schema.define(version: 20141208040745) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "services", force: true do |t|
+    t.string   "bin_type"
+    t.boolean  "is_recycle"
+    t.integer  "capacity_cubic_meters"
+    t.integer  "max_load"
+    t.integer  "highest_actual_load"
+    t.integer  "density_of_waste"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["site_id"], name: "index_services_on_site_id"
 
   create_table "sites", force: true do |t|
     t.string   "site_name"
