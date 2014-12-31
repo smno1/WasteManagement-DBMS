@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-selection_items=CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
-selection_items=CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')
+User.create(email: 'admin', encrypted_password: 'admin')
+CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
+CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')

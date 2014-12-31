@@ -8,6 +8,19 @@
 	</head>
 	<body>
 		<div id="wrapper">
+			<div>
+				<ul class="nav navbar-top-links navbar-right">
+					<% if user_signed_in? %>
+						Logged in as <strong> <%= current_user.email %> </strong>.
+						<% if 'admin'.eql?(current_user.email) %>
+							<%= link_to "Sign up new client", new_user_registration_path, :class => "btn btn-default" %>
+						<%end%>
+						<%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default" %>
+					<% else %>
+						<%= link_to "Sign in", new_user_session_path, :class => "btn btn-default" %>
+					<% end %>
+				</ul>
+			</div>
 
 			<!-- Sidebar -->
 			<div class="sidebar-nav navbar-collapse">
