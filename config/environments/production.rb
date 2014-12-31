@@ -2,8 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # email
-  config.action_mailer.default_url_options = { host: 'http://waste-management-demo.herokuapp.com'}
-  ##{ host: ENV['WASTE_MANAGEMENT_HOST']}
+  config.action_mailer.default_url_options = { host: ENV['WASTE_MANAGEMENT_HOST']}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -12,11 +11,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "gmail.com",##ENV["GMAIL_DOMAIN"],
+    domain: ENV["GMAIL_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "ysmsmno1@gmail.com", ##ENV["GMAIL_USERNAME"],
-    password: "ysm3443449" ##ENV["GMAIL_PASSWORD"]
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
 
   # Code is not reloaded between requests.
