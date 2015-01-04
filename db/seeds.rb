@@ -7,5 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #User.create(email: '328862641@qq.com', encrypted_password: 'admin')
+User.delete_all
+CollectionOfSelection.delete_all
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')
