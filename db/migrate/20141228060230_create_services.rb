@@ -3,10 +3,10 @@ class CreateServices < ActiveRecord::Migration
     create_table :services do |t|
       t.string :bin_type
       t.boolean :is_recycle
-      t.integer :capacity_cubic_meters
-      t.integer :max_load
-      t.integer :highest_actual_load
-      t.integer :density_of_waste
+      t.float :capacity_cubic_meters
+      t.float :max_load
+      t.float :collection_rate
+      t.float :density_of_waste
       t.references :site, index: true
 
       t.timestamps
