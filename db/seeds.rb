@@ -8,6 +8,9 @@
 
 #User.create(email: '328862641@qq.com', encrypted_password: 'admin')
 User.delete_all
+User.create(email: '328862641@qq.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin=User.where("email='328862641@qq.com'").first
+admin.add_role :admin
 CollectionOfSelection.delete_all
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')

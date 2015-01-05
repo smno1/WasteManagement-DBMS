@@ -18,9 +18,10 @@ end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
-# authority gem devise
+# authority gem devise rolify
 
 gem 'devise' 
+gem 'rolify'
 
 #font-awesome gem
 #gem 'font-awesome-sass'
