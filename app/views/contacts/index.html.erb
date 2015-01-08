@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Site</th>
       <th>Contact person</th>
       <th>Phone number</th>
       <th>Email address</th>
@@ -14,7 +13,6 @@
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.site %></td>
         <td><%= contact.contact_person %></td>
         <td><%= contact.phone_number %></td>
         <td><%= contact.email_address %></td>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Contact', new_contact_path %>
+<%= link_to 'Back', sites_path %>

@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   respond_to :html
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where("site_id=#{params[:site_id]}")
     respond_with(@contacts)
   end
 
@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+    @contact.site_id=params[:site_id]
     @contact.save
     respond_with(@contact)
   end

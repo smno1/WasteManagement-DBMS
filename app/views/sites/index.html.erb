@@ -1,31 +1,49 @@
-<%provide(:title,"DataManagement Site")%>
+<% provide(:title,"DataManagement Site")%>
 
 <table>
-  <thead>
-    <tr>
-      <th class='col-md-2'>Site name</th>
-      <th class='col-md-2'>Site address</th>
-      <th class='col-md-2'>Number of service</th>
-      <th class='col-md-2'>Client Company</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th class='col-md-2'>Site name</th>
+			<th class='col-md-2'>Site address</th>
+			<th class='col-md-2'>Number of service</th>
+			<th class='col-md-2'>Client Company</th>
+			<th colspan="5"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @sites.each do |site| %>
-      <tr>
-        <td class='col-md-2'><%= site.site_name %></td>
-        <td class='col-md-2'><%= site.site_address %></td>
-        <td class='col-md-2'><%= site.number_of_service %></td>
-        <td class='col-md-2'><%= site.company.client_name %></td>
-        <td class='col-md-1'><%= link_to 'Show', site %></td>
-        <td class='col-md-1'><%= link_to 'Edit', edit_site_path(site) %></td>
-        <td class='col-md-1'><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td class='col-md-3'><%= link_to 'Write Comment', new_commentary_path(:site_id=>site.id) %></td>
-        <td class='col-md-3'><%= link_to 'History Comments', commentaries_path(:site_id=>site.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @sites.each do |site| %>
+		<tr>
+			<td class='col-md-2'><%= site.site_name %></td>
+			<td class='col-md-2'><%= site.site_address %></td>
+			<td class='col-md-2'><%= site.number_of_service %></td>
+			<td class='col-md-2'><%= site.company.client_name %></td>
+			<td>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+					Operation
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					<li role="presentation">
+						<%= link_to 'View Contact', contacts_path(:site_id=>site.id) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'Add Contact', new_contact_path(:site_id=>site.id) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'Write Comment', new_commentary_path(:site_id=>site.id) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'History Comments', commentaries_path(:site_id=>site.id) %>
+					</li>
+				</ul>
+			</div></td>
+			<td class='col-md-1'><%= link_to 'Edit', edit_site_path(site) %></td>
+			<td class='col-md-1'><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
