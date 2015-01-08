@@ -19,10 +19,6 @@
     <%= f.label :site_address %><br>
     <%= f.text_field :site_address %>
   </div>
-  <div class="field">
-    <%= f.label :number_of_service %><br>
-    <%= f.number_field :number_of_service %>
-  </div>
     <div class="company_id">
     <%= f.label :company_id %><br>
     <%= f.select :company_id, options_from_collection_for_select(@companies,"id","client_name") %>

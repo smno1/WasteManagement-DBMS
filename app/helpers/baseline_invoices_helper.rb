@@ -1,0 +1,2 @@
+module BaselineInvoicesHelper
+end

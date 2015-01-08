@@ -1,0 +1,29 @@
+<%= form_for(@baseline_invoice,:url=>baseline_invoices_path(:service_id=>params[:service_id])) do |f| %>
+  <% if @baseline_invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@baseline_invoice.errors.count, "error") %> prohibited this baseline_invoice from being saved:</h2>
+
+      <ul>
+      <% @baseline_invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Month %><br>
+    <%= f.date_select :Month, discard_day: true, start_year: 2000%>
+  </div>
+  <div class="field">
+    <%= f.label :collection_date %><br>
+    <%= f.date_select :collection_date, start_year: 2000 %>
+  </div>
+  <div class="field">
+    <%= f.label :tonnes %><br>
+    <%= f.text_field :tonnes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

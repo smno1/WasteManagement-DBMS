@@ -20,7 +20,7 @@
         <%end%>
         </td>
         <td class='col-md-2'><%= commentary.month %></td>
-        <td class='col-md-2'><%= commentary.comments.truncate(20)+'...' %></td>
+        <td class='col-md-2'><%= commentary.comments.truncate(20)%></td>
         <td><%= link_to 'Show', commentary %></td>
         <td><%= link_to 'Edit', edit_commentary_path(commentary) %></td>
         <td><%= link_to 'Destroy', commentary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,6 +35,5 @@
   </tbody>
   <%end%>
 </table>
-<script src="custom.js"></script>
 <br>
 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @baseline_invoice.service %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @baseline_invoice.Month.strftime("%B %Y") %>
+</p>
+
+<p>
+  <strong>Collection date:</strong>
+  <%= @baseline_invoice.collection_date %>
+</p>
+
+<p>
+  <strong>Collection day:</strong>
+  <%= @baseline_invoice.collection_day %>
+</p>
+
+<p>
+  <strong>Tonnes:</strong>
+  <%= @baseline_invoice.tonnes %>
+</p>
+
+<%= link_to 'Edit', edit_baseline_invoice_path(@baseline_invoice) %> |
+<%= link_to 'Back', services_path %>

@@ -32,6 +32,10 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
+        unless @service.site.nil?
+          @service.site.number_of_service+=1
+          @service.site.save
+        end
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
@@ -59,6 +63,10 @@ class ServicesController < ApplicationController
   # DELETE /services/1.json
   def destroy
     @service.destroy
+    unless @service.site.nil?
+      @service.site.number_of_service-=1
+      @service.site.save
+    end
     respond_to do |format|
       format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }

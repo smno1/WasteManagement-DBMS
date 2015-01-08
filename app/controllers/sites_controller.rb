@@ -30,6 +30,10 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
+        unless @site.company.nil?
+          @site.company.number_of_sites+=1
+          @site.company.save
+        end
         format.html { redirect_to @site, notice: 'Site was successfully created.' }
         format.json { render :show, status: :created, location: @site }
       else
@@ -57,6 +61,10 @@ class SitesController < ApplicationController
   # DELETE /sites/1.json
   def destroy
     @site.destroy
+    unless @site.company.nil?
+      @site.company.number_of_sites-=1
+      @site.company.save
+    end
     respond_to do |format|
       format.html { redirect_to sites_url, notice: 'Site was successfully destroyed.' }
       format.json { head :no_content }

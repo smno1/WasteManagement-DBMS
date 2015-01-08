@@ -7,7 +7,7 @@ class CreateServices < ActiveRecord::Migration
       t.float :max_load
       t.float :collection_rate
       t.float :density_of_waste
-      t.references :site, index: true
+      t.references :site, index: true, null:false
 
       t.timestamps
     end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :contacts
+
+  resources :baseline_invoices
+
   devise_for :users, controllers: { registrations: "users/registrations" }
   
   resources :services

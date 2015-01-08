@@ -1,0 +1,30 @@
+<h1>Baseline_invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Collection date</th>
+      <th>Collection day</th>
+      <th>Tonnes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @baseline_invoices.each do |baseline_invoice| %>
+      <tr>
+        <td><%= baseline_invoice.Month %></td>
+        <td><%= baseline_invoice.collection_date %></td>
+        <td><%= baseline_invoice.collection_day %></td>
+        <td><%= baseline_invoice.tonnes %></td>
+        <td><%= link_to 'Show', baseline_invoice %></td>
+        <td><%= link_to 'Edit', edit_baseline_invoice_path(baseline_invoice) %></td>
+        <td><%= link_to 'Destroy', baseline_invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', services_path %>
+<br>
+

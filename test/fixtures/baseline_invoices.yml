@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_id: 
+  Month: 2015-01-06
+  collection_date: 2015-01-06
+  collection_day: MyString
+  tonnes: 1.5
+
+two:
+  service_id: 
+  Month: 2015-01-06
+  collection_date: 2015-01-06
+  collection_day: MyString
+  tonnes: 1.5

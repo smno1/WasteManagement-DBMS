@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105042129) do
+ActiveRecord::Schema.define(version: 20150108033255) do
+
+  create_table "baseline_invoices", force: true do |t|
+    t.integer  "service_id",      null: false
+    t.date     "Month"
+    t.date     "collection_date"
+    t.string   "collection_day"
+    t.float    "tonnes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "baseline_invoices", ["service_id"], name: "index_baseline_invoices_on_service_id"
 
   create_table "collection_of_selections", force: true do |t|
     t.string   "selection_type"
@@ -29,16 +41,23 @@ ActiveRecord::Schema.define(version: 20150105042129) do
   end
 
   create_table "companies", force: true do |t|
-    t.string   "client_name"
-    t.integer  "number_of_sites"
+    t.string   "client_name",                       null: false
+    t.integer  "number_of_sites",       default: 0
     t.string   "client_representative"
-    t.string   "contact_person"
-    t.string   "phone_number"
-    t.string   "email_address"
-    t.string   "post_address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "contacts", force: true do |t|
+    t.integer  "site_id",        null: false
+    t.string   "contact_person"
+    t.string   "phone_number"
+    t.string   "email_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["site_id"], name: "index_contacts_on_site_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -58,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150105042129) do
     t.float    "max_load"
     t.float    "collection_rate"
     t.float    "density_of_waste"
-    t.integer  "site_id"
+    t.integer  "site_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,8 +87,8 @@ ActiveRecord::Schema.define(version: 20150105042129) do
   create_table "sites", force: true do |t|
     t.string   "site_name"
     t.string   "site_address"
-    t.integer  "number_of_service"
-    t.integer  "company_id"
+    t.integer  "number_of_service", default: 0
+    t.integer  "company_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
