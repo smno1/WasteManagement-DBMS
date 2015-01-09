@@ -71,12 +71,13 @@ ActiveRecord::Schema.define(version: 20150108033255) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "services", force: true do |t|
-    t.string   "bin_type"
+    t.string   "service_type"
     t.boolean  "is_recycle"
     t.float    "capacity_cubic_meters"
-    t.float    "max_load"
+    t.float    "benchmark_load"
     t.float    "collection_rate"
     t.float    "density_of_waste"
+    t.date     "year_installed"
     t.integer  "site_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"

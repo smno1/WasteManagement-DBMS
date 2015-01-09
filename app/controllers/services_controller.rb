@@ -81,6 +81,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:bin_type, :is_recycle, :capacity_cubic_meters, :max_load, :collection_rate, :density_of_waste, :site_id)
+      params.require(:service).permit(:service_type, :is_recycle, :capacity_cubic_meters, :benchmark_load, :collection_rate, :density_of_waste, :year_installed, :site_id)
     end
 end

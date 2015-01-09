@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Bin type:</strong>
-  <%= @service.bin_type %>
+  <strong>Service type:</strong>
+  <%= @service.service_type %>
 </p>
 
 <p>
@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Max load:</strong>
-  <%= @service.max_load %>
+  <strong>Benchmark load:</strong>
+  <%= @service.benchmark_load %>
 </p>
 
 <p>
@@ -28,6 +28,11 @@
 <p>
   <strong>Density of waste:</strong>
   <%= @service.density_of_waste %>
+</p>
+
+<p>
+  <strong>Year installed:</strong>
+  <%= @service.year_installed.strftime('%b,%Y') %>
 </p>
 
 <p>

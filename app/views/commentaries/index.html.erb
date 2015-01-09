@@ -1,39 +1,38 @@
 <h1>Commentaries</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th class='col-md-2'>Site Name</th>
-      <th class='col-md-2'>Month</th>
-      <th class='col-md-2'>Comments</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th class='col-md-2'>Site Name</th>
+			<th class='col-md-2'>Month</th>
+			<th class='col-md-2'>Comments</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <% unless @commentaries.nil?%>
-  <tbody class="select-table">
-    <% @commentaries.each do |commentary| %>
-      <tr class='commentary'>      
-        <td class='col-md-2'>
-        <%unless commentary.site.nil?%>
-        <%= commentary.site.site_name %>
-        <%end%>
-        </td>
-        <td class='col-md-2'><%= commentary.month %></td>
-        <td class='col-md-2'><%= commentary.comments.truncate(20)%></td>
-        <td><%= link_to 'Show', commentary %></td>
-        <td><%= link_to 'Edit', edit_commentary_path(commentary) %></td>
-        <td><%= link_to 'Destroy', commentary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <tr class='description-toggle'>
-      <td/>
-      <td>Commentary Detail:</td>
-      <td colspan="6" class='commentary-detail'><%= commentary.comments %>
-      </td>
-      </tr>
-    <% end %>
-  </tbody>
-  <%end%>
+	<% unless @commentaries.nil?%>
+	<tbody class="select-table">
+		<% @commentaries.each do |commentary| %>
+		<tr class='commentary'>
+			<td class='col-md-2'> <%unless commentary.site.nil?%>
+			<%= commentary.site.site_name %>
+			<%end%> </td>
+			<td class='col-md-2'><%= commentary.month %></td>
+			<td class='col-md-2'><%= commentary.comments.truncate(20)%></td>
+			<td><%= link_to 'Show', commentary %></td>
+			<td><%= link_to 'Edit', edit_commentary_path(commentary) %></td>
+			<td><%= link_to 'Destroy', commentary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<tr class='description-toggle'>
+			<td/>
+			<td>Commentary Detail:</td>
+			<td colspan="6" class='commentary-detail'><%= commentary.comments %> </td>
+		</tr>
+		<% end %>
+	</tbody>
+	<%end%>
 </table>
 <br>
+<%unless params[:site_id].nil?%>
 <%= link_to 'Back', sites_path %>
+<%end%>
