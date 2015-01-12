@@ -11,6 +11,8 @@ group :development do
   gem 'sqlite3'
 # foreman to invoke env variable
   gem 'foreman'
+# rake task debug
+#  gem 'debugger'
 end
 group :production do
   gem 'pg'
