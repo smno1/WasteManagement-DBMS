@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109023446) do
+ActiveRecord::Schema.define(version: 20150113025839) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
     t.float    "monthly_charge"
+    t.integer  "service_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "baseline_data", ["service_id"], name: "index_baseline_data_on_service_id"
 
   create_table "baseline_invoices", force: true do |t|
     t.integer  "service_id",      null: false
@@ -65,6 +68,18 @@ ActiveRecord::Schema.define(version: 20150109023446) do
   end
 
   add_index "contacts", ["site_id"], name: "index_contacts_on_site_id"
+
+  create_table "current_invoices", force: true do |t|
+    t.date     "Month"
+    t.date     "collection_date"
+    t.string   "collection_day"
+    t.float    "tonnes"
+    t.integer  "service_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "current_invoices", ["service_id"], name: "index_current_invoices_on_service_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
