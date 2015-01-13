@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @current_invoice.Month %>
+</p>
+
+<p>
+  <strong>Collection date:</strong>
+  <%= @current_invoice.collection_date %>
+</p>
+
+<p>
+  <strong>Collection day:</strong>
+  <%= @current_invoice.collection_day %>
+</p>
+
+<p>
+  <strong>Tonnes:</strong>
+  <%= @current_invoice.tonnes %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @current_invoice.service %>
+</p>
+
+<%= link_to 'Edit', edit_current_invoice_path(@current_invoice) %> |
+<%= link_to 'Back', services_path %>

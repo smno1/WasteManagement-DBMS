@@ -14,12 +14,12 @@ class BaselineInvoicesController < ApplicationController
 
   def new
     @baseline_invoice = BaselineInvoice.new
-    @services=Service.all
+    #@services=Service.all
     respond_with(@baseline_invoice)
   end
 
   def edit
-    @services=Service.all
+    #@services=Service.all
   end
 
   def create
@@ -27,17 +27,22 @@ class BaselineInvoicesController < ApplicationController
     @baseline_invoice.collection_day=@baseline_invoice.collection_date.strftime("%A")
     @baseline_invoice.service_id=params[:service_id]
     @baseline_invoice.save
-    respond_with(@baseline_invoice)
+    BaselineData.update_service_baseline_data(@baseline_invoice.service_id)
+    redirect_to baseline_invoices_path(:service_id=>params[:service_id])
   end
 
   def update
     @baseline_invoice.update(baseline_invoice_params)
-    respond_with(@baseline_invoice)
+    @baseline_invoice.collection_day=@baseline_invoice.collection_date.strftime("%A")
+    BaselineData.update_service_baseline_data(@baseline_invoice.service_id)
+    redirect_to baseline_invoices_path(:service_id=>params[:service_id])
   end
 
   def destroy
+    sid=@baseline_invoice.service_id
     @baseline_invoice.destroy
-    respond_with(@baseline_invoice)
+    BaselineData.update_service_baseline_data(sid)
+    redirect_to baseline_invoices_path(:service_id=>sid)
   end
 
   private

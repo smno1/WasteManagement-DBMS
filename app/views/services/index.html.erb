@@ -34,10 +34,10 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 					<li role="presentation">
-						<%= link_to 'View Baseline Invoice', baseline_invoices_path(:service_id=>service.id) %>
+						<%= link_to 'Baseline invoice', baseline_invoices_path(:service_id=>service.id) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Add Baseline invoices', new_baseline_invoice_path(:service_id=>service.id) %>
+						<%= link_to 'Current invoices', current_invoices_path(:service_id=>service.id) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Edit Service', edit_service_path(service) %>

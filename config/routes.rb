@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :current_invoices
+
   resources :contacts
 
   resources :baseline_invoices
