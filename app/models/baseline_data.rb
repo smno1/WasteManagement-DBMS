@@ -1,4 +1,5 @@
 class BaselineData < ActiveRecord::Base
+  belongs_to :service
   def self.recalculate_baseline_data
     BaselineData.delete_all
     baseline_invoices=BaselineInvoice.all

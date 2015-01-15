@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113025839) do
+ActiveRecord::Schema.define(version: 20150114034416) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -80,6 +80,21 @@ ActiveRecord::Schema.define(version: 20150113025839) do
   end
 
   add_index "current_invoices", ["service_id"], name: "index_current_invoices_on_service_id"
+
+  create_table "current_months", force: true do |t|
+    t.float    "month_total_tonnes"
+    t.float    "month_average_load"
+    t.integer  "actual_month_collection"
+    t.float    "actual_month_charge"
+    t.float    "optimal_collection"
+    t.float    "days_interval"
+    t.date     "Month"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "current_months", ["service_id"], name: "index_current_months_on_service_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
