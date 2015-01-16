@@ -4,7 +4,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = params[:site_id].nil? ? Service.all : Service.where("site_id=#{params[:site_id]}")
   end
 
   # GET /services/1

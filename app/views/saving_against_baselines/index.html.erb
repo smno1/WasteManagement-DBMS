@@ -1,0 +1,35 @@
+<h1>Listing saving_against_baselines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Month</th>
+      <th>Collection saved</th>
+      <th>Month saving</th>
+      <th>Month extra saving</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saving_against_baselines.each do |saving_against_baseline| %>
+      <tr>
+        <td><%= saving_against_baseline.service %></td>
+        <td><%= saving_against_baseline.month %></td>
+        <td><%= saving_against_baseline.collection_saved %></td>
+        <td><%= saving_against_baseline.month_saving %></td>
+        <td><%= saving_against_baseline.month_extra_saving %></td>
+        <td><%= saving_against_baseline.note %></td>
+        <td><%= link_to 'Show', saving_against_baseline %></td>
+        <td><%= link_to 'Edit', edit_saving_against_baseline_path(saving_against_baseline) %></td>
+        <td><%= link_to 'Destroy', saving_against_baseline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Saving against baseline', new_saving_against_baseline_path %>

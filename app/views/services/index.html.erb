@@ -54,5 +54,9 @@
 </table>
 
 <br>
-
-<%= link_to 'New Service', new_service_path %>
+<% if params[:site_id].nil? %>
+	<%= link_to 'New Service', new_service_path %>
+<%else%>
+	<%= link_to 'New Service', new_service_path(:site_id=>params[:site_id]) %>
+	| <%= link_to 'Back', sites_path%>
+<%end%>

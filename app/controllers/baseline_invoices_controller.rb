@@ -27,21 +27,18 @@ class BaselineInvoicesController < ApplicationController
     @baseline_invoice.collection_day=@baseline_invoice.collection_date.strftime("%A")
     @baseline_invoice.service_id=params[:service_id]
     @baseline_invoice.save
-    BaselineData.update_service_baseline_data(@baseline_invoice.service_id)
     redirect_to baseline_invoices_path(:service_id=>params[:service_id])
   end
 
   def update
     @baseline_invoice.update(baseline_invoice_params)
     @baseline_invoice.collection_day=@baseline_invoice.collection_date.strftime("%A")
-    BaselineData.update_service_baseline_data(@baseline_invoice.service_id)
     redirect_to baseline_invoices_path(:service_id=>params[:service_id])
   end
 
   def destroy
     sid=@baseline_invoice.service_id
     @baseline_invoice.destroy
-    BaselineData.update_service_baseline_data(sid)
     redirect_to baseline_invoices_path(:service_id=>sid)
   end
 

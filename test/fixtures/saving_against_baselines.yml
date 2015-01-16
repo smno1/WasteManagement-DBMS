@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: 
+  month: 2015-01-15
+  collection_saved: 1.5
+  month_saving: 1.5
+  month_extra_saving: 1.5
+  note: MyString
+
+two:
+  service: 
+  month: 2015-01-15
+  collection_saved: 1.5
+  month_saving: 1.5
+  month_extra_saving: 1.5
+  note: MyString

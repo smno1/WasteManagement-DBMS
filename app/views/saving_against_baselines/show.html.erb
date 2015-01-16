@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @saving_against_baseline.service %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @saving_against_baseline.month %>
+</p>
+
+<p>
+  <strong>Collection saved:</strong>
+  <%= @saving_against_baseline.collection_saved %>
+</p>
+
+<p>
+  <strong>Month saving:</strong>
+  <%= @saving_against_baseline.month_saving %>
+</p>
+
+<p>
+  <strong>Month extra saving:</strong>
+  <%= @saving_against_baseline.month_extra_saving %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @saving_against_baseline.note %>
+</p>
+
+<%= link_to 'Edit', edit_saving_against_baseline_path(@saving_against_baseline) %> |
+<%= link_to 'Back', saving_against_baselines_path %>

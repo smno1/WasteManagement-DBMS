@@ -26,7 +26,13 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 					<li role="presentation">
-						<%= link_to 'View Contact', contacts_path(:site_id=>site.id) %>
+						<%= link_to 'View Services', site_services_path(site) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'Add Services', new_site_service_path(site) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'View Contact', site_contacts_url(site) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Add Contact', new_contact_path(:site_id=>site.id) %>
@@ -35,7 +41,7 @@
 						<%= link_to 'Write Comment', new_commentary_path(:site_id=>site.id) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'History Comments', commentaries_path(:site_id=>site.id) %>
+						<%= link_to 'History Comments', site_commentaries_url(site) %>
 					</li>
 				</ul>
 			</div></td>

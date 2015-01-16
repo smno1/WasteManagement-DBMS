@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114034416) do
+ActiveRecord::Schema.define(version: 20150115035858) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -106,6 +106,17 @@ ActiveRecord::Schema.define(version: 20150114034416) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "saving_against_baselines", force: true do |t|
+    t.integer  "service_id"
+    t.date     "month"
+    t.float    "collection_saved"
+    t.float    "month_saving"
+    t.float    "month_extra_saving"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "services", force: true do |t|
     t.string   "service_type"

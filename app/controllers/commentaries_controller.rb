@@ -3,8 +3,7 @@ class CommentariesController < ApplicationController
 
   # GET /commentaries
   # GET /commentaries.json
-  def index
-  
+  def index  
     @commentaries = params[:site_id].nil? ? Commentary.all : Commentary.where("site_id=#{params[:site_id]}")
   end
 

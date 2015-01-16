@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :saving_against_baselines
+
   resources :current_invoices
 
   resources :contacts
@@ -12,11 +14,17 @@ Rails.application.routes.draw do
 
   resources :commentaries
 
-  resources :sites
+  resources :sites do
+    resources :services, shallow:true
+    resources :commentaries, shallow:true
+    resources :contacts, shallow:true
+  end
 
   get 'welcome/portal'
 
-  resources :companies
+  resources :companies do
+    resources :sites, shallow:true
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

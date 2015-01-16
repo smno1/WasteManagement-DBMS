@@ -1,0 +1,37 @@
+<%= form_for(@saving_against_baseline) do |f| %>
+  <% if @saving_against_baseline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@saving_against_baseline.errors.count, "error") %> prohibited this saving_against_baseline from being saved:</h2>
+
+      <ul>
+      <% @saving_against_baseline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.date_select :month %>
+  </div>
+  <div class="field">
+    <%= f.label :collection_saved %><br>
+    <%= f.text_field :collection_saved %>
+  </div>
+  <div class="field">
+    <%= f.label :month_saving %><br>
+    <%= f.text_field :month_saving %>
+  </div>
+  <div class="field">
+    <%= f.label :month_extra_saving %><br>
+    <%= f.text_field :month_extra_saving %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_field :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

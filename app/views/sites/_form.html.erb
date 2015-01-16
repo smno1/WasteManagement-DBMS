@@ -21,7 +21,7 @@
   </div>
     <div class="company_id">
     <%= f.label :company_id %><br>
-    <%= f.select :company_id, options_from_collection_for_select(@companies,"id","client_name") %>
+    <%= f.select :company_id, options_from_collection_for_select(@companies,"id","client_name",params[:company_id]) %>
   </div>
   <br>
   <div class="actions">

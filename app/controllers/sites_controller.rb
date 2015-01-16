@@ -4,7 +4,7 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = params[:company_id].nil?? Site.all : Site.where("company_id=?",params[:company_id])
   end
 
   # GET /sites/1
