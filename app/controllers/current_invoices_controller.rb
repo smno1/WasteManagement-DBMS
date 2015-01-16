@@ -25,22 +25,17 @@ class CurrentInvoicesController < ApplicationController
     @current_invoice.collection_day=@current_invoice.collection_date.strftime("%A")
     @current_invoice.service_id=params[:service_id]
     @current_invoice.save
-    CurrentMonth.update_current_month_data(@current_invoice.service_id,@current_invoice.Month)
     redirect_to current_invoices_path(:service_id=>params[:service_id])
   end
 
   def update
     @current_invoice.update(current_invoice_params)
     @current_invoice.collection_day=@current_invoice.collection_date.strftime("%A")
-    CurrentMonth.update_current_month_data(@current_invoice.service_id,@current_invoice.Month)
     redirect_to current_invoices_path(:service_id=>params[:service_id])
   end
 
   def destroy
-    sid=@current_invoice.service_id
-    month=@current_invoice.Month
     @current_invoice.destroy
-    CurrentMonth.update_current_month_data(sid,month)
     redirect_to current_invoices_path(:service_id=>sid)
   end
 

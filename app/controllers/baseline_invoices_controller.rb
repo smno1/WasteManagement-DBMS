@@ -37,7 +37,6 @@ class BaselineInvoicesController < ApplicationController
   end
 
   def destroy
-    sid=@baseline_invoice.service_id
     @baseline_invoice.destroy
     redirect_to baseline_invoices_path(:service_id=>sid)
   end
