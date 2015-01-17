@@ -1,9 +1,8 @@
-<h1>Listing saving_against_baselines</h1>
+<h1>Saving_against_baselines</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th>Service</th>
       <th>Month</th>
       <th>Collection saved</th>
       <th>Month saving</th>
@@ -16,13 +15,12 @@
   <tbody>
     <% @saving_against_baselines.each do |saving_against_baseline| %>
       <tr>
-        <td><%= saving_against_baseline.service %></td>
         <td><%= saving_against_baseline.month %></td>
         <td><%= saving_against_baseline.collection_saved %></td>
         <td><%= saving_against_baseline.month_saving %></td>
         <td><%= saving_against_baseline.month_extra_saving %></td>
         <td><%= saving_against_baseline.note %></td>
-        <td><%= link_to 'Show', saving_against_baseline %></td>
+        <td><%= link_to 'Show', saving_against_baseline_path(saving_against_baseline) %></td>
         <td><%= link_to 'Edit', edit_saving_against_baseline_path(saving_against_baseline) %></td>
         <td><%= link_to 'Destroy', saving_against_baseline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -31,5 +29,7 @@
 </table>
 
 <br>
-
-<%= link_to 'New Saving against baseline', new_saving_against_baseline_path %>
+<%unless params[:service_id].nil?%>
+	<%= link_to 'New Saving against baseline', new_saving_against_baseline_path(:service_id=>params[:service_id]) %>
+	| <%= link_to 'Back', services_path%>
+<%end%>

@@ -1,21 +1,11 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-th{
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  width: 16.66666667%;
+
+#error{
+  color: red;
 }
 
-td {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  width: 16.66666667%;
-}
 
 #wrapper {
     padding-left: 0;

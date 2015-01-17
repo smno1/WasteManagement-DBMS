@@ -1,5 +1,4 @@
 <h1>New saving_against_baseline</h1>
-
 <%= render 'form' %>
 
-<%= link_to 'Back', saving_against_baselines_path %>
+<%= link_to 'Back', saving_against_baselines_path(:service_id=>params[:service_id]) %>

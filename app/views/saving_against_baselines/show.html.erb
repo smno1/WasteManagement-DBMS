@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Service:</strong>
-  <%= @saving_against_baseline.service %>
-</p>
-
-<p>
   <strong>Month:</strong>
   <%= @saving_against_baseline.month %>
 </p>
@@ -29,6 +24,34 @@
   <strong>Note:</strong>
   <%= @saving_against_baseline.note %>
 </p>
+<table class='table'>
+  <thead>
+  	<tr>
+  		<th class='text-center' colspan="3">Baseline Data</th>
+  		<th class='text-center' colspan="3">Current Month</th>
+  	</tr>
+    <tr>
+      <th>Monthly collections</th>
+      <th>Collection rate</th>
+      <th>Monthly charge</th>
+      <th>Monthly collections</th>
+      <th>Collection rate</th>
+      <th>Monthly charge</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @baseline_data.monthly_collection %></td>
+        <td><%= @baseline_data.service.collection_rate %></td>
+        <td><%= @baseline_data.monthly_charge %></td>
+        <td><%= @current_month.actual_month_collection %></td>
+        <td><%= @current_month.service.collection_rate %></td>
+        <td><%= @current_month.actual_month_charge %></td>
+      </tr>
+  </tbody>
+</table>
+<br>
 
 <%= link_to 'Edit', edit_saving_against_baseline_path(@saving_against_baseline) %> |
-<%= link_to 'Back', saving_against_baselines_path %>
+<%= link_to 'Back', saving_against_baselines_path(:service_id=>@saving_against_baseline.service_id) %>

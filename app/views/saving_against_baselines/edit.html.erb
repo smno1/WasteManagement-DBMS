@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @saving_against_baseline %> |
-<%= link_to 'Back', saving_against_baselines_path %>
+<%= link_to 'Back', saving_against_baselines_path(:service_id=>@saving_against_baseline.service_id) %>

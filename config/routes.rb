@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
   
-  resources :services
+  resources :services do
+    resources :saving_against_baselines, shallow:true
+  end
 
   resources :commentaries
 

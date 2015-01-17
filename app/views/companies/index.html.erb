@@ -1,12 +1,12 @@
 <%provide(:title,"Client Company")%>
 
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th class='col-md-2'>Client Name</th>
-      <th class='col-md-2'>Number of Sites</th>
-      <th class='col-md-2'>Client Representative</th>
+      <th>Client Name</th>
+      <th>Number of Sites</th>
+      <th>Client Representative</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,13 +14,13 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td class='col-md-2'><%= company.client_name %></td>
-        <td class='col-md-2'><%= company.number_of_sites %></td>
-        <td class='col-md-2'><%= company.client_representative %></td>
-        <td class='col-md-2'><%= link_to 'Show Sites', company_sites_url(company) %></td>
-        <td class='col-md-2'><%= link_to 'Add Sites', new_company_site_path(company) %></td>
-        <td class='col-md-2'><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td class='col-md-2'><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= company.client_name %></td>
+        <td><%= company.number_of_sites %></td>
+        <td><%= company.client_representative %></td>
+        <td><%= link_to 'Show Sites', company_sites_url(company) %></td>
+        <td><%= link_to 'Add Sites', new_company_site_path(company) %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

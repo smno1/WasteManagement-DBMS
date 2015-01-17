@@ -1,12 +1,12 @@
 <% provide(:title,"DataManagement Site")%>
 
-<table>
+<table class='table'>
 	<thead>
 		<tr>
-			<th class='col-md-2'>Site name</th>
-			<th class='col-md-2'>Site address</th>
-			<th class='col-md-2'>Number of service</th>
-			<th class='col-md-2'>Client Company</th>
+			<th>Site name</th>
+			<th>Site address</th>
+			<th>Number of service</th>
+			<th>Client Company</th>
 			<th colspan="5"></th>
 		</tr>
 	</thead>
@@ -14,10 +14,10 @@
 	<tbody>
 		<% @sites.each do |site| %>
 		<tr>
-			<td class='col-md-2'><%= site.site_name %></td>
-			<td class='col-md-2'><%= site.site_address %></td>
-			<td class='col-md-2'><%= site.number_of_service %></td>
-			<td class='col-md-2'><%= site.company.client_name %></td>
+			<td><%= site.site_name %></td>
+			<td><%= site.site_address %></td>
+			<td><%= site.number_of_service %></td>
+			<td><%= site.company.client_name %></td>
 			<td>
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">

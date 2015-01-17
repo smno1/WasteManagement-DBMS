@@ -35,6 +35,7 @@ class CurrentInvoicesController < ApplicationController
   end
 
   def destroy
+    sid=@current_invoice.service_id
     @current_invoice.destroy
     redirect_to current_invoices_path(:service_id=>sid)
   end
