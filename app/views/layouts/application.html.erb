@@ -29,7 +29,20 @@
 						<li class="sidebar-brand">
 							<%= link_to 'WasteManagement', root_path %>
 						</li>
-
+						<li>
+							<a href="#"> Search<span class="fa fa-2x arrow"></span></a>
+							<ul class="nav nav-second-level description-toggle">
+								<li>
+									<%= link_to 'Client Company', company_search_path %>
+								</li>
+								<li>
+									<%= link_to 'Sites', sites_path%>
+								</li>
+								<li>
+									<%= link_to 'Services', services_path%>
+								</li>
+							</ul>
+						</li>
 						<li>
 							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
 							<ul class="nav nav-second-level description-toggle">

@@ -25,6 +25,9 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'devise' 
 gem 'rolify'
 
+# search gem
+gem 'ransack'
+
 #font-awesome gem
 #gem 'font-awesome-sass'
 

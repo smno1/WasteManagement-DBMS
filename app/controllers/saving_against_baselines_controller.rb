@@ -37,6 +37,12 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def update
     @saving_against_baseline.update(saving_against_baseline_params)
+    @saving_against_baseline = SavingAgainstBaseline.update_sab_data(@saving_against_baseline)
+    if @saving_against_baseline.nil?
+      redirect_to new_saving_against_baseline_path, :flash=> {:error => "Don't have current month invoice for selected month"}
+      return
+    end
+    @saving_against_baseline.save
     respond_with(@saving_against_baseline)
   end
 

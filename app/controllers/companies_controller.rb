@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.filter(params.slice(:client_name))
   end
 
   # GET /companies/1
@@ -68,7 +68,7 @@ class CompaniesController < ApplicationController
   def set_company
     @company = Company.find(params[:id])
   end
-
+  
   # Never trust parameters from the scary internet, only allow the white list through.
   def company_params
     params.require(:company).permit(:client_name,:number_of_sites,:client_representative)

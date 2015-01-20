@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'data_search/company_search', as: 'company_search'
+
   resources :saving_against_baselines
 
   resources :current_invoices
