@@ -1,10 +1,11 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /sites
   # GET /sites.json
   def index
-    @sites = params[:company_id].nil?? Site.all : Site.where("company_id=?",params[:company_id])
+    @sites = Site.filter(params.slice(:site_name,:company_id))
+    @sites.order!(sort_column+" "+sort_direction)
   end
 
   # GET /sites/1
@@ -72,6 +73,14 @@ class SitesController < ApplicationController
   end
 
   private
+  
+    def sort_column
+      params[:sort] || "site_name"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_site
       @site = Site.find(params[:id])

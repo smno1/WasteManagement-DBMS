@@ -33,6 +33,7 @@ class BaselineInvoicesController < ApplicationController
   def update
     @baseline_invoice.update(baseline_invoice_params)
     @baseline_invoice.collection_day=@baseline_invoice.collection_date.strftime("%A")
+    @baseline_invoice.save
     redirect_to baseline_invoices_path(:service_id=>params[:service_id])
   end
 

@@ -1,4 +1,4 @@
-<%= form_for(@saving_against_baseline,:url=>saving_against_baselines_path(:service_id=>params[:service_id])) do |f| %>
+<%= form_for(@saving_against_baseline) do |f| %>
   <% if @saving_against_baseline.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@saving_against_baseline.errors.count, "error") %> prohibited this saving_against_baseline from being saved:</h2>
@@ -16,6 +16,7 @@
     <%= f.date_select :month , discard_day:true%>
   </div>
   <%end%>
+  <%= f.hidden_field :service_id, :value=>params[:service_id]%>
   <div class="field">
     <%= f.label :month_extra_saving %><br>
     <%= f.text_field :month_extra_saving %>

@@ -1,12 +1,21 @@
 <% provide(:title,"DataManagement Site")%>
-
+<%unless params[:company_id].nil?%>
+	<h2 class='h2'><%=Company.find(params[:company_id]).client_name%></h2>
+<%end%>
+<%=form_tag(sites_path, :method=>'get') do%>
+	<%=hidden_field_tag :company_id,params[:company_id]%>
+	<%=label_tag 'Site name: '%>
+	<%= text_field_tag :site_name, params[:site_name], :id => 'site_search_field', 
+		:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+	<%=submit_tag "Search"%>
+<%end%>
 <table class='table'>
 	<thead>
 		<tr>
-			<th>Site name</th>
-			<th>Site address</th>
-			<th>Number of service</th>
-			<th>Client Company</th>
+			<th><%=sortable "site_name"%></th>
+			<th><%=sortable "site_address"%></th>
+			<th><%=sortable "number_of_service"%></th>
+			<th><%=sortable "company_id", "Client Company"%></th>
 			<th colspan="5"></th>
 		</tr>
 	</thead>
@@ -26,9 +35,9 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 					<li role="presentation">
-						<%= link_to 'View Services', site_services_path(site) %>
+						<%= link_to 'View Services', site_services_url(site) %>
 					</li>
-					<li role="presentation">
+					<li role=-"presentation">
 						<%= link_to 'Add Services', new_site_service_path(site) %>
 					</li>
 					<li role="presentation">

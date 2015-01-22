@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'data_search/company_search', as: 'company_search'
+  get 'data_search/site_search', as: 'site_search'
 
   resources :saving_against_baselines
 

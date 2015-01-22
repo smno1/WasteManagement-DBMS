@@ -21,7 +21,7 @@
         <td><%= saving_against_baseline.month_extra_saving %></td>
         <td><%= saving_against_baseline.note %></td>
         <td><%= link_to 'Show', saving_against_baseline_path(saving_against_baseline) %></td>
-        <td><%= link_to 'Edit', edit_saving_against_baseline_path(saving_against_baseline) %></td>
+        <td><%= link_to 'Edit', edit_saving_against_baseline_path(saving_against_baseline,:service_id=>params[:service_id]) %></td>
         <td><%= link_to 'Destroy', saving_against_baseline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

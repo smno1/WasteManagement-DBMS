@@ -1,9 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
   # GET /companies
   # GET /companies.json
   def index
     @companies = Company.filter(params.slice(:client_name))
+    @companies.order!(sort_column+" "+sort_direction)
   end
 
   # GET /companies/1
@@ -63,7 +65,15 @@ class CompaniesController < ApplicationController
   end
 
   private
-
+  
+    def sort_column
+      params[:sort] || "client_name"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
   # Use callbacks to share common setup or constraints between actions.
   def set_company
     @company = Company.find(params[:id])

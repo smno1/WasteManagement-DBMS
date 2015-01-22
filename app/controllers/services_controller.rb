@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /services
   # GET /services.json
   def index
-    @services = params[:site_id].nil? ? Service.all : Service.where("site_id=#{params[:site_id]}")
+    @services = Service.filter(params.slice(:site_id)) 
+    @services.order!(sort_column+" "+sort_direction)
   end
 
   # GET /services/1
@@ -73,7 +74,16 @@ class ServicesController < ApplicationController
     end
   end
 
-  private
+  private  
+  
+    def sort_column
+      params[:sort] || "id"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
