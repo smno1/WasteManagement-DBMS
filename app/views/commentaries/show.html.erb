@@ -7,7 +7,7 @@
 
 <p>
   <strong>Month:</strong>
-  <%= @commentary.month %>
+  <%= @commentary.month.strftime("%b %Y") %>
 </p>
 
 <%= link_to 'Edit', edit_commentary_path(@commentary) %> |

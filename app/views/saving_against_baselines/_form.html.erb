@@ -15,8 +15,8 @@
     <%= f.label :month %><br>
     <%= f.date_select :month , discard_day:true%>
   </div>
-  <%end%>
   <%= f.hidden_field :service_id, :value=>params[:service_id]%>
+  <%end%>
   <div class="field">
     <%= f.label :month_extra_saving %><br>
     <%= f.text_field :month_extra_saving %>

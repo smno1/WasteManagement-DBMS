@@ -3,19 +3,19 @@
 one:
   month_total_tonnes: 1.5
   month_average_load: 1.5
-  actual_month_collection: 1
+  actual_month_collection: 1.5
   actual_month_charge: 1.5
   optimal_collection: 1.5
   days_interval: 1.5
-  recycling_rate: 1.5
+  Month: 2015-01-22
   service_id: 
 
 two:
   month_total_tonnes: 1.5
   month_average_load: 1.5
-  actual_month_collection: 1
+  actual_month_collection: 1.5
   actual_month_charge: 1.5
   optimal_collection: 1.5
   days_interval: 1.5
-  recycling_rate: 1.5
+  Month: 2015-01-22
   service_id: 

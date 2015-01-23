@@ -25,8 +25,6 @@ class CommentariesController < ApplicationController
   # POST /commentaries.json
   def create
     @commentary = Commentary.new(commentary_params)
-    @commentary.site_id=params[:site_id]
-
     respond_to do |format|
       if @commentary.save
         format.html { redirect_to @commentary, notice: 'Commentary was successfully created.' }

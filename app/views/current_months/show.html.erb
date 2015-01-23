@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month total tonnes:</strong>
+  <%= @current_month.month_total_tonnes %>
+</p>
+
+<p>
+  <strong>Month average load:</strong>
+  <%= @current_month.month_average_load %>
+</p>
+
+<p>
+  <strong>Actual month collection:</strong>
+  <%= @current_month.actual_month_collection %>
+</p>
+
+<p>
+  <strong>Actual month charge:</strong>
+  <%= @current_month.actual_month_charge %>
+</p>
+
+<p>
+  <strong>Optimal collection:</strong>
+  <%= @current_month.optimal_collection %>
+</p>
+
+<p>
+  <strong>Days interval:</strong>
+  <%= @current_month.days_interval %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @current_month.Month %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @current_month.service %>
+</p>
+
+<%= link_to 'Edit', edit_current_month_path(@current_month) %> |
+<%= link_to 'Back', current_months_path %>

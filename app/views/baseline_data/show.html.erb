@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Monthly collection:</strong>
+  <%= @baseline_datum.monthly_collection %>
+</p>
+
+<p>
+  <strong>Monthly charge:</strong>
+  <%= @baseline_datum.monthly_charge %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @baseline_datum.service %>
+</p>
+
+<%= link_to 'Edit', edit_baseline_datum_path(@baseline_datum) %> |
+<%= link_to 'Back', baseline_data_path %>

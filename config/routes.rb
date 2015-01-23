@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :current_months
+
+  resources :baseline_data
+
   get 'data_search/company_search', as: 'company_search'
   get 'data_search/site_search', as: 'site_search'
 

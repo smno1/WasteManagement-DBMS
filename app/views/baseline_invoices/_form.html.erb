@@ -1,4 +1,4 @@
-<%= form_for(@baseline_invoice,:url=>baseline_invoices_path(:service_id=>params[:service_id])) do |f| %>
+<%= form_for(@baseline_invoice) do |f| %>
   <% if @baseline_invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@baseline_invoice.errors.count, "error") %> prohibited this baseline_invoice from being saved:</h2>
@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+    <% unless @baseline_invoice.persisted? %>
+	  <%=f.hidden_field :service_id,:value=>params[:service_id]%>
+	<%end%>
   <div class="field">
     <%= f.label :Month %><br>
     <%= f.date_select :Month, discard_day: true, start_year: 2000%>

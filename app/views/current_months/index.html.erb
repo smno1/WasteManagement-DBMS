@@ -1,0 +1,39 @@
+<h1>Listing current_months</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month total tonnes</th>
+      <th>Month average load</th>
+      <th>Actual month collection</th>
+      <th>Actual month charge</th>
+      <th>Optimal collection</th>
+      <th>Days interval</th>
+      <th>Month</th>
+      <th>Service</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_months.each do |current_month| %>
+      <tr>
+        <td><%= current_month.month_total_tonnes %></td>
+        <td><%= current_month.month_average_load %></td>
+        <td><%= current_month.actual_month_collection %></td>
+        <td><%= current_month.actual_month_charge %></td>
+        <td><%= current_month.optimal_collection %></td>
+        <td><%= current_month.days_interval %></td>
+        <td><%= current_month.Month %></td>
+        <td><%= current_month.service %></td>
+        <td><%= link_to 'Show', current_month %></td>
+        <td><%= link_to 'Edit', edit_current_month_path(current_month) %></td>
+        <td><%= link_to 'Destroy', current_month, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Current month', new_current_month_path %>

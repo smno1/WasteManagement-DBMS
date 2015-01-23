@@ -22,7 +22,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.site_id=params[:site_id]
     @contact.save
     respond_with(@contact)
   end

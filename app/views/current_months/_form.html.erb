@@ -1,0 +1,49 @@
+<%= form_for(@current_month) do |f| %>
+  <% if @current_month.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_month.errors.count, "error") %> prohibited this current_month from being saved:</h2>
+
+      <ul>
+      <% @current_month.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month_total_tonnes %><br>
+    <%= f.text_field :month_total_tonnes %>
+  </div>
+  <div class="field">
+    <%= f.label :month_average_load %><br>
+    <%= f.text_field :month_average_load %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_month_collection %><br>
+    <%= f.text_field :actual_month_collection %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_month_charge %><br>
+    <%= f.text_field :actual_month_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :optimal_collection %><br>
+    <%= f.text_field :optimal_collection %>
+  </div>
+  <div class="field">
+    <%= f.label :days_interval %><br>
+    <%= f.text_field :days_interval %>
+  </div>
+  <div class="field">
+    <%= f.label :Month %><br>
+    <%= f.date_select :Month %>
+  </div>
+  <div class="field">
+    <%= f.label :service_id %><br>
+    <%= f.text_field :service_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

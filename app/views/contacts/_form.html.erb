@@ -1,4 +1,4 @@
-<%= form_for(@contact,:url=>contacts_path(:site_id=>params[:site_id])) do |f| %>
+<%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+  <% unless @contact.persisted? %>
+  	<%= f.hidden_field :site_id, :value=>params[:site_id]%>
+  <%end%>
   <div class="field">
     <%= f.label :contact_person %><br>
     <%= f.text_field :contact_person %>

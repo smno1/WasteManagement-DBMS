@@ -23,15 +23,15 @@ class CurrentInvoicesController < ApplicationController
   def create
     @current_invoice = CurrentInvoice.new(current_invoice_params)
     @current_invoice.collection_day=@current_invoice.collection_date.strftime("%A")
-    @current_invoice.service_id=params[:service_id]
     @current_invoice.save
-    redirect_to current_invoices_path(:service_id=>params[:service_id])
+    redirect_to current_invoices_path(:service_id=>@current_invoice.service_id)
   end
 
   def update
     @current_invoice.update(current_invoice_params)
     @current_invoice.collection_day=@current_invoice.collection_date.strftime("%A")
-    redirect_to current_invoices_path(:service_id=>params[:service_id])
+    @current_invoice.save
+    redirect_to current_invoices_path(:service_id=>@current_invoice.service_id)
   end
 
   def destroy

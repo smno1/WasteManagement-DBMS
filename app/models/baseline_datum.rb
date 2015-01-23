@@ -1,4 +1,4 @@
-class BaselineData < ActiveRecord::Base
+class BaselineDatum < ActiveRecord::Base
   belongs_to :service
   def self.recalculate_baseline_data
     baseline_invoices=BaselineInvoice.all
@@ -14,9 +14,9 @@ class BaselineData < ActiveRecord::Base
     #service_baseline.delete_all unless service_baseline.blank?
     #self.create_service_baseline_data(sid)
   end
-  
+ 
   private
-  
+ 
   def self.baseline_data_params(sid)
     service_collection_invoices=BaselineInvoice.where("service_id=#{sid}")
     monthly_times_hash=service_collection_invoices.group(:Month).count

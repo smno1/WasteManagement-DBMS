@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108033255) do
+ActiveRecord::Schema.define(version: 20150122062811) do
+
+  create_table "baseline_data", force: true do |t|
+    t.float    "monthly_collection"
+    t.float    "monthly_charge"
+    t.integer  "service_id",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "baseline_data", ["service_id"], name: "index_baseline_data_on_service_id"
 
   create_table "baseline_invoices", force: true do |t|
     t.integer  "service_id",      null: false
@@ -59,6 +69,33 @@ ActiveRecord::Schema.define(version: 20150108033255) do
 
   add_index "contacts", ["site_id"], name: "index_contacts_on_site_id"
 
+  create_table "current_invoices", force: true do |t|
+    t.date     "Month"
+    t.date     "collection_date"
+    t.string   "collection_day"
+    t.float    "tonnes"
+    t.integer  "service_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "current_invoices", ["service_id"], name: "index_current_invoices_on_service_id"
+
+  create_table "current_months", force: true do |t|
+    t.float    "month_total_tonnes"
+    t.float    "month_average_load"
+    t.float    "actual_month_collection"
+    t.float    "actual_month_charge"
+    t.float    "optimal_collection"
+    t.float    "days_interval"
+    t.date     "Month"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "current_months", ["service_id"], name: "index_current_months_on_service_id"
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -69,6 +106,17 @@ ActiveRecord::Schema.define(version: 20150108033255) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "saving_against_baselines", force: true do |t|
+    t.integer  "service_id"
+    t.date     "month"
+    t.float    "collection_saved"
+    t.float    "month_saving"
+    t.float    "month_extra_saving"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "services", force: true do |t|
     t.string   "service_type"

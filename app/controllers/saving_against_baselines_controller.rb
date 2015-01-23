@@ -9,7 +9,7 @@ class SavingAgainstBaselinesController < ApplicationController
   end
 
   def show
-  @baseline_data=BaselineData.find_by :service_id=>@saving_against_baseline.service_id
+  @baseline_data=BaselineDatum.find_by :service_id=>@saving_against_baseline.service_id
   @current_month=CurrentMonth.find_by :service_id=>@saving_against_baseline.service_id,
           :Month=>@saving_against_baseline.month
     respond_with(@saving_against_baseline)
@@ -25,7 +25,6 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def create
     @saving_against_baseline = SavingAgainstBaseline.new(saving_against_baseline_params)
-    @saving_against_baseline.service_id=params[:service_id]
     @saving_against_baseline = SavingAgainstBaseline.update_sab_data(@saving_against_baseline)
     if @saving_against_baseline.nil?
       redirect_to new_saving_against_baseline_path, :flash=> {:error => "Don't have current month invoice for selected month"}
@@ -49,8 +48,9 @@ class SavingAgainstBaselinesController < ApplicationController
   end
 
   def destroy
+    sid=@saving_against_baseline.service_id
     @saving_against_baseline.destroy
-    respond_with(@saving_against_baseline)
+    redirect_to saving_against_baselines_path(:service_id=>sid)
   end
 
   private
