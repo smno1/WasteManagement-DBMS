@@ -7,7 +7,7 @@
 
 <p>
   <strong>Month average load:</strong>
-  <%= @current_month.month_average_load %>
+  <%= float_pre_2 @current_month.month_average_load %>
 </p>
 
 <p>
@@ -22,23 +22,23 @@
 
 <p>
   <strong>Optimal collection:</strong>
-  <%= @current_month.optimal_collection %>
+  <%= float_pre_2 @current_month.optimal_collection %>
 </p>
 
 <p>
   <strong>Days interval:</strong>
-  <%= @current_month.days_interval %>
+  <%= float_pre_2 @current_month.days_interval %>
 </p>
 
 <p>
   <strong>Month:</strong>
-  <%= @current_month.Month %>
+  <%= @current_month.Month.strftime("%b %Y") %>
 </p>
 
 <p>
-  <strong>Service:</strong>
-  <%= @current_month.service %>
+  <strong>Service ID:</strong>
+  <%= @current_month.service_id %>
 </p>
 
 <%= link_to 'Edit', edit_current_month_path(@current_month) %> |
-<%= link_to 'Back', current_months_path %>
+<%= link_to 'Back to service', services_path %>

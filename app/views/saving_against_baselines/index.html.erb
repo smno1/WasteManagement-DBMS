@@ -15,9 +15,9 @@
   <tbody>
     <% @saving_against_baselines.each do |saving_against_baseline| %>
       <tr>
-        <td><%= saving_against_baseline.month %></td>
-        <td><%= saving_against_baseline.collection_saved %></td>
-        <td><%= saving_against_baseline.month_saving %></td>
+        <td><%= saving_against_baseline.month.strftime("%b %Y") %></td>
+        <td><%= float_pre_2 saving_against_baseline.collection_saved %></td>
+        <td><%= float_pre_2 saving_against_baseline.month_saving %></td>
         <td><%= saving_against_baseline.month_extra_saving %></td>
         <td><%= saving_against_baseline.note %></td>
         <td><%= link_to 'Show', saving_against_baseline_path(saving_against_baseline) %></td>

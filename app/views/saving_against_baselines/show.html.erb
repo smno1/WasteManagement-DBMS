@@ -2,17 +2,17 @@
 
 <p>
   <strong>Month:</strong>
-  <%= @saving_against_baseline.month %>
+  <%= @saving_against_baseline.month.strftime("%b %Y") %>
 </p>
 
 <p>
   <strong>Collection saved:</strong>
-  <%= @saving_against_baseline.collection_saved %>
+  <%= float_pre_2 @saving_against_baseline.collection_saved %>
 </p>
 
 <p>
   <strong>Month saving:</strong>
-  <%= @saving_against_baseline.month_saving %>
+  <%= float_pre_2 @saving_against_baseline.month_saving %>
 </p>
 
 <p>
@@ -27,8 +27,8 @@
 <table class='table'>
   <thead>
   	<tr>
-  		<th class='text-center' colspan="3">Baseline Data</th>
-  		<th class='text-center' colspan="3">Current Month</th>
+  		<th class='text-center' colspan="3">Baseline Data</th> <!--<%=link_to 'Baseline Data', @baseline_data, :class=>"fa fa-caret-right"%></th>-->
+  		<th class='text-center' colspan="3"><%=link_to 'Current Month', @current_month, :class=>"fa fa-caret-right"%></th>
   	</tr>
     <tr>
       <th>Monthly collections</th>
@@ -42,9 +42,9 @@
 
   <tbody>
       <tr>
-        <td><%= @baseline_data.monthly_collection %></td>
+        <td><%= float_pre_2 @baseline_data.monthly_collection %></td>
         <td><%= @baseline_data.service.collection_rate %></td>
-        <td><%= @baseline_data.monthly_charge %></td>
+        <td><%= float_pre_2 @baseline_data.monthly_charge %></td>
         <td><%= @current_month.actual_month_collection %></td>
         <td><%= @current_month.service.collection_rate %></td>
         <td><%= @current_month.actual_month_charge %></td>
