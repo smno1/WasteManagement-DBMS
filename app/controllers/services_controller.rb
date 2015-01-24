@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.filter(params.slice(:site_id)) 
-    @services.order!(sort_column+" "+sort_direction)
+    @services=@services.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /services/1

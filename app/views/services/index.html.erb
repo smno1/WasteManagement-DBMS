@@ -58,7 +58,7 @@
 	</tbody>
 </table>
 
-<br>
+<br><%=will_paginate @services%> <br>
 <% if params[:site_id].nil? %>
 	<%= link_to 'New Service', new_service_path %>
 <%else%>

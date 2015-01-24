@@ -4,7 +4,7 @@ class BaselineDataController < ApplicationController
   respond_to :html
 
   def index
-    @baseline_data = BaselineDatum.all
+    @baseline_data = BaselineDatum.all.paginate(:per_page=>15,:page=>params[:page])
     respond_with(@baseline_data)
   end
 

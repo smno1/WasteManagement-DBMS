@@ -36,6 +36,7 @@
     <% end %>
   </tbody>
 </table>
+<%=will_paginate @baseline_invoices%> <br>
 <%= link_to 'New Baseline invoices', new_baseline_invoice_path(:service_id=>params[:service_id]) %> 
 | <%= link_to 'Back', services_path %>
 <br>

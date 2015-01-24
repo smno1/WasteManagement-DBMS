@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<br>
+<br><%=will_paginate @saving_against_baselines%> <br>
 <%unless params[:service_id].nil?%>
 	<%= link_to 'New Saving against baseline', new_saving_against_baseline_path(:service_id=>params[:service_id]) %>
 	| <%= link_to 'Back', services_path%>

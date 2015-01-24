@@ -33,6 +33,7 @@
 	<%end%>
 </table>
 <br>
+<%=will_paginate @commentaries%> <br>
 <%unless params[:site_id].nil?%>
 <%= link_to 'Back', sites_path %>
 <%end%>

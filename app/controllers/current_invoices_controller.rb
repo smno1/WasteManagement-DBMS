@@ -5,7 +5,7 @@ class CurrentInvoicesController < ApplicationController
 
   def index
     @current_invoices = CurrentInvoice.where("service_id=#{params[:service_id]}")
-    @current_invoices.order!(sort_column+" "+sort_direction)
+    @current_invoices=@current_invoices.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@current_invoices)
   end
 

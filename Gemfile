@@ -26,7 +26,10 @@ gem 'devise'
 gem 'rolify'
 
 # search gem
-gem 'ransack'
+# gem 'ransack'
+
+# pagination gem
+gem 'will_paginate'
 
 #font-awesome gem
 #gem 'font-awesome-sass'

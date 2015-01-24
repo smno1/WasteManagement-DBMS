@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.filter(params.slice(:client_name))
-    @companies.order!(sort_column+" "+sort_direction)
+    @companies=@companies.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /companies/1

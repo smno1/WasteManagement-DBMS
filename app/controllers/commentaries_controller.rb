@@ -4,7 +4,7 @@ class CommentariesController < ApplicationController
   # GET /commentaries
   # GET /commentaries.json
   def index  
-    @commentaries = params[:site_id].nil? ? Commentary.all : Commentary.where("site_id=#{params[:site_id]}")
+    @commentaries = Commentary.where("site_id=#{params[:site_id]}").paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /commentaries/1

@@ -5,7 +5,7 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.filter(params.slice(:site_name,:company_id))
-    @sites.order!(sort_column+" "+sort_direction)
+    @sites=@sites.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /sites/1

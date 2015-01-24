@@ -4,7 +4,7 @@ class CurrentMonthsController < ApplicationController
   respond_to :html
 
   def index
-    @current_months = CurrentMonth.all
+    @current_months = CurrentMonth.all.paginate(:per_page=>15,:page=>params[:page])
     respond_with(@current_months)
   end
 

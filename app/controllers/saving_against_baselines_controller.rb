@@ -5,7 +5,7 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def index
     @saving_against_baselines = SavingAgainstBaseline.where("service_id=?", params[:service_id])
-    @saving_against_baselines.order!(sort_column+" "+sort_direction)
+    @saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@saving_against_baselines)
   end
 

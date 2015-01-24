@@ -26,7 +26,7 @@
   </tbody>
 </table>
 
-<br>
+<br><%=will_paginate @current_invoices%> <br>
 
 <%= link_to 'New Current invoice', new_current_invoice_path(:service_id=>params[:service_id]) %> 
 | <%= link_to 'Back', services_path %>

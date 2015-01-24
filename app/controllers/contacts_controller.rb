@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   respond_to :html
 
   def index
-    @contacts = Contact.where("site_id=#{params[:site_id]}")
+    @contacts = Contact.where("site_id=#{params[:site_id]}").paginate(:per_page=>15,:page=>params[:page])
     respond_with(@contacts)
   end
 
