@@ -36,10 +36,10 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 					<li role="presentation">
-						<%= link_to 'Baseline invoice', baseline_invoices_path(:service_id=>service.id) %>
+						<%= link_to 'Baseline invoice', service_baseline_invoices_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Current invoices', current_invoices_path(:service_id=>service.id) %>
+						<%= link_to 'Current invoices', service_current_invoices_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Saving against Baseline', service_saving_against_baselines_path(service) %>

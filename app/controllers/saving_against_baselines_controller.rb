@@ -1,10 +1,11 @@
 class SavingAgainstBaselinesController < ApplicationController
   before_action :set_saving_against_baseline, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   respond_to :html
 
   def index
     @saving_against_baselines = SavingAgainstBaseline.where("service_id=?", params[:service_id])
+    @saving_against_baselines.order!(sort_column+" "+sort_direction)
     respond_with(@saving_against_baselines)
   end
 
@@ -54,6 +55,15 @@ class SavingAgainstBaselinesController < ApplicationController
   end
 
   private
+    
+    def sort_column
+      params[:sort] || "id"
+    end
+      
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
     def set_saving_against_baseline
       @saving_against_baseline = SavingAgainstBaseline.find(params[:id])
     end

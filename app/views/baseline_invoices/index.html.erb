@@ -1,12 +1,23 @@
 <h1>Baseline_invoices</h1>
-
+<%=form_tag(baseline_invoices_path, :method=>'get') do%>
+	<%=hidden_field_tag :service_id,params[:service_id]%>
+	<%=label_tag 'Month'%>
+	<%= date_select :Month,'date', 
+		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>1990}%> <br>
+	<%=label_tag 'Collection date from'%>
+	<%= date_select :collection_date_from,'date',
+	{:include_blank => true, :default => nil,:start_year=>1990}%>  to
+	<%= date_select :collection_date_to,'date',
+	{:include_blank => true, :default => nil,:start_year=>1990}%>
+	<%=submit_tag "Search"%>
+<%end%>
 <table class='table'>
   <thead>
     <tr>
-      <th>Month</th>
-      <th>Collection date</th>
-      <th>Collection day</th>
-      <th>Tonnes</th>
+      <th><%= sortable "Month"%></th>
+      <th><%= sortable "collection_date"%></th>
+      <th><%= sortable "collection_day"%></th>
+      <th><%= sortable "tonnes"%></th>
       <th colspan="3"></th>
     </tr>
   </thead>

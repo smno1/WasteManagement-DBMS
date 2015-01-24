@@ -1,10 +1,11 @@
 class CurrentInvoicesController < ApplicationController
   before_action :set_current_invoice, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   respond_to :html
 
   def index
     @current_invoices = CurrentInvoice.where("service_id=#{params[:service_id]}")
+    @current_invoices.order!(sort_column+" "+sort_direction)
     respond_with(@current_invoices)
   end
 
@@ -41,6 +42,15 @@ class CurrentInvoicesController < ApplicationController
   end
 
   private
+    
+    def sort_column
+      params[:sort] || "id"
+    end
+      
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
     def set_current_invoice
       @current_invoice = CurrentInvoice.find(params[:id])
     end

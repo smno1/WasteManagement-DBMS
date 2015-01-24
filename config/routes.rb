@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   
   resources :services do
+    resources :baseline_invoices, shallow:true
+    resources :current_invoices, shallow:true
     resources :saving_against_baselines, shallow:true
   end
 
