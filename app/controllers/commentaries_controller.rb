@@ -1,10 +1,12 @@
 class CommentariesController < ApplicationController
   before_action :set_commentary, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /commentaries
   # GET /commentaries.json
   def index  
-    @commentaries = Commentary.where("site_id=#{params[:site_id]}").paginate(:per_page=>15,:page=>params[:page])
+    @commentaries = Commentary.filter(filter_params)#where("site_id=#{params[:site_id]}")
+    @commentaries=@commentaries.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /commentaries/1
@@ -61,6 +63,19 @@ class CommentariesController < ApplicationController
   end
 
   private
+    def filter_params
+      params[:month]= date_select_to_date(params[:month])
+      params.slice(:site_id,:month,:comments)
+    end
+    
+    def sort_column
+      params[:sort] || "site_id"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_commentary
       @commentary = Commentary.find(params[:id])

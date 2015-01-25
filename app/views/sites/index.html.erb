@@ -1,9 +1,11 @@
 <% provide(:title,"DataManagement Site")%>
-<%unless params[:company_id].nil?%>
-	<h2 class='h2'><%=Company.find(params[:company_id]).client_name%></h2>
+<%unless params[:company_id].blank?%>
+	<h4 class='h4'>Company name: <%=Company.find(params[:company_id]).client_name%></h4>
 <%end%>
 <%=form_tag(sites_path, :method=>'get') do%>
 	<%=hidden_field_tag :company_id,params[:company_id]%>
+	<%=hidden_field_tag :direction,params[:direction]%>
+	<%=hidden_field_tag :sort,params[:sort]%>
 	<%=label_tag 'Site name: '%>
 	<%= text_field_tag :site_name, params[:site_name], :id => 'site_search_field', 
 		:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>

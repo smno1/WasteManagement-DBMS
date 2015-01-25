@@ -1,28 +1,46 @@
 <h1>Contacts</h1>
-
+<%=form_tag(contacts_path, :method=>'get') do%>
+<%= hidden_field_tag :site_id,params[:site_id]%>
+<%= hidden_field_tag :direction,params[:direction]%>
+<%= hidden_field_tag :sort,params[:sort]%>
+<%= label_tag 'contact person'%>
+<%= text_field_tag :contact_person, params[:contact_person],
+	:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+<%= label_tag 'phone number '%>
+<%= text_field_tag :phone_number, params[:phone_number],
+	:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+<%= label_tag 'email address  '%>
+<%= text_field_tag :email_address, params[:email_address],
+	:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+<%= submit_tag "Search"%>
+<%end%>
 <table class='table'>
-  <thead>
-    <tr>
-      <th>Contact person</th>
-      <th>Phone number</th>
-      <th>Email address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th><%= sortable "site_id","Site name"%></th>
+			<th><%= sortable "contact_person"%></th>
+			<th><%= sortable "phone_number"%></th>
+			<th><%= sortable "email_address"%></th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.contact_person %></td>
-        <td><%= contact.phone_number %></td>
-        <td><%= contact.email_address %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @contacts.each do |contact| %>
+		<tr>
+			<td><%= contact.site.site_name%></td>
+			<td><%= contact.contact_person %></td>
+			<td><%= contact.phone_number %></td>
+			<td><%= contact.email_address %></td>
+			<td><%= link_to 'Show', contact %></td>
+			<td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+			<td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
-<br><%=will_paginate @contacts%> <br>
+<br>
+<%= will_paginate @contacts%>
+<br>
 
 <%= link_to 'Back', sites_path %>

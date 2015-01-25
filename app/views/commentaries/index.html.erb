@@ -1,11 +1,22 @@
 <h1>Commentaries</h1>
-
+<%=form_tag(commentaries_path, :method=>'get') do%>
+	<%=hidden_field_tag :site_id,params[:site_id]%>
+	<%=hidden_field_tag :direction,params[:direction]%>
+	<%=hidden_field_tag :sort,params[:sort]%>
+	<%=label_tag 'Month'%>
+	<%= date_select :month,'date', 
+		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
+	<%=label_tag 'Coments'%>
+	<%= text_field_tag :comments, params[:comments], :id => 'search_field', 
+		:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+	<%=submit_tag "Search"%>
+<%end%>
 <table class='table'>
 	<thead>
 		<tr>
-			<th>Site Name</th>
-			<th>Month</th>
-			<th>Comments</th>
+			<th><%= sortable "site_id","Site name"%></th>
+			<th><%= sortable "month"%></th>
+			<th><%= sortable "comments"%></th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -33,7 +44,8 @@
 	<%end%>
 </table>
 <br>
-<%=will_paginate @commentaries%> <br>
+<%= will_paginate @commentaries%>
+<br>
 <%unless params[:site_id].nil?%>
 <%= link_to 'Back', sites_path %>
 <%end%>
