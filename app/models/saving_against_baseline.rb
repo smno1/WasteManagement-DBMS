@@ -1,5 +1,10 @@
 class SavingAgainstBaseline < ActiveRecord::Base
+  include Filterable
   belongs_to :service  
+  
+  scope :service_id, ->(service_id){where service_id:service_id}
+  scope :month, ->(month){where month:month}
+  
   def self.create_sab_data(sid,mon)
     baselineData=BaselineDatum.find_by :service_id=> sid
     currentData=CurrentMonth.find_by :service_id=> sid, :Month=>mon

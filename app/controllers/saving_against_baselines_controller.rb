@@ -4,7 +4,7 @@ class SavingAgainstBaselinesController < ApplicationController
   respond_to :html
 
   def index
-    @saving_against_baselines = SavingAgainstBaseline.where("service_id=?", params[:service_id])
+    @saving_against_baselines = SavingAgainstBaseline.filter(filter_params)
     @saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@saving_against_baselines)
   end
@@ -37,11 +37,9 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def update
     @saving_against_baseline.update(saving_against_baseline_params)
-    puts @saving_against_baseline.to_yaml
     @saving_against_baseline = SavingAgainstBaseline.update_sab_data(@saving_against_baseline)
-    puts @saving_against_baseline.to_yaml
     if @saving_against_baseline.nil?
-      redirect_to new_saving_against_baseline_path, :flash=> {:error => "Don't have current month invoice for selected month"}
+      redirect_to saving_against_baselines_path, :flash=> {:error => "Don't have current month invoice for selected month"}
       return
     end
     @saving_against_baseline.save
@@ -55,6 +53,11 @@ class SavingAgainstBaselinesController < ApplicationController
   end
 
   private
+  
+    def filter_params
+      params[:month]= date_select_to_date(params[:month])
+      params.slice(:service_id,:month)
+    end
     
     def sort_column
       params[:sort] || "id"

@@ -11,8 +11,11 @@ var main = function() {
 		$(this).parent().next().next().toggle();
 	});
 
-	$(function() {
-		$('#side-menu').metisMenu();
+	$('#side-menu').metisMenu();
+	
+	$("#baseline_invoices_table th a").live(click, function(){
+		$.getScript(this.href);
+		return false;
 	});
 };
 

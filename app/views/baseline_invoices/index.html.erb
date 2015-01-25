@@ -1,6 +1,8 @@
 <h1>Baseline_invoices</h1>
 <%=form_tag(baseline_invoices_path, :method=>'get') do%>
 	<%=hidden_field_tag :service_id,params[:service_id]%>
+	<%=hidden_field_tag :direction,params[:direction]%>
+	<%=hidden_field_tag :sort,params[:sort]%>
 	<%=label_tag 'Month'%>
 	<%= date_select :Month,'date', 
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>1990}%> <br>
@@ -11,32 +13,7 @@
 	{:include_blank => true, :default => nil,:start_year=>1990}%>
 	<%=submit_tag "Search"%>
 <%end%>
-<table class='table'>
-  <thead>
-    <tr>
-      <th><%= sortable "Month"%></th>
-      <th><%= sortable "collection_date"%></th>
-      <th><%= sortable "collection_day"%></th>
-      <th><%= sortable "tonnes"%></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @baseline_invoices.each do |baseline_invoice| %>
-      <tr>
-        <td><%= baseline_invoice.Month.strftime('%b,%Y') %></td>
-        <td><%= baseline_invoice.collection_date %></td>
-        <td><%= baseline_invoice.collection_day %></td>
-        <td><%= baseline_invoice.tonnes %></td>
-        <td><%= link_to 'Show', baseline_invoice %></td>
-        <td><%= link_to 'Edit', edit_baseline_invoice_path(baseline_invoice) %></td>
-        <td><%= link_to 'Destroy', baseline_invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%=will_paginate @baseline_invoices%> <br>
+<div id='baseline_invoices_table'><%= render 'baseline_invoices'%></div>
 <%= link_to 'New Baseline invoices', new_baseline_invoice_path(:service_id=>params[:service_id]) %> 
 | <%= link_to 'Back', services_path %>
 <br>

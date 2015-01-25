@@ -1,5 +1,18 @@
 <h1>Current_invoices</h1>
-
+<%=form_tag(current_invoices_path, :method=>'get') do%>
+	<%=hidden_field_tag :service_id,params[:service_id]%>
+	<%=hidden_field_tag :direction,params[:direction]%>
+	<%=hidden_field_tag :sort,params[:sort]%>
+	<%=label_tag 'Month'%>
+	<%= date_select :Month,'date', 
+		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
+	<%=label_tag 'Collection date from'%>
+	<%= date_select :collection_date_from,'date',
+	{:include_blank => true, :default => nil,:start_year=>2000}%>  to
+	<%= date_select :collection_date_to,'date',
+	{:include_blank => true, :default => nil,:start_year=>2000}%>
+	<%=submit_tag "Search"%>
+<%end%>
 <table class='table'>
   <thead>
     <tr>
