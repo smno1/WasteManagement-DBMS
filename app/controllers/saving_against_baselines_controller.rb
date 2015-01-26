@@ -4,6 +4,10 @@ class SavingAgainstBaselinesController < ApplicationController
   respond_to :html
 
   def index
+#    @sites=Site.all
+#    unless(params[:site_id].blanck)
+      
+#    end
     @saving_against_baselines = SavingAgainstBaseline.filter(filter_params)
     @saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@saving_against_baselines)

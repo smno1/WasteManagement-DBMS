@@ -1,8 +1,8 @@
 <h1>Saving_against_baselines</h1>
 <%=form_tag(saving_against_baselines_path, :method=>'get') do%>
-	<%=hidden_field_tag :service_id,params[:service_id]%>
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
+	<%=hidden_field_tag :service_id,params[:service_id]%>
 	<%=label_tag 'month'%>
 	<%= date_select :month,'date', 
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
