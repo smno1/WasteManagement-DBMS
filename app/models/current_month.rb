@@ -5,7 +5,7 @@ class CurrentMonth < ActiveRecord::Base
   end
  
   def self.update_current_month_data(sid,mon)
-    current_month_data=self.find_or_initialize_by(service_id: sid, Month: mon)
+    current_month_data=self.find_or_initialize_by(service_id: sid, month: mon)
     current_month_data.update(self.current_month_params(sid, mon))
     #current_month_data=CurrentMonth.where("service_id=#{sid} and Month=?",mon)
     #current_month_data.delete_all unless current_month_data.blank?
@@ -15,7 +15,7 @@ class CurrentMonth < ActiveRecord::Base
   private
  
   def self.current_month_params(sid, mon)
-    current_month_invoices=CurrentInvoice.where("service_id=#{sid} and Month=?",mon)
+    current_month_invoices=CurrentInvoice.where("service_id=#{sid} and month=?",mon)
     return if current_month_invoices.blank?
     service=Service.find(sid)
     _month_total_tonnes=0
@@ -32,7 +32,7 @@ class CurrentMonth < ActiveRecord::Base
     puts highest_actual_load
     _optimal_collection=_month_total_tonnes.to_f/highest_actual_load
     _days_interval=365.0/12/_optimal_collection
-    current_month={service_id: sid,Month: mon,month_total_tonnes: _month_total_tonnes,
+    current_month={service_id: sid,month: mon,month_total_tonnes: _month_total_tonnes,
           month_average_load: _month_average_load, actual_month_collection: _actual_month_collection,
           actual_month_charge: _actual_month_charge, optimal_collection: _optimal_collection,
           days_interval: _days_interval}

@@ -12,7 +12,7 @@
   <tbody>
     <% @baseline_invoices.each do |baseline_invoice| %>
       <tr>
-        <td><%= baseline_invoice.Month.strftime('%b,%Y') %></td>
+        <td><%= baseline_invoice.month.strftime('%b,%Y') %></td>
         <td><%= baseline_invoice.collection_date %></td>
         <td><%= baseline_invoice.collection_day %></td>
         <td><%= baseline_invoice.tonnes %></td>

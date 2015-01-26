@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150122062811) do
 
   create_table "baseline_invoices", force: true do |t|
     t.integer  "service_id",      null: false
-    t.date     "Month"
+    t.date     "month"
     t.date     "collection_date"
     t.string   "collection_day"
     t.float    "tonnes"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150122062811) do
   add_index "contacts", ["site_id"], name: "index_contacts_on_site_id"
 
   create_table "current_invoices", force: true do |t|
-    t.date     "Month"
+    t.date     "month"
     t.date     "collection_date"
     t.string   "collection_day"
     t.float    "tonnes"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150122062811) do
     t.float    "actual_month_charge"
     t.float    "optimal_collection"
     t.float    "days_interval"
-    t.date     "Month"
+    t.date     "month"
     t.integer  "service_id"
     t.datetime "created_at"
     t.datetime "updated_at"

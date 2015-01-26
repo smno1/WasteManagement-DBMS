@@ -25,7 +25,7 @@
         <td><%= current_month.actual_month_charge %></td>
         <td><%= number_with_precision(current_month.optimal_collection,:percision=>2) %></td>
         <td><%= number_with_precision(current_month.days_interval, :percision=>2) %></td>
-        <td><%= current_month.Month.strftime("%b %Y") %></td>
+        <td><%= current_month.month.strftime("%b %Y") %></td>
         <td>  </td>
         <td><%= link_to 'Edit', edit_current_month_path(current_month) %></td>
         <td><%= link_to 'Destroy', current_month, method: :delete, data: { confirm: 'Are you sure?' } %></td>

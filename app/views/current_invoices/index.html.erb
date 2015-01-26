@@ -3,8 +3,8 @@
 	<%=hidden_field_tag :service_id,params[:service_id]%>
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
-	<%=label_tag 'Month'%>
-	<%= date_select :Month,'date', 
+	<%=label_tag 'month'%>
+	<%= date_select :month,'date', 
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
 	<%=label_tag 'Collection date from'%>
 	<%= date_select :collection_date_from,'date',
@@ -16,7 +16,7 @@
 <table class='table'>
   <thead>
     <tr>
-      <th><%= sortable "Month"%></th>
+      <th><%= sortable "month"%></th>
       <th><%= sortable "collection_date"%></th>
       <th><%= sortable "collection_day"%></th>
       <th><%= sortable "tonnes"%></th>
@@ -27,7 +27,7 @@
   <tbody>
     <% @current_invoices.each do |current_invoice| %>
       <tr>
-        <td><%= current_invoice.Month.strftime('%b,%Y') %></td>
+        <td><%= current_invoice.month.strftime('%b,%Y') %></td>
         <td><%= current_invoice.collection_date %></td>
         <td><%= current_invoice.collection_day %></td>
         <td><%= current_invoice.tonnes %></td>

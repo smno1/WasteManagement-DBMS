@@ -3,8 +3,8 @@
 	<%=hidden_field_tag :service_id,params[:service_id]%>
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
-	<%=label_tag 'Month'%>
-	<%= date_select :Month,'date', 
+	<%=label_tag 'month'%>
+	<%= date_select :month,'date', 
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>1990}%> <br>
 	<%=label_tag 'Collection date from'%>
 	<%= date_select :collection_date_from,'date',

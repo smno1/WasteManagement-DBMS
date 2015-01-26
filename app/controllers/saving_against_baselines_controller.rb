@@ -12,7 +12,7 @@ class SavingAgainstBaselinesController < ApplicationController
   def show
   @baseline_data=BaselineDatum.find_by :service_id=>@saving_against_baseline.service_id
   @current_month=CurrentMonth.find_by :service_id=>@saving_against_baseline.service_id,
-          :Month=>@saving_against_baseline.month
+          :month=>@saving_against_baseline.month
     respond_with(@saving_against_baseline)
   end
 

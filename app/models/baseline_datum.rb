@@ -19,7 +19,7 @@ class BaselineDatum < ActiveRecord::Base
  
   def self.baseline_data_params(sid)
     service_collection_invoices=BaselineInvoice.where("service_id=#{sid}")
-    monthly_times_hash=service_collection_invoices.group(:Month).count
+    monthly_times_hash=service_collection_invoices.group(:month).count
     total_month_count=monthly_times_hash.count
     total_times_count=0
     monthly_times_hash.each do |key,times|

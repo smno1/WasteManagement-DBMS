@@ -49,10 +49,10 @@ class BaselineInvoicesController < ApplicationController
   private
     
     def filter_params
-      params[:Month]= date_select_to_date(params[:Month])
-      #params[:Month]["date(1i)"].blank? || params[:Month]["date(2i)"].blank? ? 
-       #                 nil : date_select_to_date(params[:Month]) unless params[:Month].nil?
-      params.slice(:service_id,:Month)
+      params[:month]= date_select_to_date(params[:month])
+      #params[:month]["date(1i)"].blank? || params[:month]["date(2i)"].blank? ? 
+       #                 nil : date_select_to_date(params[:month]) unless params[:month].nil?
+      params.slice(:service_id,:month)
     end
     
     def sort_column
@@ -68,6 +68,6 @@ class BaselineInvoicesController < ApplicationController
     end
 
     def baseline_invoice_params
-      params.require(:baseline_invoice).permit(:service_id, :Month, :collection_date, :collection_day, :tonnes)
+      params.require(:baseline_invoice).permit(:service_id, :month, :collection_date, :collection_day, :tonnes)
     end
 end

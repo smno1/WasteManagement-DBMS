@@ -42,6 +42,6 @@ class CurrentMonthsController < ApplicationController
     end
 
     def current_month_params
-      params.require(:current_month).permit(:month_total_tonnes, :month_average_load, :actual_month_collection, :actual_month_charge, :optimal_collection, :days_interval, :Month, :service_id)
+      params.require(:current_month).permit(:month_total_tonnes, :month_average_load, :actual_month_collection, :actual_month_charge, :optimal_collection, :days_interval, :month, :service_id)
     end
 end

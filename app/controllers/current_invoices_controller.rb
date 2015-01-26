@@ -47,8 +47,8 @@ class CurrentInvoicesController < ApplicationController
   private
     
     def filter_params
-      params[:Month]= date_select_to_date(params[:Month])
-      params.slice(:service_id,:Month)
+      params[:month]= date_select_to_date(params[:month])
+      params.slice(:service_id,:month)
     end
     
     def sort_column
@@ -64,6 +64,6 @@ class CurrentInvoicesController < ApplicationController
     end
 
     def current_invoice_params
-      params.require(:current_invoice).permit(:Month, :collection_date, :collection_day, :tonnes, :service_id)
+      params.require(:current_invoice).permit(:month, :collection_date, :collection_day, :tonnes, :service_id)
     end
 end

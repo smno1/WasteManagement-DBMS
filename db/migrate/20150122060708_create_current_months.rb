@@ -7,7 +7,7 @@ class CreateCurrentMonths < ActiveRecord::Migration
       t.float :actual_month_charge
       t.float :optimal_collection
       t.float :days_interval
-      t.date :Month
+      t.date :month
       t.references :service, index: true
 
       t.timestamps
