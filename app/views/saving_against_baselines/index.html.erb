@@ -13,6 +13,8 @@
     <tr>
       <th><%= sortable "service_id"%></th>
       <th>Site name</th>
+      <th>Service type</th>
+      <th>Service description</th>
       <th><%= sortable "month"%></th>
       <th><%= sortable "collection_saved"%></th>
       <th><%= sortable "month_saving"%></th>
@@ -27,6 +29,8 @@
       <tr>
       	<td><%=saving_against_baseline.service.id%></td>
       	<td><%=saving_against_baseline.service.site.site_name%></td>
+      	<td><%=saving_against_baseline.service.service_type%></td>
+      	<td><%=saving_against_baseline.service.description%></td>
         <td><%= saving_against_baseline.month.strftime("%b %Y") %></td>
         <td><%= float_pre_2 saving_against_baseline.collection_saved %></td>
         <td><%= float_pre_2 saving_against_baseline.month_saving %></td>
