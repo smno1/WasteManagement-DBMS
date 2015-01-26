@@ -5,6 +5,7 @@
 		<tr>
 			<th><%=sortable "id"%>
 			<th><%=sortable "service_type"%></th>
+			<th><%=sortable "description"%></th>
 			<th><%=sortable "is_recycle"%></th>
 			<th><%=sortable "capacity_cubic_meters"%></th>
 			<th><%=sortable "benchmark_load"%></th>
@@ -21,6 +22,7 @@
 		<tr>
 			<td><%= service.id%></td>
 			<td><%= service.service_type %></td>
+			<td><%= service.description %></td>
 			<td><%= service.is_recycle %></td>
 			<td><%= service.capacity_cubic_meters %></td>
 			<td><%= service.benchmark_load %></td>
