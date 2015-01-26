@@ -1,7 +1,4 @@
 <% provide(:title,"DataManagement Site")%>
-<%unless params[:company_id].blank?%>
-	<h4 class='h4'>Company name: <%=Company.find(params[:company_id]).client_name%></h4>
-<%end%>
 <%=form_tag(sites_path, :method=>'get') do%>
 	<%=hidden_field_tag :company_id,params[:company_id]%>
 	<%=hidden_field_tag :direction,params[:direction]%>
