@@ -1,9 +1,17 @@
 class BaselineDatum < ActiveRecord::Base
   include Filterable
+  belongs_to :service
   
   scope :service_id, ->(id){where service_id:id}
   
-  belongs_to :service
+  after_update do |ba|
+    SavingAgainstBaseline.update_sab_when_baseline_updated(ba)
+  end
+  
+  after_save do |ba|
+    SavingAgainstBaseline.update_sab_when_baseline_updated(ba)
+  end
+  
   def self.recalculate_baseline_data
     baseline_invoices=BaselineInvoice.all
     service_grouped_invoices=baseline_invoices.group('service_id')
