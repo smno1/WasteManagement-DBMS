@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :baseline_invoices, shallow:true
     resources :current_invoices, shallow:true
     resources :saving_against_baselines, shallow:true
+    resources :baseline_data, shallow:true
   end
 
   resources :commentaries

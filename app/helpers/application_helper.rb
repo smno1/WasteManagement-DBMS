@@ -10,4 +10,8 @@ module ApplicationHelper
     number_with_precision(number,:precision=>2) 
   end
   
+  def number_to_us_currency(number)
+    number_to_currency(number_with_precision(number,:precision=>2),:unit=>'$')
+  end
+  
 end

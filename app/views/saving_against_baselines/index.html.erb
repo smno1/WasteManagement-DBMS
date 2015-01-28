@@ -19,6 +19,8 @@
       <th><%= sortable "collection_saved"%></th>
       <th><%= sortable "month_saving"%></th>
       <th><%= sortable "month_extra_saving"%></th>
+      <th><%= sortable "month_excluded_cost"%></th>
+      <th><%= sortable "month_total_saving"%></th>
       <th><%= sortable "note"%></th>
       <th colspan="3"></th>
     </tr>
@@ -27,14 +29,16 @@
   <tbody>
     <% @saving_against_baselines.each do |saving_against_baseline| %>
       <tr>
-      	<td><%=saving_against_baseline.service.id%></td>
+      	<td><%=saving_against_baseline.service.account_number_and_name%></td>
       	<td><%=saving_against_baseline.service.site.site_name%></td>
       	<td><%=saving_against_baseline.service.service_type%></td>
       	<td><%=saving_against_baseline.service.description%></td>
         <td><%= saving_against_baseline.month.strftime("%b %Y") %></td>
         <td><%= float_pre_2 saving_against_baseline.collection_saved %></td>
-        <td><%= float_pre_2 saving_against_baseline.month_saving %></td>
-        <td><%= saving_against_baseline.month_extra_saving %></td>
+        <td><%= number_to_us_currency saving_against_baseline.month_saving %></td>
+        <td><%= number_to_us_currency saving_against_baseline.month_extra_saving %></td>
+        <td><%= number_to_us_currency saving_against_baseline.month_excluded_cost %></td>
+        <td><%= number_to_us_currency saving_against_baseline.month_total_saving %></td>
         <td><%= saving_against_baseline.note %></td>
         <td><%= link_to 'Show', saving_against_baseline_path(saving_against_baseline) %></td>
         <td><%= link_to 'Edit', edit_saving_against_baseline_path(saving_against_baseline,:service_id=>params[:service_id]) %></td>

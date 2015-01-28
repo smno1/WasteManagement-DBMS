@@ -14,7 +14,7 @@ admin.add_role :admin
 CollectionOfSelection.delete_all
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')
-CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Liquid')
+CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Liquid Waste')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Other')
 
 BaselineDatum.recalculate_baseline_data

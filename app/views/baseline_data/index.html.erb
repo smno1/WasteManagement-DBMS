@@ -1,6 +1,6 @@
 <h1>Listing baseline_data</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Monthly collection</th>
@@ -13,9 +13,9 @@
   <tbody>
     <% @baseline_data.each do |baseline_datum| %>
       <tr>
-        <td><%= baseline_datum.monthly_collection %></td>
-        <td><%= baseline_datum.monthly_charge %></td>
-        <td><%= baseline_datum.service %></td>
+        <td><%= float_pre_2 baseline_datum.monthly_collection %></td>
+        <td><%= number_to_us_currency baseline_datum.monthly_charge %></td>
+        <td><%= baseline_datum.service_id %></td>
         <td><%= link_to 'Show', baseline_datum %></td>
         <td><%= link_to 'Edit', edit_baseline_datum_path(baseline_datum) %></td>
         <td><%= link_to 'Destroy', baseline_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,4 +25,6 @@
 </table>
 <br>
 <%=will_paginate @baseline_data%> <br>
-<%= link_to 'New Baseline datum', new_baseline_datum_path %>
+<%unless @baseline_data.count>0%>
+	<%= link_to 'New Baseline datum', new_baseline_datum_path(:service_id=>params[:service_id]) %>
+<%end%>

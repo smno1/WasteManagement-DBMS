@@ -5,6 +5,10 @@
   <%= @service.service_type %>
 </p>
 <p>
+  <strong>Account number & name</strong>
+  <%= @service.account_number_and_name %>
+</p>
+<p>
   <strong>Description:</strong>
   <%= @service.description %>
 </p>
@@ -19,13 +23,13 @@
 </p>
 
 <p>
-  <strong>Benchmark load:</strong>
-  <%= @service.benchmark_load %>
+  <strong>Target load:</strong>
+  <%= @service.target_load %>
 </p>
 
 <p>
   <strong>Collection rate:</strong>
-  <%= @service.collection_rate %>
+  <%= number_to_us_currency @service.collection_rate %>
 </p>
 
 <p>

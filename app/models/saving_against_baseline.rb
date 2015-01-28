@@ -19,7 +19,8 @@ class SavingAgainstBaseline < ActiveRecord::Base
     return nil if currentData.nil?
     _collection_saved=baselineData.monthly_collection.to_f-currentData.actual_month_collection
     _month_saving=baselineData.monthly_charge.to_f-currentData.actual_month_charge
-    sab.update(collection_saved: _collection_saved, month_saving:_month_saving)
+    _month_total_saving=_month_saving+sab.month_extra_saving
+    sab.update(collection_saved: _collection_saved, month_saving:_month_saving,month_total_saving:_month_total_saving)
     return sab
   end
 end

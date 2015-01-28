@@ -4,7 +4,7 @@ class BaselineDataController < ApplicationController
   respond_to :html
 
   def index
-    @baseline_data = BaselineDatum.all.paginate(:per_page=>15,:page=>params[:page])
+    @baseline_data = BaselineDatum.filter(params.slice(:service_id)).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@baseline_data)
   end
 
@@ -33,7 +33,7 @@ class BaselineDataController < ApplicationController
 
   def destroy
     @baseline_datum.destroy
-    respond_with(@baseline_datum)
+    redirect_to services_path
   end
 
   private

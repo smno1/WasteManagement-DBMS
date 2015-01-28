@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+	<% unless @baseline_datum.persisted? %>
+	  <%=f.hidden_field :service_id,:value=>params[:service_id]%>
+	<%end%>
   <div class="field">
     <%= f.label :monthly_collection %><br>
     <%= f.text_field :monthly_collection %>
@@ -18,10 +20,6 @@
   <div class="field">
     <%= f.label :monthly_charge %><br>
     <%= f.text_field :monthly_charge %>
-  </div>
-  <div class="field">
-    <%= f.label :service_id %><br>
-    <%= f.text_field :service_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

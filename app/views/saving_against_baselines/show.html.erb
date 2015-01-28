@@ -12,14 +12,21 @@
 
 <p>
   <strong>Month saving:</strong>
-  <%= float_pre_2 @saving_against_baseline.month_saving %>
+  <%= number_to_us_currency @saving_against_baseline.month_saving %>
 </p>
 
 <p>
   <strong>Month extra saving:</strong>
-  <%= @saving_against_baseline.month_extra_saving %>
+  <%= number_to_us_currency @saving_against_baseline.month_extra_saving %>
 </p>
-
+<p>
+  <strong>Month excluded cost:</strong>
+  <%= number_to_us_currency @saving_against_baseline.month_excluded_cost %>
+</p>
+<p>
+  <strong>Month total saving:</strong>
+  <%= number_to_us_currency @saving_against_baseline.month_total_saving %>
+</p>
 <p>
   <strong>Note:</strong>
   <%= @saving_against_baseline.note %>
@@ -43,11 +50,11 @@
   <tbody>
       <tr>
         <td><%= float_pre_2 @baseline_data.monthly_collection %></td>
-        <td><%= @baseline_data.service.collection_rate %></td>
-        <td><%= float_pre_2 @baseline_data.monthly_charge %></td>
+        <td><%= number_to_us_currency @baseline_data.service.collection_rate %></td>
+        <td><%= number_to_us_currency @baseline_data.monthly_charge %></td>
         <td><%= @current_month.actual_month_collection %></td>
-        <td><%= @current_month.service.collection_rate %></td>
-        <td><%= @current_month.actual_month_charge %></td>
+        <td><%= number_to_us_currency @current_month.service.collection_rate %></td>
+        <td><%= number_to_us_currency @current_month.actual_month_charge %></td>
       </tr>
   </tbody>
 </table>

@@ -22,7 +22,7 @@
 
 <p>
   <strong>Service:</strong>
-  <%= @current_invoice.service %>
+  <%= @current_invoice.service.account_number_and_name %>
 </p>
 
 <%= link_to 'Edit', edit_current_invoice_path(@current_invoice) %> |

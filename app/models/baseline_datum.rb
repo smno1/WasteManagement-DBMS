@@ -1,4 +1,8 @@
 class BaselineDatum < ActiveRecord::Base
+  include Filterable
+  
+  scope :service_id, ->(id){where service_id:id}
+  
   belongs_to :service
   def self.recalculate_baseline_data
     baseline_invoices=BaselineInvoice.all

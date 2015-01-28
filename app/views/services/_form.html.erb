@@ -16,6 +16,10 @@
     <%= f.select :service_type, options_from_collection_for_select(@bin_type,'selection_item','selection_item') %>
   </div>
   <div class="field">
+    <%= f.label "Account number &name" %><br>
+    <%= f.text_field :account_number_and_name %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
@@ -28,8 +32,8 @@
     <%= f.number_field :capacity_cubic_meters,:step=>'any' %>
   </div>
   <div class="field">
-    <%= f.label :benchmark_load %><br>
-    <%= f.number_field :benchmark_load,:step=>'any' %>
+    <%= f.label :target_load %><br>
+    <%= f.number_field :target_load,:step=>'any' %>
   </div>
   <div class="field">
     <%= f.label :collection_rate %><br>

@@ -7,13 +7,13 @@
 
 <p>
   <strong>Monthly charge:</strong>
-  <%= @baseline_datum.monthly_charge %>
+  <%= number_to_us_currency @baseline_datum.monthly_charge %>
 </p>
 
 <p>
   <strong>Service:</strong>
-  <%= @baseline_datum.service %>
+  <%= @baseline_datum.service_id %>
 </p>
 
 <%= link_to 'Edit', edit_baseline_datum_path(@baseline_datum) %> |
-<%= link_to 'Back', baseline_data_path %>
+<%= link_to 'Back to service', services_path %>

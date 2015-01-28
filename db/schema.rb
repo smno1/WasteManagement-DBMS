@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126142707) do
+ActiveRecord::Schema.define(version: 20150128043913) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -116,20 +116,25 @@ ActiveRecord::Schema.define(version: 20150126142707) do
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "month_excluded_cost"
+    t.float    "month_total_saving"
   end
 
   create_table "services", force: true do |t|
     t.string   "service_type"
     t.boolean  "is_recycle"
     t.float    "capacity_cubic_meters"
-    t.float    "benchmark_load"
+    t.float    "target_load"
     t.float    "collection_rate"
     t.float    "density_of_waste"
     t.date     "year_installed"
-    t.integer  "site_id",               null: false
+    t.integer  "site_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.float    "monthly_rental_fee"
+    t.float    "cost_per_tonne"
+    t.string   "account_number_and_name"
   end
 
   add_index "services", ["site_id"], name: "index_services_on_site_id"
@@ -141,6 +146,7 @@ ActiveRecord::Schema.define(version: 20150126142707) do
     t.integer  "company_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "running_total"
   end
 
   create_table "users", force: true do |t|

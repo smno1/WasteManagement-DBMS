@@ -76,6 +76,6 @@ class SavingAgainstBaselinesController < ApplicationController
     end
 
     def saving_against_baseline_params
-      params.require(:saving_against_baseline).permit(:service_id, :month, :collection_saved, :month_saving, :month_extra_saving, :note)
+      params.require(:saving_against_baseline).permit(:service_id, :month_excluded_cost, :month_total_saving, :month, :collection_saved, :month_saving, :month_extra_saving, :note)
     end
 end
