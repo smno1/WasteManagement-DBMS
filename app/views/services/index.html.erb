@@ -1,5 +1,7 @@
 <h1>Services</h1>
-
+<%unless params[:site_id].blank?%>
+	<h4 class='h4'>Site name: <%=Site.find(params[:site_id]).site_name%></h4>
+<%end%>
 <table class='table'>
 	<thead>
 		<tr>

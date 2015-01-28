@@ -36,7 +36,7 @@ class SavingAgainstBaselinesController < ApplicationController
       return
     end
     @saving_against_baseline.save
-    respond_with(@saving_against_baseline)
+    redirect_to saving_against_baselines_path
   end
 
   def update
@@ -47,13 +47,12 @@ class SavingAgainstBaselinesController < ApplicationController
       return
     end
     @saving_against_baseline.save
-    respond_with(@saving_against_baseline)
+    redirect_to saving_against_baselines_path
   end
 
   def destroy
-    sid=@saving_against_baseline.service_id
     @saving_against_baseline.destroy
-    redirect_to saving_against_baselines_path(:service_id=>sid)
+    redirect_to saving_against_baselines_path
   end
 
   private

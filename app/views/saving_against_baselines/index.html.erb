@@ -1,4 +1,7 @@
 <h1>Saving_against_baselines</h1>
+<%unless params[:service_id].blank?%>
+	<h4 class='h4'>Service name: <%=Service.find(params[:service_id]).account_number_and_name%></h4>
+<%end%>
 <%=form_tag(saving_against_baselines_path, :method=>'get') do%>
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
