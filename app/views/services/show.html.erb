@@ -33,6 +33,16 @@
 </p>
 
 <p>
+  <strong>Monthly rental fee:</strong>
+  <%= number_to_us_currency @service.monthly_rental_fee %>
+</p>
+
+<p>
+  <strong>Cost per tonne:</strong>
+  <%= number_to_us_currency @service.cost_per_tonne %>
+</p>
+
+<p>
   <strong>Density of waste:</strong>
   <%= @service.density_of_waste %>
 </p>

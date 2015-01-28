@@ -17,4 +17,4 @@ CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Bin')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Liquid Waste')
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Other')
 
-BaselineDatum.recalculate_baseline_data
+#BaselineDatum.recalculate_baseline_data

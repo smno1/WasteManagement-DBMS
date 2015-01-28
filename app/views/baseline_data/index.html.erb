@@ -4,8 +4,10 @@
   <thead>
     <tr>
       <th>Monthly collection</th>
+      <th>Collection rate</th>
       <th>Monthly charge</th>
-      <th>Service</th>
+      <th>Service description</th>
+      <th>Site name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +16,10 @@
     <% @baseline_data.each do |baseline_datum| %>
       <tr>
         <td><%= float_pre_2 baseline_datum.monthly_collection %></td>
+        <td><%= baseline_datum.service.collection_rate%></td>
         <td><%= number_to_us_currency baseline_datum.monthly_charge %></td>
-        <td><%= baseline_datum.service_id %></td>
+        <td><%= baseline_datum.service.description %></td>
+        <td><%= baseline_datum.service.site.site_name%></td>
         <td><%= link_to 'Show', baseline_datum %></td>
         <td><%= link_to 'Edit', edit_baseline_datum_path(baseline_datum) %></td>
         <td><%= link_to 'Destroy', baseline_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,3 +32,4 @@
 <%unless @baseline_data.count>0%>
 	<%= link_to 'New Baseline datum', new_baseline_datum_path(:service_id=>params[:service_id]) %>
 <%end%>
+<%= link_to 'Back to Service', services_path%>

@@ -7,12 +7,14 @@
 		<tr>
 			<th><%=sortable "account_number_and_name", "Service"%>
 			<th><%=sortable "service_type"%></th>
+			<th><%=sortable "site_id", "Site Name"%></th>
 			<th><%=sortable "description"%></th>
 			<th><%=sortable "is_recycle"%></th>
 			<th><%=sortable "capacity_cubic_meters"%></th>
 			<th><%=sortable "target_load"%></th>
 			<th><%=sortable "collection_rate"%></th>
-			<th><%=sortable "site_id", "Site Name"%></th>
+			<th><%=sortable "monthly_rental_fee"%></th>
+			<th><%=sortable "cost_per_tonne"%></th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -22,12 +24,14 @@
 		<tr>
 			<td><%= service.account_number_and_name%></td>
 			<td><%= service.service_type %></td>
+			<td><%= service.site.site_name %></td>
 			<td><%= service.description %></td>
 			<td><%= service.is_recycle %></td>
 			<td><%= service.capacity_cubic_meters %></td>
 			<td><%= service.target_load %></td>
-			<td><%= number_to_currency(service.collection_rate,:unit=>'$') %></td>
-			<td><%= service.site.site_name %></td>
+			<td><%= number_to_us_currency service.collection_rate%></td>
+			<td><%= number_to_us_currency service.monthly_rental_fee%></td>
+			<td><%= number_to_us_currency service.cost_per_tonne%></td>
 			<td>
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -46,6 +50,9 @@
 					</li>
 					<li role="presentation">
 						<%= link_to 'Baseline Data', service_baseline_data_path(service) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'Show Service detail', service_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Edit Service', edit_service_path(service) %>
