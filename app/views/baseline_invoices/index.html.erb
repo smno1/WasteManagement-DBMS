@@ -1,4 +1,9 @@
 <h1>Baseline_invoices</h1>
+<%unless params[:service_id].blank?%>
+	<%service=Service.find(params[:service_id])%>
+	<h4 class='h4'>Site name: <%=service.site.site_name%></h4>
+	<h4 class='h4'>Service <%=service.account_number_and_name+" "+service.description%></h4>
+<%end%>
 <%=form_tag(baseline_invoices_path, :method=>'get') do%>
 	<%=hidden_field_tag :service_id,params[:service_id]%>
 	<%=hidden_field_tag :direction,params[:direction]%>

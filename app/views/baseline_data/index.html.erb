@@ -1,13 +1,14 @@
-<h1>Listing baseline_data</h1>
+<h1>Baseline_data</h1>
 
 <table class='table'>
   <thead>
     <tr>
+      <th>Site name</th>
+      <th>Service account</th>
+      <th>Service description</th>
       <th>Monthly collection</th>
       <th>Collection rate</th>
       <th>Monthly charge</th>
-      <th>Service description</th>
-      <th>Site name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +16,12 @@
   <tbody>
     <% @baseline_data.each do |baseline_datum| %>
       <tr>
+        <td><%= baseline_datum.service.site.site_name%></td>
+        <td><%= baseline_datum.service.account_number_and_name %></td>
+        <td><%= baseline_datum.service.description %></td>
         <td><%= float_pre_2 baseline_datum.monthly_collection %></td>
         <td><%= baseline_datum.service.collection_rate%></td>
         <td><%= number_to_us_currency baseline_datum.monthly_charge %></td>
-        <td><%= baseline_datum.service.description %></td>
-        <td><%= baseline_datum.service.site.site_name%></td>
         <td><%= link_to 'Show', baseline_datum %></td>
         <td><%= link_to 'Edit', edit_baseline_datum_path(baseline_datum) %></td>
         <td><%= link_to 'Destroy', baseline_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
