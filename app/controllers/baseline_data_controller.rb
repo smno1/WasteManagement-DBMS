@@ -22,6 +22,7 @@ class BaselineDataController < ApplicationController
 
   def create
     @baseline_datum = BaselineDatum.new(baseline_datum_params)
+    @baseline_datum.monthly_charge=@baseline_datum.monthly_collection*@baseline_datum.service.collection_rate
     @baseline_datum.save
     respond_with(@baseline_datum)
   end

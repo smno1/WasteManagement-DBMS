@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128043913) do
+ActiveRecord::Schema.define(version: 20150128224234) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -138,6 +138,17 @@ ActiveRecord::Schema.define(version: 20150128043913) do
   end
 
   add_index "services", ["site_id"], name: "index_services_on_site_id"
+
+  create_table "site_month_savings", force: true do |t|
+    t.integer  "site_id"
+    t.date     "month"
+    t.float    "month_saving"
+    t.float    "recycling_rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_month_savings", ["site_id"], name: "index_site_month_savings_on_site_id"
 
   create_table "sites", force: true do |t|
     t.string   "site_name"

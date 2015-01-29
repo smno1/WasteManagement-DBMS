@@ -2,7 +2,7 @@
 <%unless params[:service_id].blank?%>
 	<%service=Service.find(params[:service_id])%>
 	<h4 class='h4'>Site name: <%=service.site.site_name%></h4>
-	<h4 class='h4'>Service <%=service.account_number_and_name+" "+service.description%></h4>
+	<h4 class='h4'>Service <%=service.account_number_and_name%> <%=service.description%></h4>
 <%end%>
 <%=form_tag(current_invoices_path, :method=>'get') do%>
 	<%=hidden_field_tag :service_id,params[:service_id]%>
@@ -13,9 +13,9 @@
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
 	<%=label_tag 'Collection date from'%>
 	<%= date_select :collection_date_from,'date',
-	{:include_blank => true, :default => nil,:start_year=>2000}%>  to
+	{:include_blank => true, :default => nil,:start_year=>2000,:discard_day=>true}%>  to
 	<%= date_select :collection_date_to,'date',
-	{:include_blank => true, :default => nil,:start_year=>2000}%>
+	{:include_blank => true, :default => nil,:start_year=>2000,:discard_day=>true}%>(Default month: Jan) <br>
 	<%=submit_tag "Search"%>
 <%end%>
 <table class='table'>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @site_month_saving.site %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @site_month_saving.month %>
+</p>
+
+<p>
+  <strong>Month saving:</strong>
+  <%= @site_month_saving.month_saving %>
+</p>
+
+<p>
+  <strong>Recycling rate:</strong>
+  <%= @site_month_saving.recycling_rate %>
+</p>
+
+<%= link_to 'Edit', edit_site_month_saving_path(@site_month_saving) %> |
+<%= link_to 'Back', site_month_savings_path %>

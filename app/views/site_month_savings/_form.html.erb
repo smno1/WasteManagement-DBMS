@@ -1,0 +1,33 @@
+<%= form_for(@site_month_saving) do |f| %>
+  <% if @site_month_saving.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_month_saving.errors.count, "error") %> prohibited this site_month_saving from being saved:</h2>
+
+      <ul>
+      <% @site_month_saving.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :site_id %><br>
+    <%= f.text_field :site_id %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.date_select :month %>
+  </div>
+  <div class="field">
+    <%= f.label :month_saving %><br>
+    <%= f.text_field :month_saving %>
+  </div>
+  <div class="field">
+    <%= f.label :recycling_rate %><br>
+    <%= f.text_field :recycling_rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

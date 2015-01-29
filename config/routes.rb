@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :site_month_savings
+
   resources :current_months
 
   resources :baseline_data
