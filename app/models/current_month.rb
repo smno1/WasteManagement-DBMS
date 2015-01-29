@@ -1,5 +1,12 @@
 class CurrentMonth < ActiveRecord::Base
   belongs_to :service
+  
+  after_update do |cm|
+    sab=SavingAgainstBaseline.find_by :service_id=>cm.service_id, :month=>cm.month
+    return if sab.blank?
+    SavingAgainstBaseline.update_sab_data(sab)
+  end
+  
   def self.create_current_month_data(sid, mon)
     self.create(self.current_month_params(sid,mon))
   end

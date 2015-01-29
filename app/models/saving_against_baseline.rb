@@ -5,6 +5,20 @@ class SavingAgainstBaseline < ActiveRecord::Base
   scope :service_id, ->(service_id){where service_id:service_id}
   scope :month, ->(month){where month:month}
   
+  after_save do |sab|
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+    Site.update_running_total(sab.service.site_id)
+  end
+  
+  after_update do |sab|
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+  end
+  
+  after_destroy do |sab|
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+  end
+  
+  
   def self.create_sab_data(sid,mon)
     baselineData=BaselineDatum.find_by :service_id=> sid
     currentData=CurrentMonth.find_by :service_id=> sid, :month=>mon

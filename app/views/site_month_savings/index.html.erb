@@ -1,12 +1,12 @@
-<h1>Listing site_month_savings</h1>
+<h1>Site_month_savings</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th>Site</th>
-      <th>Month</th>
-      <th>Month saving</th>
-      <th>Recycling rate</th>
+      <th><%=sortable "site_id","Site Name"%></th>
+      <th><%=sortable "month"%></th>
+      <th><%=sortable "month_saving"%></th>
+      <th><%=sortable "recycling_rate"%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,12 +14,10 @@
   <tbody>
     <% @site_month_savings.each do |site_month_saving| %>
       <tr>
-        <td><%= site_month_saving.site %></td>
+        <td><%= site_month_saving.site.site_name %></td>
         <td><%= site_month_saving.month %></td>
-        <td><%= site_month_saving.month_saving %></td>
-        <td><%= site_month_saving.recycling_rate %></td>
-        <td><%= link_to 'Show', site_month_saving %></td>
-        <td><%= link_to 'Edit', edit_site_month_saving_path(site_month_saving) %></td>
+        <td><%= number_to_us_currency site_month_saving.month_saving %></td>
+        <td><%= number_to_us_currency site_month_saving.recycling_rate %></td>
         <td><%= link_to 'Destroy', site_month_saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Site month saving', new_site_month_saving_path %>
+<!--<%= link_to 'New Site month saving', new_site_month_saving_path %>-->

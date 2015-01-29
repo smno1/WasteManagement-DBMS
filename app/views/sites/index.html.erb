@@ -20,6 +20,7 @@
 			<th><%=sortable "site_address"%></th>
 			<th><%=sortable "number_of_service"%></th>
 			<th><%=sortable "company_id", "Client Company"%></th>
+			<th><%=sortable "running_total"%></th>
 			<th colspan="5"></th>
 		</tr>
 	</thead>
@@ -31,6 +32,7 @@
 			<td><%= site.site_address %></td>
 			<td><%= site.number_of_service %></td>
 			<td><%= site.company.client_name %></td>
+			<td><%= number_to_us_currency site.running_total %></td>
 			<td>
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -38,6 +40,9 @@
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					<li role="presentation">
+						<%= link_to 'View Site Month Saving', site_site_month_savings_url(site) %>
+					</li>
 					<li role="presentation">
 						<%= link_to 'View Services', site_services_url(site) %>
 					</li>

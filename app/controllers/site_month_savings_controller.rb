@@ -1,10 +1,12 @@
 class SiteMonthSavingsController < ApplicationController
   before_action :set_site_month_saving, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   respond_to :html
 
   def index
-    @site_month_savings = SiteMonthSaving.all
+    @site_month_savings = SiteMonthSaving.filter(params.slice(:site_id)).order(sort_column+
+                            " "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@site_month_savings)
   end
 
@@ -37,6 +39,15 @@ class SiteMonthSavingsController < ApplicationController
   end
 
   private
+      
+    def sort_column
+      params[:sort] || "id"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
+    
     def set_site_month_saving
       @site_month_saving = SiteMonthSaving.find(params[:id])
     end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :services, shallow:true
     resources :commentaries, shallow:true
     resources :contacts, shallow:true
+    resources :site_month_savings, shallow:true
   end
 
   get 'welcome/portal'

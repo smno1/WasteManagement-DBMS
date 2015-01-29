@@ -1,6 +1,6 @@
 <h1>Current_months</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Service ID</th>
@@ -26,7 +26,6 @@
         <td><%= float_pre_2 current_month.optimal_collection %></td>
         <td><%= number_to_us_currency current_month.days_interval %></td>
         <td><%= current_month.month.strftime("%b %Y") %></td>
-        <td>  </td>
         <td><%= link_to 'Edit', edit_current_month_path(current_month) %></td>
         <td><%= link_to 'Destroy', current_month, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

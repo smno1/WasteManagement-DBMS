@@ -10,11 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :site_id %><br>
-    <%= f.text_field :site_id %>
-  </div>
+  <% unless @saving_against_baseline.persisted? %>
+  	<%= f.hidden_field :site_id, :value=>params[:site_id]%>
+  <%end%>
   <div class="field">
     <%= f.label :month %><br>
     <%= f.date_select :month %>
