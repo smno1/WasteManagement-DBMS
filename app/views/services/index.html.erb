@@ -5,10 +5,10 @@
 <table class='table'>
 	<thead>
 		<tr>
-			<th><%=sortable "account_number_and_name", "Service"%>
-			<th><%=sortable "service_type"%></th>
 			<th><%=sortable "site_id", "Site Name"%></th>
+			<th><%=sortable "account_number_and_name", "Service account"%>
 			<th><%=sortable "description"%></th>
+			<th><%=sortable "service_type"%></th>
 			<th><%=sortable "is_recycle"%></th>
 			<th><%=sortable "capacity_cubic_meters"%></th>
 			<th><%=sortable "target_load"%></th>
@@ -22,10 +22,10 @@
 	<tbody>
 		<% @services.each do |service| %>
 		<tr>
-			<td><%= service.account_number_and_name%></td>
-			<td><%= service.service_type %></td>
 			<td><%= service.site.site_name %></td>
+			<td><%= service.account_number_and_name%></td>
 			<td><%= service.description %></td>
+			<td><%= service.service_type %></td>
 			<td><%= service.is_recycle %></td>
 			<td><%= service.capacity_cubic_meters %></td>
 			<td><%= service.target_load %></td>
