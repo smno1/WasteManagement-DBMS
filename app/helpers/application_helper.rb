@@ -15,7 +15,30 @@ module ApplicationHelper
   end
   
   def number_with_percentage(number)
-    number_to_currency(number,:unit=>"%",:format=>"%n%u")
+    number_to_currency(number*100,:unit=>"%",:format=>"%n%u")
+  end
+  
+  def info_from_service(sid)
+    unless sid.blank?
+      sv=Service.find(sid)
+      content_tag(:h4,"Client name: "+sv.site.company.client_name)+
+      content_tag(:h4,"Site name: "+sv.site.site_name)+
+      content_tag(:h4,"Service: "+sv.account_number_and_name+" "+sv.description)
+    end  
+  end
+  
+  def info_from_site(sid)
+    unless sid.blank?
+      _site=Site.find(sid)
+      content_tag(:h4,"Client name: "+_site.company.client_name,:id=>"client_name_title")+
+      content_tag(:h4,"Site name: "+_site.site_name,:id=>"site_name_title")
+    end
+  end
+  
+  def info_from_company(sid)
+    unless sid.blank?
+      content_tag(:h4,"Client name: "+Company.find(sid).client_name)
+    end
   end
   
 end
