@@ -1,9 +1,8 @@
 <h1>Site_month_savings</h1>
-
+<%= info_from_site params[:site_id]%>
 <table class='table'>
   <thead>
     <tr>
-      <th><%=sortable "site_id","Site Name"%></th>
       <th><%=sortable "month"%></th>
       <th><%=sortable "month_saving"%></th>
       <th><%=sortable "recycling_rate"%></th>
@@ -14,7 +13,6 @@
   <tbody>
     <% @site_month_savings.each do |site_month_saving| %>
       <tr>
-        <td><%= site_month_saving.site.site_name %></td>
         <td><%= site_month_saving.month.strftime("%b %Y") %></td>
         <td><%= number_to_us_currency site_month_saving.month_saving %></td>
         <td><%= number_with_percentage site_month_saving.recycling_rate %></td>

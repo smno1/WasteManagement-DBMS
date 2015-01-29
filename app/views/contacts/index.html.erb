@@ -1,4 +1,6 @@
 <h1>Contacts</h1>
+<%= info_from_site params[:site_id]%>
+
 <%=form_tag(contacts_path, :method=>'get') do%>
 <%= hidden_field_tag :site_id,params[:site_id]%>
 <%= hidden_field_tag :direction,params[:direction]%>

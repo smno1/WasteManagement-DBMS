@@ -1,9 +1,8 @@
 <h1>Current_months</h1>
-
+<%=info_from_service params[:service_id]%>
 <table class='table'>
   <thead>
     <tr>
-      <th>Service ID</th>
       <th>Month total tonnes</th>
       <th>Month average load</th>
       <th>Actual month collection</th>
@@ -18,7 +17,6 @@
   <tbody>
     <% @current_months.each do |current_month| %>
       <tr>
-        <td style='text-align: center'><%= current_month.service_id %></td>
         <td><%= current_month.month_total_tonnes %></td>
         <td><%= current_month.month_average_load %></td>
         <td><%= current_month.actual_month_collection %></td>
@@ -26,7 +24,7 @@
         <td><%= float_pre_2 current_month.optimal_collection %></td>
         <td><%= number_to_us_currency current_month.days_interval %></td>
         <td><%= current_month.month.strftime("%b %Y") %></td>
-        <td><%= link_to 'Edit', edit_current_month_path(current_month) %></td>
+        <td><%= link_to 'Edit', edit_current_month_path(current_month,:service_id=>params[:service_id]) %></td>
         <td><%= link_to 'Destroy', current_month, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -35,4 +33,4 @@
 
 <br><%=will_paginate @current_months%> <br>
 
-<%= link_to 'New Current month', new_current_month_path %>
+<%= link_to 'New Current month', new_current_month_path(:service_id=>params[:service_id]) %>

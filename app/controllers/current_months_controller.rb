@@ -4,7 +4,7 @@ class CurrentMonthsController < ApplicationController
   respond_to :html
 
   def index
-    @current_months = CurrentMonth.all.paginate(:per_page=>15,:page=>params[:page])
+    @current_months = CurrentMonth.filter(params.slice(:service_id)).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@current_months)
   end
 
@@ -23,17 +23,18 @@ class CurrentMonthsController < ApplicationController
   def create
     @current_month = CurrentMonth.new(current_month_params)
     @current_month.save
-    respond_with(@current_month)
+    redirect_to current_months_path(:service_id=>@current_month.service_id)
   end
 
   def update
     @current_month.update(current_month_params)
-    respond_with(@current_month)
+    redirect_to current_months_path(:service_id=>@current_month.service_id)
   end
 
   def destroy
+    sid=@current_month.service_id
     @current_month.destroy
-    respond_with(@current_month)
+    redirect_to current_months_path(:service_id=>sid)
   end
 
   private

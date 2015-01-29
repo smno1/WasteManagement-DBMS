@@ -1,10 +1,13 @@
 class CurrentMonth < ActiveRecord::Base
+  include Filterable
+  
   belongs_to :service
+  
+  scope :service_id, ->(id){where service_id:id}
   
   after_update do |cm|
     sab=SavingAgainstBaseline.find_by :service_id=>cm.service_id, :month=>cm.month
-    return if sab.blank?
-    SavingAgainstBaseline.update_sab_data(sab)
+    SavingAgainstBaseline.update_sab_data(sab) unless sab.blank?
   end
   
   def self.create_current_month_data(sid, mon)

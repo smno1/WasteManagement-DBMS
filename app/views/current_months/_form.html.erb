@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <% unless @current_month.persisted? %>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.date_select :month , discard_day:true%>
+  </div>
+  <%= f.hidden_field :service_id, :value=>params[:service_id]%>
+  <%end%>
+  
   <div class="field">
     <%= f.label :month_total_tonnes %><br>
     <%= f.text_field :month_total_tonnes %>
@@ -34,15 +42,7 @@
   <div class="field">
     <%= f.label :days_interval %><br>
     <%= f.text_field :days_interval %>
-  </div>
-  <div class="field">
-    <%= f.label :month %><br>
-    <%= f.date_select :month %>
-  </div>
-  <div class="field">
-    <%= f.label :service_id %><br>
-    <%= f.text_field :service_id %>
-  </div>
+  </div>  
   <div class="actions">
     <%= f.submit %>
   </div>

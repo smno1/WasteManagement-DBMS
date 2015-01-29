@@ -1,7 +1,5 @@
 <h1>Services</h1>
-<%unless params[:site_id].blank?%>
-	<h4 class='h4'>Site name: <%=Site.find(params[:site_id]).site_name%></h4>
-<%end%>
+<%= info_from_site params[:site_id]%>
 <table class='table'>
 	<thead>
 		<tr>
@@ -46,10 +44,13 @@
 						<%= link_to 'Current report', service_current_invoices_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Saving against Baseline', service_saving_against_baselines_path(service) %>
+						<%= link_to 'Baseline Data', service_baseline_data_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Baseline Data', service_baseline_data_path(service) %>
+						<%= link_to 'Current Month', service_current_months_path(service) %>
+					</li>
+					<li role="presentation">
+						<%= link_to 'Saving against Baseline', service_saving_against_baselines_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Show Service detail', service_path(service) %>
