@@ -24,12 +24,14 @@ class BaselineDataController < ApplicationController
     @baseline_datum = BaselineDatum.new(baseline_datum_params)
     @baseline_datum.monthly_charge=@baseline_datum.monthly_collection*@baseline_datum.service.collection_rate
     @baseline_datum.save
-    respond_with(@baseline_datum)
+    redirect_to baseline_data_path(:service_id=>@baseline_datum.service_id)
   end
 
   def update
     @baseline_datum.update(baseline_datum_params)
-    respond_with(@baseline_datum)
+    @baseline_datum.monthly_charge=@baseline_datum.monthly_collection*@baseline_datum.service.collection_rate
+    @baseline_datum.save
+    redirect_to baseline_data_path(:service_id=>@baseline_datum.service_id)
   end
 
   def destroy

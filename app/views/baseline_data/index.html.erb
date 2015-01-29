@@ -22,8 +22,7 @@
         <td><%= float_pre_2 baseline_datum.monthly_collection %></td>
         <td><%= number_to_us_currency baseline_datum.service.collection_rate%></td>
         <td><%= number_to_us_currency baseline_datum.monthly_charge %></td>
-        <td><%= link_to 'Show', baseline_datum %></td>
-        <td><%= link_to 'Edit', edit_baseline_datum_path(baseline_datum) %></td>
+        <td><%= link_to 'Edit', edit_baseline_datum_path(baseline_datum,:service_id=>params[:service_id]) %></td>
         <td><%= link_to 'Destroy', baseline_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

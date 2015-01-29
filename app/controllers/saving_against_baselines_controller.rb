@@ -41,7 +41,7 @@ class SavingAgainstBaselinesController < ApplicationController
       return
     end
     @saving_against_baseline.save
-    redirect_to saving_against_baselines_path
+    respond_with(@saving_against_baseline)
   end
 
   def update
@@ -52,7 +52,7 @@ class SavingAgainstBaselinesController < ApplicationController
       return
     end
     @saving_against_baseline.save
-    redirect_to saving_against_baselines_path
+    respond_with(@saving_against_baseline)
   end
 
   def destroy

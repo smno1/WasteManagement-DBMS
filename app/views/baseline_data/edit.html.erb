@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @baseline_datum %> |
-<%= link_to 'Back', baseline_data_path %>
+<%= link_to 'Back', baseline_data_path(:service_id=>params[:service_id]) %>
