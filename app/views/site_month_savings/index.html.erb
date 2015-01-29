@@ -15,9 +15,9 @@
     <% @site_month_savings.each do |site_month_saving| %>
       <tr>
         <td><%= site_month_saving.site.site_name %></td>
-        <td><%= site_month_saving.month %></td>
+        <td><%= site_month_saving.month.strftime("%b %Y") %></td>
         <td><%= number_to_us_currency site_month_saving.month_saving %></td>
-        <td><%= number_to_us_currency site_month_saving.recycling_rate %></td>
+        <td><%= number_with_percentage site_month_saving.recycling_rate %></td>
         <td><%= link_to 'Destroy', site_month_saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

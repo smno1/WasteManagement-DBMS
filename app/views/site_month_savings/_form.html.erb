@@ -15,7 +15,7 @@
   <%end%>
   <div class="field">
     <%= f.label :month %><br>
-    <%= f.date_select :month %>
+    <%= f.date_select :month, :discard_day=>true %>
   </div>
   <div class="field">
     <%= f.label :month_saving %><br>

@@ -14,4 +14,8 @@ module ApplicationHelper
     number_to_currency(number_with_precision(number,:precision=>2),:unit=>'$')
   end
   
+  def number_with_percentage(number)
+    number_to_currency(number,:unit=>"%",:format=>"%n%u")
+  end
+  
 end

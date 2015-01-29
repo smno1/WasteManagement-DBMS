@@ -1,4 +1,15 @@
 var main = function() {
+
+/*  $("#company_select").change(function() {
+    // make a POST call and replace the content
+    var company = $('select#company_select :selected').val();
+    if(company == "") company="0";
+    jQuery.get('/application/update_site_select/' + company, function(data){
+        $("#addressStates").html(data);
+    });
+    return false;
+  });*/
+  
 	$('.commentary').click(function() {
 		$(this).next().toggle();
 	});

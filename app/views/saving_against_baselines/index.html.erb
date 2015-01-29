@@ -6,6 +6,17 @@
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
 	<%=hidden_field_tag :service_id,params[:service_id]%>
+	<%if params[:service_id].blank?%>
+		<%if @sites.blank?%>
+    		<%= label_tag 'client' %>
+    		<%= select_tag :company_id, options_from_collection_for_select(@companies,'id','client_name',params[:company_id]),
+    			:include_blank => true, :default => nil,:id=>'company_select' %> <br />
+    	<%else%>
+    		<%= label_tag 'site' %>
+    		<%= select_tag :site_id, options_from_collection_for_select(@sites,'id','site_name',params[:site_id]),
+    			:include_blank => true, :default => nil,:id=>'site_select' %> <br />
+    	<%end%>
+    <%end%>
 	<%=label_tag 'month'%>
 	<%= date_select :month,'date', 
 		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
@@ -14,7 +25,7 @@
 <table class='table'>
   <thead>
     <tr>
-      <th><%= sortable "service_id"%></th>
+      <th><%= sortable "service_id", "Service account"%></th>
       <th>Site name</th>
       <th>Service type</th>
       <th>Service description</th>
