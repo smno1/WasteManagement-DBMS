@@ -18,7 +18,7 @@
     <% @current_months.each do |current_month| %>
       <tr>
         <td><%= current_month.month_total_tonnes %></td>
-        <td><%= current_month.month_average_load %></td>
+        <td><%= float_pre_2 current_month.month_average_load %></td>
         <td><%= current_month.actual_month_collection %></td>
         <td><%= number_to_us_currency current_month.actual_month_charge %></td>
         <td><%= float_pre_2 current_month.optimal_collection %></td>
