@@ -1,10 +1,10 @@
 class Site < ActiveRecord::Base
   include Filterable
   belongs_to :company
-  has_many :commentaries, :dependent=>:destroy_all
-  has_many :services, :dependent=>:destroy_all
-  has_many :contacts, :dependent=>:destroy_all
-  has_many :site_month_savings, :dependent=>:destroy_all
+  has_many :commentaries, :dependent=>:destroy
+  has_many :services, :dependent=>:destroy
+  has_many :contacts, :dependent=>:destroy
+  has_many :site_month_savings, :dependent=>:destroy
   has_many :saving_against_baselines, :through=> :services
   
   scope :site_name, ->(name) {where("site_name like ?", "%#{name}%")}

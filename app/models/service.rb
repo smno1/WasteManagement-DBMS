@@ -9,9 +9,34 @@ class Service < ActiveRecord::Base
   
   scope :site_id, ->(site_id) {where site_id: site_id}
   
-  before_destroy do |sv|
-    unless Site.find_by_id(sv.site_id).blank?
+  after_update do |sv|
+    if sv.changes.include?(:is_recycle)
       SiteMonthSaving.update_site_month_saving(sv.site_id)
+    end
+    if sv.changes.include?(:collection_rate)
+      bd=sv.baseline_datum
+      bd.update_column(:monthly_charge,bd.monthly_collection*sv.collection_rate) unless bd.blank?
+      cms=sv.current_months
+      unless cms.blank?
+        cms.each do |cm|
+          cm.update_column(:actual_month_charge,cm.actual_month_collection*sv.collection_rate)
+        end
+      end
+      s_sabs=sv.saving_against_baselines
+      unless s_sabs.blank?
+        s_sabs.each do |sab|
+          SavingAgainstBaseline.update_sab_data(sab)
+        end
+      end
+    end
+  end
+  
+  after_destroy do |sv|
+    unless Site.find_by_id(sv.site_id).blank?
+      site_sab=Site.find_by_id(sid).saving_against_baselines.group(:month)
+      site_sab.each do |sab|
+        SiteMonthSaving.update_when_saving_against_baseline_changed(sv.site_id,sab.month)
+      end
       Site.update_running_total(sv.site_id)
     end
   end

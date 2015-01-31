@@ -10,7 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <% unless @service.persisted? %>
+  	<div class="field">
+    	<%= f.label :site_id %><br>
+    	<%= f.select :site_id, options_from_collection_for_select(@sites,'id','site_name',params[:site_id]) %>
+  	</div>
+  <%end%>
+  
   <div class="field">
     <%= f.label :service_type %><br>
     <%= f.select :service_type, options_from_collection_for_select(@bin_type,'selection_item','selection_item') %>
@@ -54,10 +61,6 @@
     <div class="field">
     <%= f.label :year_installed %><br>
     <%= f.date_select :year_installed, discard_day: true, start_year: 1980 %>
-  </div>
-  <div class="field">
-    <%= f.label :site_id %><br>
-    <%= f.select :site_id, options_from_collection_for_select(@sites,'id','site_name',params[:site_id]) %>
   </div>
   <div class="actions">
     <%= f.submit %>

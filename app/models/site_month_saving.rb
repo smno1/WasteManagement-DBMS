@@ -28,8 +28,4 @@ class SiteMonthSaving < ActiveRecord::Base
       end
     end
   end
-  
-  def self.update_recycling_rate_by_service(sid)
-    
-  end
 end
