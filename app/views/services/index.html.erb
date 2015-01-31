@@ -59,7 +59,8 @@
 						<%= link_to 'Edit Service', edit_service_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %>
+						<%= link_to 'Destroy', service, method: :delete, data: { confirm: 'All the invoices, baseline data and anything'+
+							' belong to this service will be erased. Are you sure?' } %></td>
 					</li>
 				</ul>
 			</div></td>

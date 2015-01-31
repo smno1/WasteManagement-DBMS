@@ -27,7 +27,8 @@
         <td><%= link_to 'Show Sites', company_sites_url(company) %></td>
         <td><%= link_to 'Add Sites', new_company_site_path(company) %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'All the sites, services and anything'+
+         				' belong to this company will be erased. Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

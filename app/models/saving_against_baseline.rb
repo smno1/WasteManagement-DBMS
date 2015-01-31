@@ -6,16 +6,18 @@ class SavingAgainstBaseline < ActiveRecord::Base
   scope :month, ->(month){where month:month}
   
   after_save do |sab|
-    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab.service.site_id,sab.month)
     Site.update_running_total(sab.service.site_id)
   end
   
   after_update do |sab|
-    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab.service.site_id,sab.month)
+    Site.update_running_total(sab.service.site_id)
   end
   
   after_destroy do |sab|
-    SiteMonthSaving.update_when_saving_against_baseline_changed(sab)
+    SiteMonthSaving.update_when_saving_against_baseline_changed(sab.service.site_id,sab.month)
+    Site.update_running_total(sab.service.site_id)
   end
   
   
