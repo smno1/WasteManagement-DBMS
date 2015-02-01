@@ -31,6 +31,10 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_field :note %>
+  </div>
+  <div class="field">
     <%= f.label :is_recycle %><br>
     <%= f.check_box :is_recycle %>
   </div>
@@ -43,8 +47,8 @@
     <%= f.number_field :target_load,:step=>'any' %>
   </div>
   <div class="field">
-    <%= f.label :collection_rate %><br>
-    <%= f.number_field :collection_rate,:step=>'any' %>
+    <div class="required"> * </div><%= f.label :collection_rate %><br>
+    <div class="required"> * </div><%= f.number_field :collection_rate,:step=>'any',:required=>true %>
   </div>
   <div class="field">
     <%= f.label :monthly_rental_fee %><br>

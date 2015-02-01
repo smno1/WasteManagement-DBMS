@@ -10,6 +10,11 @@ class CurrentMonth < ActiveRecord::Base
     SavingAgainstBaseline.update_sab_data(sab) unless sab.blank?
   end
   
+  def complete_attribute
+    self.actual_month_charge=self.actual_month_collection*self.service.collection_rate
+    self.month_total_tonnes=self.actual_month_collection*self.month_average_load
+  end
+  
   def self.create_current_month_data(sid, mon)
     self.create(self.current_month_params(sid,mon))
   end

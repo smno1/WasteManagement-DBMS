@@ -18,31 +18,16 @@
   </div>
   <%= f.hidden_field :service_id, :value=>params[:service_id]%>
   <%end%>
-  
+
   <div class="field">
-    <%= f.label :month_total_tonnes %><br>
-    <%= f.text_field :month_total_tonnes %>
+    <div class="required">* </div><%= f.label :month_average_load %><br>
+    <div class="required">* </div><%= f.text_field :month_average_load,:required=>true %>
   </div>
   <div class="field">
-    <%= f.label :month_average_load %><br>
-    <%= f.text_field :month_average_load %>
+    <div class="required">* </div><%= f.label :actual_month_collection %><br>
+    <div class="required">* </div><%= f.text_field :actual_month_collection,:required=>true %>
   </div>
-  <div class="field">
-    <%= f.label :actual_month_collection %><br>
-    <%= f.text_field :actual_month_collection %>
-  </div>
-  <div class="field">
-    <%= f.label :actual_month_charge %><br>
-    <%= f.text_field :actual_month_charge %>
-  </div>
-  <div class="field">
-    <%= f.label :optimal_collection %><br>
-    <%= f.text_field :optimal_collection %>
-  </div>
-  <div class="field">
-    <%= f.label :days_interval %><br>
-    <%= f.text_field :days_interval %>
-  </div>  
+
   <div class="actions">
     <%= f.submit %>
   </div>

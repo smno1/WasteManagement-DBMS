@@ -22,6 +22,7 @@ class CurrentMonthsController < ApplicationController
 
   def create
     @current_month = CurrentMonth.new(current_month_params)
+    @current_month.complete_attribute
     @current_month.save
     redirect_to current_months_path(:service_id=>@current_month.service_id)
   end
@@ -38,11 +39,12 @@ class CurrentMonthsController < ApplicationController
   end
 
   private
+  
     def set_current_month
       @current_month = CurrentMonth.find(params[:id])
     end
 
     def current_month_params
-      params.require(:current_month).permit(:month_total_tonnes, :month_average_load, :actual_month_collection, :actual_month_charge, :optimal_collection, :days_interval, :month, :service_id)
+      params.require(:current_month).permit(:month_average_load, :actual_month_collection, :month, :service_id)
     end
 end

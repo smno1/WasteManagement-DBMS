@@ -13,6 +13,7 @@
 			<th><%=sortable "collection_rate"%></th>
 			<th><%=sortable "monthly_rental_fee"%></th>
 			<th><%=sortable "cost_per_tonne"%></th>
+			<th><%=sortable "note"%></th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -30,6 +31,7 @@
 			<td><%= number_to_us_currency service.collection_rate%></td>
 			<td><%= number_to_us_currency service.monthly_rental_fee%></td>
 			<td><%= number_to_us_currency service.cost_per_tonne%></td>
+			<td><%= service.note%></td>
 			<td>
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
