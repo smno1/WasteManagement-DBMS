@@ -24,8 +24,9 @@
 <table class='table'>
   <thead>
     <tr>
-      <th><%= sortable "service_id", "Service account"%></th>
+      <th>Client name</th>
       <th>Site name</th>
+      <th><%= sortable "service_id", "Service account"%></th>
       <th>Service type</th>
       <th>Service description</th>
       <th><%= sortable "month"%></th>
@@ -42,7 +43,7 @@
   <tbody>
   	<tr>
   		<td>Total:</td>
-  		<td colspan="4"></td> 	
+  		<td colspan="5"></td> 	
   		<td><%=float_pre_2 @saving_against_baselines.sum(:collection_saved)%></td> 	
   		<td><%=number_to_us_currency  @saving_against_baselines.sum(:month_saving)%></td> 	
   		<td><%=number_to_us_currency  @saving_against_baselines.sum(:month_extra_saving)%></td> 	
@@ -52,8 +53,9 @@
   	</tr>
     <% @saving_against_baselines.each do |saving_against_baseline| %>
       <tr>
-      	<td><%=saving_against_baseline.service.account_number_and_name%></td>
+      	<td><%=saving_against_baseline.service.site.company.client_name%></td>
       	<td><%=saving_against_baseline.service.site.site_name%></td>
+      	<td><%=saving_against_baseline.service.account_number_and_name%></td>
       	<td><%=saving_against_baseline.service.service_type%></td>
       	<td><%=saving_against_baseline.service.description%></td>
         <td><%= saving_against_baseline.month.strftime("%b %Y") %></td>

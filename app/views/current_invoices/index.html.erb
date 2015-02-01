@@ -1,4 +1,4 @@
-<h1>Current_report</h1>
+<h1>Current invoice</h1>
 <%=info_from_service params[:service_id]%>
 <%=form_tag(current_invoices_path, :method=>'get') do%>
 	<%=hidden_field_tag :service_id,params[:service_id]%>

@@ -3,6 +3,7 @@
 <table class='table'>
 	<thead>
 		<tr>
+			<th>Client name</th>
 			<th><%=sortable "site_id", "Site Name"%></th>
 			<th><%=sortable "account_number_and_name", "Service account"%>
 			<th><%=sortable "description"%></th>
@@ -21,6 +22,7 @@
 	<tbody>
 		<% @services.each do |service| %>
 		<tr>
+			<td><%= service.site.company.client_name %></td>
 			<td><%= service.site.site_name %></td>
 			<td><%= service.account_number_and_name%></td>
 			<td><%= service.description %></td>
@@ -40,16 +42,16 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 					<li role="presentation">
-						<%= link_to 'Baseline invoice', service_baseline_invoices_path(service) %>
+						<%= link_to 'Baseline invoice data', service_baseline_invoices_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Current report', service_current_invoices_path(service) %>
+						<%= link_to 'Current invoice data', service_current_invoices_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Baseline Data', service_baseline_data_path(service) %>
+						<%= link_to 'Baseline summary', service_baseline_data_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Current Month', service_current_months_path(service) %>
+						<%= link_to 'Current summary', service_current_months_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Saving against Baseline', service_saving_against_baselines_path(service) %>
