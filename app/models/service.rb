@@ -33,10 +33,7 @@ class Service < ActiveRecord::Base
   
   after_destroy do |sv|
     unless Site.find_by_id(sv.site_id).blank?
-      site_sab=Site.find_by_id(sv.site_id).saving_against_baselines.group(:month)
-      site_sab.each do |sab|
-        SiteMonthSaving.update_when_saving_against_baseline_changed(sv.site_id,sab.month)
-      end
+      SiteMonthSaving.update_site_month_saving(sv.site_id)
       Site.update_running_total(sv.site_id)
     end
   end
