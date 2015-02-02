@@ -20,7 +20,7 @@
   
   <div class="field">
     <%= f.label :service_type %><br>
-    <%= f.select :service_type, options_from_collection_for_select(@bin_type,'selection_item','selection_item') %>
+    <%= f.select :service_type, options_from_collection_for_select(@bin_type,'selection_item','selection_item',@service.service_type) %>
   </div>
   <div class="field">
     <%= f.label "Account number &name" %><br>
