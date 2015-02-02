@@ -34,7 +34,7 @@ class Service < ActiveRecord::Base
   after_destroy do |sv|
     unless Site.find_by_id(sv.site_id).blank?
       SiteMonthSaving.update_site_month_saving(sv.site_id)
-      Site.update_running_total(sv.site_id)
+      sv.site.update_running_total
     end
   end
 end
