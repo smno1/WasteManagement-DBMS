@@ -10,10 +10,20 @@ class Site < ActiveRecord::Base
   scope :site_name, ->(name) {where("site_name like ?", "%#{name}%")}
   scope :company_id, ->(company_id) {where company_id: company_id}
  
-  def self.update_running_total(sid)
-    _site=Site.find(sid)
-    _running_total=_site.saving_against_baselines.sum(:month_total_saving)
-    _site.update(running_total:_running_total)
+  def update_running_total
+    _running_total=self.saving_against_baselines.sum(:month_total_saving)
+    self.update(running_total:_running_total)
+  end
+  
+  def update_fy_saving
+    today=Date.today
+    july=Date.new(today.year,7,1)
+    july=july.last_year if(today<july)
+    sabs=self.saving_against_baselines.betweenDate(july,today)
+    unless sabs.blank?
+      fy_saving=sabs.sum(:month_total_saving)
+      self.update(current_fy_saving:fy_saving)
+    end    
   end
   
 end

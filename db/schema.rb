@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201053729) do
+ActiveRecord::Schema.define(version: 20150202001636) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 20150201053729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "running_total"
+    t.float    "current_fy_saving"
   end
 
   create_table "users", force: true do |t|

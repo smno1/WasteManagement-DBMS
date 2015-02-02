@@ -19,6 +19,7 @@
 			<th><%=sortable "number_of_service"%></th>
 			<th><%=sortable "company_id", "Client Company"%></th>
 			<th><%=sortable "running_total"%></th>
+			<th><%=sortable "current_fy_saving", "Fy saving"%></th>
 			<th colspan="5"></th>
 		</tr>
 	</thead>
@@ -31,6 +32,7 @@
 			<td><%= site.number_of_service %></td>
 			<td><%= site.company.client_name %></td>
 			<td><%= number_to_us_currency site.running_total %></td>
+			<td><%= number_to_us_currency site.current_fy_saving %></td>
 			<td>
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
