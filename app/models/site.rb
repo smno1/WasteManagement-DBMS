@@ -11,8 +11,10 @@ class Site < ActiveRecord::Base
   scope :company_id, ->(company_id) {where company_id: company_id}
  
   def update_running_total
-    _running_total=self.saving_against_baselines.sum(:month_total_saving)
-    self.update(running_total:_running_total)
+    unless self.saving_against_baselines.blank?
+      _running_total=self.saving_against_baselines.sum(:month_total_saving)
+      self.update(running_total:_running_total)
+    end
   end
   
   def update_fy_saving
