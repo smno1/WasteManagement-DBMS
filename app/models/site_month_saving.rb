@@ -25,10 +25,10 @@ class SiteMonthSaving < ActiveRecord::Base
   def self.update_site_month_saving(sid)
     sabs=Site.find_by_id(sid).saving_against_baselines
     unless sabs.blank?
-      site_sab=sabs.group(:month)
-      unless site_sab.blank?
-        site_sab.each do |sab|
-          self.update_when_saving_against_baseline_changed(sab.service.site_id,sab.month)
+      months=sabs.select(:month).distinct
+      unless months.blank?
+        months.each do |month|
+          self.update_when_saving_against_baseline_changed(sid,month.month)
         end
       end
     end
