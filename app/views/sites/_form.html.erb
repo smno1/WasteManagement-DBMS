@@ -19,6 +19,14 @@
     <%= f.label :site_address %><br>
     <%= f.text_field :site_address %>
   </div>
+  <div class="field">
+    <%= f.label :waste_company %><br>
+    <%= f.text_field :waste_company %>
+  </div>
+  <div class="field">
+    <%= f.label :region %><br>
+    <%= f.text_field :region %>
+  </div>
     <div class="company_id">
     <%= f.label :company_id %><br>
     <%= f.select :company_id, options_from_collection_for_select(@companies,"id","client_name",params[:company_id]) %>

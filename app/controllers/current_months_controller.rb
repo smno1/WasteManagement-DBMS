@@ -29,6 +29,8 @@ class CurrentMonthsController < ApplicationController
 
   def update
     @current_month.update(current_month_params)
+    @current_month.complete_attribute
+    @current_month.save
     redirect_to current_months_path(:service_id=>@current_month.service_id)
   end
 

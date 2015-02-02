@@ -1,4 +1,5 @@
 <%= form_for(@service) do |f| %>
+<%= info_from_site @service.site_id%>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>

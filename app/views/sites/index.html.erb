@@ -19,6 +19,8 @@
 			<th><%=sortable "number_of_service"%></th>
 			<th><%=sortable "company_id", "Client Company"%></th>
 			<th><%=sortable "running_total"%></th>
+			<th><%=sortable "waste_company"%></th>
+			<th><%=sortable "region"%></th>
 			<th><%=sortable "current_fy_saving", " Current FY saving"%></th>
 			<th colspan="5"></th>
 		</tr>
@@ -32,6 +34,8 @@
 			<td><%= site.number_of_service %></td>
 			<td><%= site.company.client_name %></td>
 			<td><%= number_to_us_currency site.running_total %></td>
+			<td><%= site.waste_company %></td>
+			<td><%= site.region %></td>
 			<td><%= number_to_us_currency site.current_fy_saving %></td>
 			<td>
 			<div class="dropdown">

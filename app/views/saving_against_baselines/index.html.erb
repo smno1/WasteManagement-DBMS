@@ -18,7 +18,7 @@
     <%end%>
 	<%=label_tag 'month'%>
 	<%= date_select :month,'date', 
-		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%> <br>
+		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%>(Default month: Jan) <br>
 	<%=submit_tag "Search"%>
 <%end%>
 <table class='table'>
@@ -41,7 +41,7 @@
   </thead>
 
   <tbody>
-  	<tr>
+  	<tr class='total_row'>
   		<td>Total:</td>
   		<td colspan="5"></td> 	
   		<td><%=float_pre_2 @saving_against_baselines.sum(:collection_saved)%></td> 	
