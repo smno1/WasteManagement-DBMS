@@ -12,7 +12,7 @@ class SiteMonthSaving < ActiveRecord::Base
     total_tonnes=0
     _services=_site.services
     _services.each do |s|
-      unless s.current_months.find_by(:month=>month).blank?
+      unless s.current_months.blank?||s.current_months.find_by(:month=>month).blank?
         service_sum=s.current_months.find_by(:month=>month).month_total_tonnes
         recycling_tonnes+=service_sum if s.is_recycle
         total_tonnes+=service_sum
