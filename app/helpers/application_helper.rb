@@ -23,7 +23,7 @@ module ApplicationHelper
       sv=Service.find(sid)
       content_tag(:h4,"Client name: "+sv.site.company.client_name||="")+
       content_tag(:h4,"Site name: "+sv.site.site_name||="")+
-      content_tag(:h4,"Service: "+sv.account_number_and_name||=""+" "+sv.description||="")+content_tag(:div,nil,:class=>"line-separator")
+      content_tag(:h4,"Service: "+sv.account_number_and_name||=""+sv.service_type+" "+sv.description||="")+content_tag(:div,nil,:class=>"line-separator")
     end  
   end
   

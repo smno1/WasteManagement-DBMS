@@ -12,9 +12,11 @@ class SiteMonthSaving < ActiveRecord::Base
     total_tonnes=0
     _services=_site.services
     _services.each do |s|
-      service_sum=s.current_months.find_by(:month=>month).month_total_tonnes
-      recycling_tonnes+=service_sum if s.is_recycle
-      total_tonnes+=service_sum
+      unless s.current_months.find_by(:month=>month).blank?
+        service_sum=s.current_months.find_by(:month=>month).month_total_tonnes
+        recycling_tonnes+=service_sum if s.is_recycle
+        total_tonnes+=service_sum
+      end
     end
     _recycling_rate=recycling_tonnes/total_tonnes
     sms.update(month_saving:_month_saving,recycling_rate:_recycling_rate)

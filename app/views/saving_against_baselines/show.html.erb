@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 <%=info_from_service @saving_against_baseline.service_id%>
-<p>
-  <strong>Month:</strong>
-  <%= @saving_against_baseline.month.strftime("%b %Y") %>
-</p>
 
 <p>
   <strong>Collection saved:</strong>
@@ -34,10 +30,12 @@
 <table class='table'>
   <thead>
   	<tr>
+  		<th></th>
   		<th class='text-center' colspan="3">Baseline Data</th> <!--<%=link_to 'Baseline Data', @baseline_data, :class=>"fa fa-caret-right"%></th>-->
   		<th class='text-center' colspan="3"><%=link_to 'Current Month', @current_month, :class=>"fa fa-caret-right"%></th>
   	</tr>
     <tr>
+      <th>Month</th>
       <th>Monthly collections</th>
       <th>Collection rate</th>
       <th>Monthly charge</th>
@@ -49,6 +47,7 @@
 
   <tbody>
       <tr>
+      	<td><%= @saving_against_baseline.month.strftime("%b %Y") %></td>
         <td><%= float_pre_2 @baseline_data.monthly_collection %></td>
         <td><%= number_to_us_currency @baseline_data.service.collection_rate %></td>
         <td><%= number_to_us_currency @baseline_data.monthly_charge %></td>
