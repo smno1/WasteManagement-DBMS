@@ -29,7 +29,7 @@
 			<td> <%unless commentary.site.nil?%>
 			<%= commentary.site.site_name %>
 			<%end%> </td>
-			<td><%= commentary.month %></td>
+			<td><%= commentary.month.strftime("%b %Y") %></td>
 			<td><%= commentary.comments.truncate(20)%></td>
 			<td><%= link_to 'Show', commentary %></td>
 			<td><%= link_to 'Edit', edit_commentary_path(commentary) %></td>
