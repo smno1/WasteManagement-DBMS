@@ -1,0 +1,71 @@
+<div>
+<h3>Kumite Sustainability and Waste Management</h3>
+<p>Suite 4, 24 Eastern Road</p>
+<p>South Melbourne VIC 3205</p>
+<p>03 9682 0204</p>
+</div>
+<div class='line-separator'></div>
+<div>
+<h4><%=@site.company.client_name+" "+@site.site_name%> - WASTE COST SAVINGS REPORT</h4>
+<h4><%=@month.strftime("%B %Y")%></h4>
+</div>
+<table class='table'>
+  <thead>
+  	<tr >
+  		<th class='text-center' rowspan="2">Service</th>
+  		<th class='text-center' colspan="3">Baseline Summary</th>
+  		<th class='text-center' colspan="3">Current Summary</th>
+  		<th class='text-center' colspan="3">Monthly Saving against Baseline</th>
+  	</tr>
+    <tr>
+      <th>Monthly collections</th>
+      <th>$Collection rate</th>
+      <th>Monthly charge</th>
+      <th>Monthly collections</th>
+      <th>$Collection rate</th>
+      <th>Monthly charge</th>
+      <th>Collections saved</th>
+      <th>Collection rate</th>
+      <th>$Saving Month</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<%@services.each do |service|%>
+      <tr>
+      	<td><%=service.account_number_and_name%></td>
+      	<%unless service.baseline_datum.blank?%>
+      	  <td rowspan="2"><%=float_pre_2 service.baseline_datum.monthly_collection%></td>
+      	  <td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
+      	  <td rowspan="2"><%=number_to_us_currency service.baseline_datum.monthly_charge%></td>
+      	<%else%>
+      	  <td class='text-center' rowspan="2" colspan="3">not available</td>
+      	<%end%>
+      	<% cmonth=service.current_months.find_by(:month=>@month)%>
+      	<%unless cmonth.blank?%>
+      	  <td rowspan="2"><%=float_pre_2 cmonth.actual_month_collection%></td>
+      	  <td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
+      	  <td rowspan="2"><%=number_to_us_currency cmonth.actual_month_charge%></td>
+      	<%else%>
+      	  <td class='text-center' rowspan="2" colspan="3">not available</td>
+      	<%end%>
+      	  <% sabs=service.saving_against_baselines%>
+      	  <%unless sabs.blank?%>
+      	  	<%sab=sabs.find_by(:month=>@month)%>
+      	    <%unless sab.blank?%>
+      	  		<td rowspan="2"><%=float_pre_2 sab.collection_saved%></td>
+      	  		<td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
+      	  		<td rowspan="2"><%=number_to_us_currency sab.month_saving%></td>
+      		<%else%>
+      			<td class='text-center' rowspan="2" colspan="3">not available</td>
+      		<%end%>
+      	  <%else%>
+      		<td class='text-center' rowspan="2" colspan="3">not available</td>
+      	  <%end%>
+      </tr>
+      <tr>
+      	<td><%=(service.description||"")+" "+(service.service_type||"")%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

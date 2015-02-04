@@ -1,0 +1,21 @@
+<h1>Site_month_invoice</h1>
+<%=form_tag(printable_pdf_path, :method=>'get') do%>
+	<div class='required'>*</div><%= label_tag 'client' %>
+	<!--<%= collection_select(nil, :company_id,  @companies,  :id, :client_name, {:prompt   => "Select a Company"}, {:id => 'company_select'}) %>-->
+	<%= select_tag :company_id, options_from_collection_for_select(@companies,'id','client_name',params[:company_id]),
+		:prompt   => "Select an Company", :default => nil,:id=>'company_select' %>
+
+	<div class='required'>*</div><%= label_tag 'site' %>
+	<!--<%= collection_select(nil, :site_id,  @sites,  :id, :site_name, {:prompt   => "Select Company first"}, {:id => 'site_select'}) %>-->
+	<%= select_tag :site_id, options_from_collection_for_select(@sites,'id','site_name',params[:site_id]),
+		:prompt   => "Select Company first", :default => nil,:id=>'site_select' %>
+	<br />
+
+
+	<div class='required'>*</div><%= label_tag 'month'%>
+	<%= date_select :month,'date',
+		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%>(Default month: Jan)
+	<br>
+	<%= submit_tag "Search"%>
+	
+<%end%>

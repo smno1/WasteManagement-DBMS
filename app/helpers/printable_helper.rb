@@ -1,0 +1,2 @@
+module PrintableHelper
+end

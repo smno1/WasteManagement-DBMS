@@ -10,6 +10,16 @@ var main = function() {
     return false;
   });*/
   
+    $('#company_select').change(function() {
+      $.ajax({
+        url: "update_sites",
+        data: {
+          company_id : $('#company_select').val()
+        },
+        dataType: "script"
+      });
+    });  
+    
 	$('.commentary').click(function() {
 		$(this).next().toggle();
 	});
