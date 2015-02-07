@@ -17,6 +17,7 @@ class PrintableController < ApplicationController
       redirect_to site_month_invoice_path, :flash=> {:error => "please fulfill the required selection"}
     end
     @services=@site.services
+    @commentaries=@site.commentaries.where(:month=>@month)
   end
   
 end

@@ -12,18 +12,18 @@
 <table class='table'>
   <thead>
   	<tr >
-  		<th class='text-center' rowspan="2">Service</th>
-  		<th class='text-center' colspan="3">Baseline Summary</th>
-  		<th class='text-center' colspan="3">Current Summary</th>
-  		<th class='text-center' colspan="3">Monthly Saving against Baseline</th>
+  		<th class='text-center column-right' rowspan="2">Service</th>
+  		<th class='text-center column-right' colspan="3">Baseline Summary</th>
+  		<th class='text-center column-right' colspan="3">Current Summary</th>
+  		<th class='text-center column-right' colspan="3">Monthly Saving against Baseline</th>
   	</tr>
     <tr>
       <th>Monthly collections</th>
       <th>$Collection rate</th>
-      <th>Monthly charge</th>
+      <th class='column-right'>Monthly charge</th>
       <th>Monthly collections</th>
       <th>$Collection rate</th>
-      <th>Monthly charge</th>
+      <th class='column-right'>Monthly charge</th>
       <th>Collections saved</th>
       <th>Collection rate</th>
       <th>$Saving Month</th>
@@ -31,41 +31,91 @@
   </thead>
 
   <tbody>
-  	<%@services.each do |service|%>
+  	<%baseline_total=0%>
+  	<%current_total=0%>
+  	<%saving_total=0%>
+  	<%extra_saving_total=0%>
+  	<%@services.each_with_index.map do |service,count|%>
       <tr>
-      	<td><%=service.account_number_and_name%></td>
+      	<%sabs=service.saving_against_baselines%>
+      	<%sab =sabs.find_by(:month=>@month)%>
+      	<td class='column-right'><%=count+1%>. <%=service.account_number_and_name%><br /><%=(service.description||"")+" "+(service.service_type||"")%>
+      	  <%unless sab.blank?||sab.month_extra_saving.blank?%>
+      	    <br /> Month extra saving
+	      <%end%>
+      	  <%unless sab.blank?||sab.month_excluded_cost.blank?%>
+      	    <br /> Month exclude cost
+      	  <%end%>
+      	</td>
       	<%unless service.baseline_datum.blank?%>
-      	  <td rowspan="2"><%=float_pre_2 service.baseline_datum.monthly_collection%></td>
-      	  <td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
-      	  <td rowspan="2"><%=number_to_us_currency service.baseline_datum.monthly_charge%></td>
+      	  <td><%=float_pre_2 service.baseline_datum.monthly_collection%></td>
+      	  <td><%=number_to_us_currency service.collection_rate%></td>
+      	  <td class='column-right'><%=number_to_us_currency service.baseline_datum.monthly_charge%></td>
+      	  <%baseline_total+=service.baseline_datum.monthly_charge%>
       	<%else%>
-      	  <td class='text-center' rowspan="2" colspan="3">not available</td>
+      	  <td class='text-center column-right' colspan="3">not available</td>
       	<%end%>
       	<% cmonth=service.current_months.find_by(:month=>@month)%>
       	<%unless cmonth.blank?%>
-      	  <td rowspan="2"><%=float_pre_2 cmonth.actual_month_collection%></td>
-      	  <td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
-      	  <td rowspan="2"><%=number_to_us_currency cmonth.actual_month_charge%></td>
+      	  <td  ><%=float_pre_2 cmonth.actual_month_collection%></td>
+      	  <td  ><%=number_to_us_currency service.collection_rate%></td>
+      	  <td class='column-right'  ><%=number_to_us_currency cmonth.actual_month_charge%></td>
+      	  <%current_total+=cmonth.actual_month_charge%>
       	<%else%>
-      	  <td class='text-center' rowspan="2" colspan="3">not available</td>
+      	  <td class='text-center column-right' colspan="3">not available</td>
       	<%end%>
-      	  <% sabs=service.saving_against_baselines%>
-      	  <%unless sabs.blank?%>
-      	  	<%sab=sabs.find_by(:month=>@month)%>
-      	    <%unless sab.blank?%>
-      	  		<td rowspan="2"><%=float_pre_2 sab.collection_saved%></td>
-      	  		<td rowspan="2"><%=number_to_us_currency service.collection_rate%></td>
-      	  		<td rowspan="2"><%=number_to_us_currency sab.month_saving%></td>
-      		<%else%>
-      			<td class='text-center' rowspan="2" colspan="3">not available</td>
-      		<%end%>
+      	  <%unless sab.blank?%>
+      	  		<td  ><%=float_pre_2 sab.collection_saved%></td>
+      	  		<td  ><%=number_to_us_currency service.collection_rate%></td>
+      	  		<td  ><%=number_to_us_currency sab.month_saving%>      	  
+      	  		  <%unless sab.month_extra_saving.blank?%>
+      	    		<br /><br /> <%=number_to_us_currency sab.month_extra_saving%>
+      	    		<%extra_saving_total+=sab.month_extra_saving%>
+	      			<%end%>
+      	  		  <%unless sab.month_excluded_cost.blank?%>
+      	    		<br /> <%=number_to_us_currency sab.month_excluded_cost%>
+      	    	  <%end%>
+				</td>
+	      	    <%saving_total+=sab.month_saving%>
       	  <%else%>
-      		<td class='text-center' rowspan="2" colspan="3">not available</td>
+      			<td class='text-center' colspan="3">not available</td>
       	  <%end%>
       </tr>
-      <tr>
-      	<td><%=(service.description||"")+" "+(service.service_type||"")%></td>
-      </tr>
     <%end%>
+    <tr class='total_row'>
+      <td class=" column-right">Monthly Total</td>
+      <td colspan="2"></td>
+      <td class=" column-right"><%=number_to_us_currency baseline_total%></td>
+      <td colspan="2"></td>
+      <td class=" column-right"><%=number_to_us_currency current_total%></td>
+      <td colspan="2"></td>
+      <td><%=number_to_us_currency saving_total+extra_saving_total%></td>
+    </tr>
+    <tr class='total_row'>
+      <td class="column-right" colspan="9">Total Monthly Saving due to Productivity Improvements</td>
+      <td><%=number_to_us_currency saving_total%>
+    </tr>
+    <tr class='total_row'>
+      <td class="column-right" colspan="9">Total Payment to Kumite-SWM (50% of Agreed Savings in Transportation Costs)</td>
+      <td><%=number_to_us_currency 0.5*saving_total%>
+    </tr>
+    <tr class='total_row'>
+      <td class="column-right" colspan="9">Current Financial Year Saving</td>
+      <td><%=number_to_us_currency @site.current_fy_saving%>
+    </tr>
+    <tr class='total_row'>
+      <td class="column-right" colspan="9">Running Total Saving</td>
+      <td><%=number_to_us_currency @site.running_total%>
+    </tr>
+    <tr class='total_row'>
+      <%sms=@site.site_month_savings.find_by(:month=>@month)%>
+      <td class="column-right" colspan="9">Monthly Recycling Rate</td>
+      <td><%= number_with_percentage sms.recycling_rate%></td>
+    </tr>
   </tbody>
 </table>
+
+  <h4>Note:</h4>
+  <%@commentaries.each_with_index.map do |commentary,index|%>
+  	<p><%=index+1%>. <%=commentary.comments%></p>
+  <%end%>

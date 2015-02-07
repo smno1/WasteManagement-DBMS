@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202130759) do
+ActiveRecord::Schema.define(version: 20150206023152) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150202130759) do
     t.float    "cost_per_tonne"
     t.string   "account_number_and_name"
     t.string   "note"
+    t.string   "collection_frequency"
   end
 
   add_index "services", ["site_id"], name: "index_services_on_site_id"

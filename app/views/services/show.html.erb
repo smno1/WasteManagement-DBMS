@@ -14,6 +14,14 @@
   <%= @service.description %>
 </p>
 <p>
+  <strong>Note:</strong>
+  <%= @service.note %>
+</p>
+<p>
+  <strong>Collection frequency</strong>
+  <%= @service.collection_frequency %>
+</p>
+<p>
   <strong>Is recycle:</strong>
   <%= @service.is_recycle %>
 </p>
@@ -59,4 +67,5 @@
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Back to services', services_path %> |
+<%= link_to 'Back to site_services', site_services_path(@service.site) %>
