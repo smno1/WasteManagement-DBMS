@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   get 'printable/site_month_invoice',:as=>'site_month_invoice'
-  get 'printable/update_sites',:as=>'update_sites'
+  get 'printable/update_sites'
   get 'printable/printable_pdf', :as=>'printable_pdf'
+  get '/update_sites', :controller=>'application',:action=>'update_sites'
 
   resources :site_month_savings
 

@@ -5,14 +5,14 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def index
     @companies=Company.all
+    @sites=Site.none
     @saving_against_baselines = SavingAgainstBaseline.filter(filter_params)
     if(params[:site_id].present?)
       site=Site.find(params[:site_id])
-      @saving_against_baselines=site.saving_against_baselines
+      @saving_against_baselines=params[:month].blank? ? site.saving_against_baselines : site.saving_against_baselines.month(params[:month])
     elsif(params[:company_id].present?)
       company=Company.find(params[:company_id])
-      @saving_against_baselines=company.saving_against_baselines
-      @sites=company.sites
+      @saving_against_baselines=params[:month].blank? ? company.saving_against_baselines : company.saving_against_baselines.month(params[:month])
     end
     @saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@saving_against_baselines)
