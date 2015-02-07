@@ -110,7 +110,7 @@
     <tr class='total_row'>
       <%sms=@site.site_month_savings.find_by(:month=>@month)%>
       <td class="column-right" colspan="9">Monthly Recycling Rate</td>
-      <td><%= number_with_percentage sms.recycling_rate%></td>
+      <td><%= number_with_percentage(sms.recycling_rate) unless sms.blank?%></td>
     </tr>
   </tbody>
 </table>
