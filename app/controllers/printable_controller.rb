@@ -13,11 +13,12 @@ class PrintableController < ApplicationController
   def printable_pdf
     @site=Site.find_by_id params[:site_id]
     @month=date_select_to_date(params[:month])
-    if @site.blank? || @month.blank?
+    if @site.blank? || @month.blank? 
       redirect_to site_month_invoice_path, :flash=> {:error => "please fulfill the required selection"}
+    else
+      @services=@site.services
+      @commentaries=@site.commentaries.where(:month=>@month)
     end
-    @services=@site.services
-    @commentaries=@site.commentaries.where(:month=>@month)
   end
   
 end
