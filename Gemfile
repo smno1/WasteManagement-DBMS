@@ -31,6 +31,11 @@ gem 'rolify'
 # pagination gem
 gem 'will_paginate'
 
+# pdf gem
+#gem 'prawn'
+gem 'pdfkit'
+#gem 'wkhtmltopdf-binary'
+
 #font-awesome gem
 #gem 'font-awesome-sass'
 

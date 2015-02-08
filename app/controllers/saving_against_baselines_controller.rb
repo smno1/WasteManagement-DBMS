@@ -5,7 +5,7 @@ class SavingAgainstBaselinesController < ApplicationController
 
   def index
     @companies=Company.all
-    @sites=Site.none
+    @sites=Site.none if @sites.blank?
     @saving_against_baselines = SavingAgainstBaseline.filter(filter_params)
     if(params[:site_id].present?)
       site=Site.find(params[:site_id])
