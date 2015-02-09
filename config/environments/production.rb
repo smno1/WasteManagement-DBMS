@@ -1,15 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
-  #wkhtmltopdf
-  if RUBY_PLATFORM =~ /linux/
-    wkhtmltopdf_executable = 'wkhtmltopdf-amd64'
-  elsif RUBY_PLATFORM =~ /darwin/
-    wkhtmltopdf_executable = 'wkhtmltopdf-osx'
-  else
-    raise "Unsupported. Must be running linux or intel-based Mac OS."
-  end
-  config.wkhtmltopdf = Rails.root.join('bin', wkhtmltopdf_executable).to_s
+
   
   # email
   config.action_mailer.default_url_options = { host: ENV['WASTE_MANAGEMENT_HOST']}
