@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<title>Waste Management | <%= yield(:title)%></title>
+		<%if request.env["Rack-Middleware-PDFKit"] == "true"%>
+		<link rel="stylesheet" type="text/css" href=<%=Rails.root.join("vendor","assets","stylesheets","pdf_print.css").to_s%>>
+		<%else%>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%end%>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
 		<div id="wrapper">
-			<div>
+			<div class='hidden-print'>
 				<ul class="nav navbar-top-links navbar-right">
 					<% if user_signed_in? %>
 						Logged in as <strong> <%= current_user.email %> </strong>.
@@ -23,7 +27,7 @@
 			<p id="error"><%= flash[:error] %></p>
 			
 			<!-- Sidebar -->
-			<div class="sidebar-nav navbar-collapse">
+			<div class="sidebar-nav navbar-collapse hidden-print">
 				<div id="sidebar-wrapper">
 					<ul class="sidebar-nav" id='side-menu'>
 						<li class="sidebar-brand">
@@ -85,8 +89,9 @@
 			</div>
 			<!-- /#page-content-wrapper -->
 
-			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-
+			<div class="hidden-print">
+				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+			</div>
 		</div>
 
 		<!-- Menu Toggle Script -->
