@@ -9,7 +9,8 @@
 #User.create(email: '328862641@qq.com', encrypted_password: 'admin')
 #rake db:seed GMAIL_USERNAME=*********@gmail.com GMAIL_PASSWORD=*******
 
-User.delete_all
+User.destroy_all
+UsersRole.delete_all
 User.create(email: ENV["GMAIL_USERNAME"],user_name:"Admin", password: ENV["GMAIL_PASSWORD"], password_confirmation: ENV["GMAIL_PASSWORD"])
 admin=User.find_by :email =>ENV["GMAIL_USERNAME"]
 admin.add_role :admin
