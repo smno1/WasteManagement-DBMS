@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
   helper_method :sort_column, :sort_direction
   # GET /companies
   # GET /companies.json

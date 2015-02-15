@@ -1,5 +1,6 @@
 class CurrentInvoicesController < ApplicationController
   before_action :set_current_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
   respond_to :html
 

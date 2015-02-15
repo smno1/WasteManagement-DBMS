@@ -50,6 +50,7 @@
 						<!--<li>
 							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
 							<ul class="nav nav-second-level description-toggle">-->
+							<%if current_user.present? && current_user.has_role(:admin)%>
 								<li>
 									<%= link_to 'Client Company', companies_path %>
 								</li>
@@ -70,6 +71,10 @@
 						<li>
 							<%=link_to 'Printable Doc', site_month_invoice_path%>
 						</li>
+						<li>
+							<%=link_to 'User Management', user_management_path%>
+						</li>
+						<%end%>
 					</ul>
 				</div>
 			</div>

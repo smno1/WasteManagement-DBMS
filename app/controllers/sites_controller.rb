@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, except: [:index]
   helper_method :sort_column, :sort_direction
   # GET /sites
   # GET /sites.json

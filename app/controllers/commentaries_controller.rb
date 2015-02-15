@@ -1,5 +1,6 @@
 class CommentariesController < ApplicationController
   before_action :set_commentary, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:new, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
   # GET /commentaries

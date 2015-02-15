@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'user_management/index', :as =>'user_management'
+
+  get 'user_management/edit'
+
+  get 'user_management/send_email'
+  
+  delete 'user_management/destroy'
+  
+  get 'user_management/update'
+
   get 'printable/site_month_invoice',:as=>'site_month_invoice'
   get 'printable/update_sites'
   get 'printable/printable_pdf', :as=>'printable_pdf'
@@ -53,8 +63,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#portal'
-
+  devise_scope :user do
+    root to: 'users/sessions#new'
+  end
+  authenticated :user do
+    root to: "welcome#portal", :as=>'portal'
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

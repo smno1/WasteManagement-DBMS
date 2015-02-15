@@ -1,5 +1,6 @@
 class BaselineInvoicesController < ApplicationController
   before_action :set_baseline_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:new, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
   respond_to :html
 

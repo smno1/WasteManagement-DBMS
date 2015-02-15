@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, except: [:index]
   helper_method :sort_column, :sort_direction
   # GET /services
   # GET /services.json

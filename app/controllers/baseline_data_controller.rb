@@ -1,5 +1,6 @@
 class BaselineDataController < ApplicationController
   before_action :set_baseline_datum, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   respond_to :html
 

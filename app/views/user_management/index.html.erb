@@ -1,0 +1,42 @@
+<h1>User Management</h1>
+<%=form_tag(user_management_path, :method=>'get') do%>
+	<%=hidden_field_tag :direction,params[:direction]%>
+	<%=hidden_field_tag :sort,params[:sort]%>
+	<%=label_tag 'User name: '%>
+	<%= text_field_tag :user_name, params[:user_name], :id => 'user_name_search_field', 
+		:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+	<%=label_tag 'Email'%>
+	<%= text_field_tag :email, params[:email], :id => 'email_search_field', 
+		:placeholder=>'Contain..', :size=>'30x20', :type=>'search' %>
+	<%=submit_tag "Search"%>
+<%end%>
+<table class='table'>
+	<thead>
+		<tr>
+			<th><%=sortable "user_name"%></th>
+			<th><%=sortable "email"%></th>
+			<th>Company</th>
+			<th>Note</th>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.user_name %></td>
+			<td><%= user.email %></td>
+			<%if user.company.blank?%>
+				<td>Haven't assign company</td>
+			<%else%>
+				<td><%= user.company.client_name %></td>
+			<%end%>
+			<td><%= user.note %></td>
+			<td class='col-md-1'><%= link_to 'Edit', user_management_edit_path(:user_id=>user.id)%></td>
+			<td class='col-md-1'><%= link_to 'Destroy', user_management_destroy_path(:user_id=>user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br><%=will_paginate @users%> <br>

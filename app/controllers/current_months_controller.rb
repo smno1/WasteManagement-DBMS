@@ -1,5 +1,6 @@
 class CurrentMonthsController < ApplicationController
   before_action :set_current_month, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   respond_to :html
 

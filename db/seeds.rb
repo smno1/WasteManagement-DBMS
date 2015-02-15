@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #User.create(email: '328862641@qq.com', encrypted_password: 'admin')
+#rake db:seed GMAIL_USERNAME=*********@gmail.com GMAIL_PASSWORD=*******
+
 User.delete_all
-User.create(email: '328862641@qq.com', password: 'adminadmin', password_confirmation: 'adminadmin')
-admin=User.where("email='328862641@qq.com'").first
+User.create(email: ENV["GMAIL_USERNAME"],user_name:"Admin", password: ENV["GMAIL_PASSWORD"], password_confirmation: ENV["GMAIL_PASSWORD"])
+admin=User.find_by :email =>ENV["GMAIL_USERNAME"]
 admin.add_role :admin
 CollectionOfSelection.delete_all
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
