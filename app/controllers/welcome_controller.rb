@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
     current_months=site.current_months.where(:month=>month).sum(:actual_month_charge)
     saving=baseline_data-current_months
     @pieChart=LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType=>"pie" , :margin=> [20, 20, 30, 30]} )
+      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 20, 30, 30]} )
           series = {
                    :type=> 'pie',
                    :name=> 'Money ',
@@ -32,7 +32,7 @@ class WelcomeController < ApplicationController
           f.options[:tooltip][:valueSuffix] = '$'
           f.options[:title][:text] = "Site Saving "+month.strftime("%b %Y")
           f.options[:subtitle][:text] = "The whole pie is $"+baseline_data.round(2).to_s+" as the baseline cost"
-          f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '5px',:top=> 'auto'}) 
+          f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '5px',:top=> '5px'}) 
           f.plot_options(:pie=>{
             :allowPointSelect=>true, 
             :cursor=>"pointer" , 
@@ -41,7 +41,8 @@ class WelcomeController < ApplicationController
               :color=>"black",
               :style=>{
                 :font=>"13px Trebuchet MS, Verdana, sans-serif"
-              }
+              },
+              :format=>'<b>{point.name}</b>: {point.percentage:.1f} %'
             }
           })
     end
@@ -51,13 +52,13 @@ class WelcomeController < ApplicationController
     site=Site.find(params[:site_id])
     from_month=date_select_to_date(params[:collection_date_from])
     to_month=date_select_to_date(params[:collection_date_to])
-    baseline_data=site.baseline_data.sum(:monthly_charge)
+    baseline_data=site.baseline_data.sum(:monthly_charge).round(2)
     current_months=site.current_months.where(:month=>from_month..to_month)
     month_array=DataUtil.get_month_iter_array(from_month,to_month)
     data_array=Array.new
     baseline_array=Array.new
     month_array.each do |month|
-      data_array<<current_months.where(:month=>month).sum(:actual_month_charge)
+      data_array<<current_months.where(:month=>month).sum(:actual_month_charge).round(2)
       baseline_array<<baseline_data
     end
     
@@ -66,6 +67,9 @@ class WelcomeController < ApplicationController
       f.xAxis({
         :categories=>month_array.map {|date| [date.strftime("%b %Y")]}
         })
+      f.tooltip({
+        :valueSuffix=>'$'
+      })
       f.series({
         :name=> 'current_month_cost',
         :data=>data_array
