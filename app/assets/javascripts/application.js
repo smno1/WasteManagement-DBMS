@@ -17,3 +17,6 @@
 //= require ../../../vendor/assets/javascripts/jquery.js
 //= require ../../../vendor/assets/javascripts/metisMenu.js
 //= require_tree .
+//= require highcharts/highcharts.js
+//= require highcharts/highcharts-more.js
+//= require highcharts/highstock.js

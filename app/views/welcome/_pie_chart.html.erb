@@ -1,0 +1,17 @@
+<div class='panel panel-default'>
+		<div class='panel-heading'>
+		<%=form_tag(welcome_update_pie_chart_path, :remote=>true) do%>
+			Month Saving Against Baseline Pie chart <br />
+			Site : <%=site_select_tag(@sites)%>
+			Month: <%=month_select_tag%>
+			<%=submit_tag 'Display'%>
+		<%end%>
+		</div>
+		<div class='panel-body'>
+			<div id='pie-chart'>
+			  <%unless @pieChart.blank?%>
+				<%= high_chart("saving_pie", @pieChart)%>
+			  <%end%>
+			</div>
+		</div>
+</div>

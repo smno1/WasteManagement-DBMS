@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Filterable
   belongs_to :company
-  has_many :users_roles, :dependent=>:destroy
+  has_many :users_roles, :dependent=>:delete_all
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -28,6 +28,9 @@ gem 'rolify'
 # search gem
 # gem 'ransack'
 
+# chart gem 
+gem 'lazy_high_charts'
+
 # pagination gem
 gem 'will_paginate'
 

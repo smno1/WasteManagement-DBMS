@@ -1,0 +1,18 @@
+<div class='panel panel-default'>
+	<div class='panel-heading'>
+		<%=form_tag(welcome_update_line_chart_path, :remote=>true) do%>
+		  History Month Cost
+		  <br />
+		  Site : <%= site_select_tag(@sites)%>
+		  Month: <%= month_duration_select_tag%>
+		  <%= submit_tag 'Display'%>
+		<%end%>
+	</div>
+	<div class='panel-body'>
+		<div id='line-chart'>
+			<%unless @lineChart.blank?%>
+			  <%= high_chart("history_line_chart", @lineChart)%>
+			<%end%>
+		</div>
+	</div>
+</div>

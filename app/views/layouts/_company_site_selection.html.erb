@@ -4,7 +4,10 @@
 		:prompt   => "Select an Company", :default => nil,:id=>'company_select' %>
 
 	<div class='required'>*</div><%= label_tag 'site' %>
-	<!--<%= collection_select(nil, :site_id,  @sites,  :id, :site_name, {:prompt   => "Select Company first"}, {:id => 'site_select'}) %>-->
+	<%=site_select_tag(@sites,"Select Company first") %>
+	<!--
+	<%= collection_select(nil, :site_id,  @sites,  :id, :site_name, {:prompt   => "Select Company first"}, {:id => 'site_select'}) %>
 	<%= select_tag :site_id, options_from_collection_for_select(@sites,'id','site_name',params[:site_id]),
 		:prompt   => "Select Company first", :default => nil,:id=>'site_select' %>
+	-->
 	<br />

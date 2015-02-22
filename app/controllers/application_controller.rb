@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def round_2_decimal(f)
+    ((f*100).round)/100
+  end
     
   def update_sites
     _company=Company.find(params[:company_id])
@@ -12,11 +15,13 @@ class ApplicationController < ActionController::Base
   end
   
   def check_admin
-    unless current_user.present? && current_user.has_role?(:admin)
+    unless is_admin?
       redirect_to welcome_portal_path, :flash=> {:error => "Sorry, only admin can access"}
     end
   end
-  
+  def is_admin?
+    return current_user.present? && current_user.has_role?(:admin)
+  end
   def date_select_to_date (date_hash,default_month="1")
     return date_hash unless date_hash.is_a? Hash
     return nil if date_hash.blank?

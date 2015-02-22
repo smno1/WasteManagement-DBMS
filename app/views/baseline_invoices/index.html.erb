@@ -7,13 +7,9 @@
 	<%=hidden_field_tag :direction,params[:direction]%>
 	<%=hidden_field_tag :sort,params[:sort]%>
 	<%=label_tag 'month'%>
-	<%= date_select :month,'date', 
-		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>1990}%> <br>
+	<%=month_select_tag(1990)%> <br>
 	<%=label_tag 'Collection date from'%>
-	<%= date_select :collection_date_from,'date',
-	{:include_blank => true, :default => nil,:start_year=>1990,:discard_day=>true}%>  to
-	<%= date_select :collection_date_to,'date',
-	{:include_blank => true, :default => nil,:start_year=>1990,:discard_day=>true}%>(Default month: Jan) <br>
+	<%= month_duration_select_tag%> <br>
 	<%=submit_tag "Search"%>
 <%end%>
 <div id='baseline_invoices_table'><%= render 'baseline_invoices'%></div>

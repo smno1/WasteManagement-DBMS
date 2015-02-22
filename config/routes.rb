@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'printable/printable_pdf', :as=>'printable_pdf'
   get '/update_sites', :controller=>'application',:action=>'update_sites'
 
+  get 'welcome/portal'
+  post 'welcome/update_pie_chart'
+  post 'welcome/update_line_chart'
   resources :site_month_savings
 
   resources :current_months
@@ -53,7 +56,6 @@ Rails.application.routes.draw do
     resources :site_month_savings, shallow:true
   end
 
-  get 'welcome/portal'
 
   resources :companies do
     resources :sites, shallow:true
