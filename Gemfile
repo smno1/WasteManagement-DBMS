@@ -6,6 +6,14 @@ gem 'rails', '4.1.5'
 
 #gem 'bootstrap-sass', '2.3.2.0'
 
+#selection gem
+gem 'chosen-rails'
+
+#message gem
+gem 'mailboxer'
+#gem for solving turbolink problem
+gem 'jquery-turbolinks'
+
 group :development do
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

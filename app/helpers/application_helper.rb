@@ -60,4 +60,7 @@ module ApplicationHelper
   {:include_blank => true, :default => nil,:start_year=>start_year,:discard_day=>true}) +content_tag(:div,"(Default month: Jan)",:class=>"inline")
   end
   
+  def page_header(text)
+    content_for(:page_header) { text.to_s }
+  end
 end

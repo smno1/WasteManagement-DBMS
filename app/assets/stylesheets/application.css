@@ -14,5 +14,6 @@
  *= require ../../../vendor/assets/stylesheets/bootstrap.css
  *= require ../../../vendor/assets/stylesheets/metisMenu.css
  *= require ../../../vendor/assets/stylesheets/font-awesome.css
+ *= require chosen
  *= require_self
  */

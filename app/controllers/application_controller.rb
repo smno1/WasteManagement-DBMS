@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def round_2_decimal(f)
-    ((f*100).round)/100
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:warning] = 'Resource not found.'
+    redirect_back_or welcome_portal_path
+  end
+ 
+  def redirect_back_or(path)
+    redirect_to request.referer || path
   end
     
   def update_sites

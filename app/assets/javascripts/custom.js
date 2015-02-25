@@ -34,6 +34,8 @@ var main = function() {
 
 	$('#side-menu').metisMenu();
 	
+	$('.chosen-it').chosen();
+	
 	$("#baseline_invoices_table th a").live(click, function(){
 		$.getScript(this.href);
 		return false;
@@ -41,4 +43,4 @@ var main = function() {
 };
 
 $(document).ready(main);
-$(document).on('page:load', main);
+//$(document).on('page:load', main);

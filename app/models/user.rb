@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Filterable
+  acts_as_messageable
   belongs_to :company
   has_many :users_roles, :dependent=>:delete_all
   rolify
@@ -11,4 +12,7 @@ class User < ActiveRecord::Base
   scope :user_name, ->(user_name) {where("user_name like ?", "%#{user_name}%")}
   scope :email, ->(email) {where("email like ?","%#{email}%")}
   
+  def mailboxer_email(object)
+    email
+  end
 end

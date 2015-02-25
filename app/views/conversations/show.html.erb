@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @conversation.subject %></div>
+ 
+  <div class="panel-body">
+    <div class="messages">
+      <% @conversation.receipts_for(current_user).each do |receipt| %>
+        <% message = receipt.message %>
+ 
+        <%= message.sender.user_name %>
+         <small>(<span class="text-muted"> <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>) <br /></small>
+        <%= message.body %>
+      <% end %>
+    </div>
+  </div>
+</div>

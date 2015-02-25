@@ -17,11 +17,21 @@
 					<% if user_signed_in? %>
 						Logged in as <strong> <%= current_user.email %> </strong>.
 						<%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default" %>
+						<%= link_to 'Your Conversations', conversations_path , :class => "btn btn-default"%>
+						<%= link_to 'Edit Profile', edit_user_registration_path, :class => "btn btn-default" %>
 					<% else %>
 						<%= link_to "Sign in", new_user_session_path, :class => "btn btn-default" %>
 						<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default" %>
 					<% end %>
 				</ul>
+				<% flash.each do |key, value| %>
+    				<div class="alert alert-<%= key %>">
+      					<%= value %>
+    				</div>
+  				<% end %>
+	  			<!--<div class="page-header">
+    				<h1><%= yield :page_header %></h1>
+  				</div>-->
 			</div>
 
 			<p id="error"><%= flash[:error] %></p>
@@ -47,14 +57,14 @@
 								</li>
 							</ul>
 						</li>-->
-						<!--<li>
-							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
-							<ul class="nav nav-second-level description-toggle">-->
 							<% if user_signed_in? %>
 								<li>
 									<%= link_to 'Dashboard', welcome_portal_path%>
 								</li>
 							<%if is_admin?%>
+						<li>
+							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
+							<ul class="nav nav-second-level description-toggle">
 								<li>
 									<%= link_to 'Client Company', companies_path %>
 								</li>
@@ -64,19 +74,19 @@
 								<li>
 									<%= link_to 'Services', services_path%>
 								</li>
-							<!--</ul>
-						</li>-->
-						<li>
-							<%=link_to 'Saving against baseline', saving_against_baselines_path%>
+							</ul>
 						</li>
 						<li>
-							<%=link_to 'Site month saving', site_month_savings_path%>
+							<%=link_to 'User Management', user_management_path%>
 						</li>
 						<li>
 							<%=link_to 'Printable Doc', site_month_invoice_path%>
 						</li>
 						<li>
-							<%=link_to 'User Management', user_management_path%>
+							<%=link_to 'Saving against baseline', saving_against_baselines_path%>
+						</li>
+						<li>
+							<%=link_to 'Site month saving', site_month_savings_path%>
 						</li>
 						<%end%>
 						<%end%>

@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
+//= require chosen-jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require ../../../vendor/assets/javascripts/bootstrap.js
 //= require ../../../vendor/assets/javascripts/jquery.js
 //= require ../../../vendor/assets/javascripts/metisMenu.js
@@ -20,3 +21,4 @@
 //= require highcharts/highcharts.js
 //= require highcharts/highcharts-more.js
 //= require highcharts/highstock.js
+//= require turbolinks

@@ -10,7 +10,12 @@ div {
     margin-bottom:10px;
   }
 }
-
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 .column-right{
   border-right: 1px solid #ddd;
 }

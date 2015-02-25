@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'messages/new'
+
+  resources :messages, only:[:new, :create]
+  resources :conversations, only:[:index,:show,:destroy]
+
   get 'user_management/index', :as =>'user_management'
 
   get 'user_management/edit'
