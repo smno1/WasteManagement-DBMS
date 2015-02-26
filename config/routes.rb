@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   get 'messages/new'
 
   resources :messages, only:[:new, :create]
-  resources :conversations, only:[:index,:show,:destroy]
+  resources :conversations, only:[:index,:show,:destroy] do
+    member do
+      post :mark_as_read
+      post :reply
+      post :restore
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
 
   get 'user_management/index', :as =>'user_management'
 

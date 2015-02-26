@@ -6,10 +6,18 @@
       <% @conversation.receipts_for(current_user).each do |receipt| %>
         <% message = receipt.message %>
  
-        <%= message.sender.user_name %>
+        <strong>
+        <%= message.sender.user_name %> says
+        </strong>
          <small>(<span class="text-muted"> <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>) <br /></small>
-        <%= message.body %>
+        <%= message.body %><br />
       <% end %>
     </div>
   </div>
 </div>
+<%= form_tag reply_conversation_path(@conversation), method: :post do %>
+  <div class="form-group">
+    <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Reply messages...', required: true %>
+  </div>
+  <%= submit_tag "Reply Message", class: 'btn btn-primary' %>
+<% end %>
