@@ -13,28 +13,67 @@
 	<body>
 		<div id="wrapper">
 			<div class='hidden-print'>
+			  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 				<ul class="nav navbar-top-links navbar-right">
 					<% if user_signed_in? %>
-						Logged in as <strong> <%= current_user.email %> </strong>.
-						<%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default" %>
-						<%= link_to 'Your Conversations', conversations_path , :class => "btn btn-default"%>
-						<%= link_to 'Edit Profile', edit_user_registration_path, :class => "btn btn-default" %>
+						<li>
+						  Logged in as <strong> <%= current_user.email %> </strong>.
+						</li>
+					  <li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-messages">
+                    	  <%current_user.mailbox.inbox.first(3).each do |conversation|%>
+                    	  	<%message=conversation.last_message%>
+                    	    <li>
+                    	      <%= link_to conversation_path(conversation) do%>
+						        <%= message.sender.user_name %> 
+         					    <small>(<span class="text-muted"> <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small> <br />
+        						<%= message.body.truncate(20) %>
+                    	      <%end%>
+        					</li>
+                          <li class="divider"></li>
+                    	  <%end%>
+                          <li>
+							<%= link_to 'Messages Inbox', conversations_path%>
+                          </li>
+                    	</ul>
+                	  </li>
+                	  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+						  <%= link_to edit_user_registration_path do %>
+                            <i class="fa fa-user fa-fw"></i> User Profile
+                          <%end%>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+						<%= link_to destroy_user_session_path, method: :delete do %>
+                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                        <%end%>
+                        </li>
+                    </ul>
+                </li>
 					<% else %>
-						<%= link_to "Sign in", new_user_session_path, :class => "btn btn-default" %>
+						<%= link_to "Log in", new_user_session_path, :class => "btn btn-default" %>
 						<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default" %>
 					<% end %>
 				</ul>
-				<% flash.each do |key, value| %>
-    				<div class="alert alert-<%= key %>">
-      					<%= value %>
-    				</div>
-  				<% end %>
 	  			<!--<div class="page-header">
     				<h1><%= yield :page_header %></h1>
   				</div>-->
 			</div>
-
-			<p id="error"><%= flash[:error] %></p>
+		</nav>
+				<% flash.each do |key, value| %>
+    				<div class="alert alert-<%= key %>  alert-dismissable">
+    					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      					<%= value %>
+    				</div>
+  				<% end %>
 			
 			<!-- Sidebar -->
 			<div class="sidebar-nav navbar-collapse hidden-print">
