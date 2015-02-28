@@ -1,6 +1,12 @@
 <h1>Site_month_invoice</h1>
 <%=form_tag(printable_pdf_path, :method=>'get') do%>
-	<%=render :partial=>'layouts/company_site_selection', :companies=>@companies,:sites=>@sites%>
+	<%if is_admin?%>
+	  <%=render :partial=>'layouts/company_site_selection', :companies=>@companies,:sites=>@sites%>
+	<%else%>
+	  <div class='required'>*</div>
+	    <%= label_tag 'site'%>
+	    <%=site_select_tag(@sites)%><br />
+	<%end%>
 
 
 	<div class='required'>*</div><%= label_tag 'month'%>

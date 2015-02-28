@@ -52,9 +52,9 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-						<%= link_to destroy_user_session_path, method: :delete do %>
-                        <i class="fa fa-sign-out fa-fw"></i> Logout
-                        <%end%>
+						  <%= link_to destroy_user_session_path, method: :delete do %>
+                        	<i class="fa fa-sign-out fa-fw"></i> Logout
+                          <%end%>
                         </li>
                     </ul>
                 </li>
@@ -69,6 +69,7 @@
 			</div>
 		</nav>
 				<% flash.each do |key, value| %>
+					<%puts flash.to_yaml%>
     				<div class="alert alert-<%= key %>  alert-dismissable">
     					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       					<%= value %>
@@ -100,6 +101,9 @@
 								<li>
 									<%= link_to 'Dashboard', welcome_portal_path%>
 								</li>
+								<li>
+									<%=link_to 'Printable Doc', site_month_invoice_path%>
+								</li>
 							<%if is_admin?%>
 						<li>
 							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
@@ -117,9 +121,6 @@
 						</li>
 						<li>
 							<%=link_to 'User Management', user_management_path%>
-						</li>
-						<li>
-							<%=link_to 'Printable Doc', site_month_invoice_path%>
 						</li>
 						<li>
 							<%=link_to 'Saving against baseline', saving_against_baselines_path%>

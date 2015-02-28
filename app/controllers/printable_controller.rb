@@ -1,8 +1,12 @@
 class PrintableController < ApplicationController
   
   def site_month_invoice
-    @companies=Company.all
-    @sites=Site.none
+    if is_admin?
+      @companies=Company.all
+      @sites=Site.none
+    else
+      @sites=current_user.company.sites unless current_user.company.blank?
+    end
   end
   
   def update_sites
