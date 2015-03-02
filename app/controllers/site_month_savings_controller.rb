@@ -6,8 +6,8 @@ class SiteMonthSavingsController < ApplicationController
   respond_to :html
 
   def index
-    @site_month_savings = SiteMonthSaving.filter(params.slice(:site_id)).order(sort_column+
-                            " "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
+    @site_month_savings = SiteMonthSaving.filter(params.slice(:site_id))
+    #.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@site_month_savings)
   end
 

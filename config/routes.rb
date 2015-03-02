@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'messages/new'
 
   resources :messages, only:[:new, :create]
   resources :conversations, only:[:index,:show,:destroy] do

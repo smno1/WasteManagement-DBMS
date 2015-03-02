@@ -34,12 +34,16 @@ var main = function() {
 
 	$('#side-menu').metisMenu();
 	
+	$('.datatable').DataTable({		
+  		responsive: true
+	});
+	
 	$('.chosen-it').chosen();
 	
 	$("#baseline_invoices_table th a").live(click, function(){
 		$.getScript(this.href);
 		return false;
-	});
+	}); 
 };
 
 $(document).ready(main);

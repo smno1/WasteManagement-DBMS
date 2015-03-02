@@ -14,6 +14,9 @@
  *= require ../../../vendor/assets/stylesheets/metisMenu.css
  *= require ../../../vendor/assets/stylesheets/font-awesome.css
  *= require chosen
+ *= require dataTables/extras/dataTables.responsive
+ *= require dataTables/jquery.dataTables
  *= require_self
  *= require_tree .
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  */

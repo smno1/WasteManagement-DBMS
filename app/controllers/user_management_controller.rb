@@ -4,8 +4,9 @@ class UserManagementController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users=User.filter(params.slice(:email,:user_name))
-    @users=@users.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
+    @users=User.all
+    #filter(params.slice(:email,:user_name))
+    #@users=@users.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end
 
   def edit

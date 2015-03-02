@@ -14,9 +14,14 @@
 //= require jquery.turbolinks
 //= require chosen-jquery
 //= require jquery_ujs
-//= require ../../../vendor/assets/javascripts/bootstrap.js
-//= require ../../../vendor/assets/javascripts/jquery.js
-//= require ../../../vendor/assets/javascripts/metisMenu.js
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
+//= require bootstrap.js
+//= require jquery.js
+//= require dataTables/jquery.dataTables
+//= require metisMenu.js
 //= require_tree .
 //= require highcharts/highcharts.js
 //= require highcharts/highcharts-more.js
