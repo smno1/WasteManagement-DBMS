@@ -3,7 +3,7 @@
 		<%=form_tag(welcome_update_line_chart_path, :remote=>true) do%>
 		  History Month Cost
 		  <br />
-		  Site : <%= site_select_tag(@sites)%>
+		  Site : <%= site_select_tag(@sites,"Select site","chosen-it")%>
 		  Month: <%= month_duration_select_tag%>
 		  <%= submit_tag 'Display'%>
 		<%end%>

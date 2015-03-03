@@ -43,9 +43,9 @@ module ApplicationHelper
     end
   end
   
-  def site_select_tag(sites,promot="")
+  def site_select_tag(sites,promot="",className="")
       select_tag :site_id, options_from_collection_for_select(sites,'id','site_name',params[:site_id]),
-    :prompt => promot, :default => nil,:id=>'site_select'
+    :prompt => promot, :default => nil,:id=>'site_select', :class=>className
   end
   
   def month_select_tag(start_year=2000)

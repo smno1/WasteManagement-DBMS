@@ -2,7 +2,7 @@
 		<div class='panel-heading'>
 		<%=form_tag(welcome_update_pie_chart_path, :remote=>true) do%>
 			Month Saving Against Baseline Pie chart <br />
-			Site : <%=site_select_tag(@sites)%>
+			Site : <%=site_select_tag(@sites,"Select site","chosen-it")%>
 			Month: <%=month_select_tag%>
 			<%=submit_tag 'Display'%>
 		<%end%>

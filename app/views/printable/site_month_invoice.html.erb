@@ -1,4 +1,8 @@
-<h1>Site_month_invoice</h1>
+<div class="row">
+	<div class="col-lg-12">
+		<h2 class="page-header">Site Month invoice</h2>
+	</div>
+</div>
 <%if is_admin?||current_user.company.present?%>
   <%=form_tag(printable_pdf_path, :method=>'get') do%>
 	<%if is_admin?%>
@@ -6,7 +10,7 @@
 	<%else%>
 	  <div class='required'>*</div>
 	    <%= label_tag 'site'%>
-	    <%=site_select_tag(@sites)%><br />
+	    <%=site_select_tag(@sites,"Select site","form-control chosen-it")%><br />
 	<%end%>
 
 
