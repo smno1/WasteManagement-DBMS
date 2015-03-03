@@ -35,9 +35,7 @@ var main = function() {
 	$('#side-menu').metisMenu();
 	
 	var table=$('.datatable').DataTable({		
-  		responsive: true,
-  		scrollX: true,
-		bScrollCollapse:false
+  		scrollX: true
 	});
 	
 	$('.toggle-vis').on( 'click', function (e) {

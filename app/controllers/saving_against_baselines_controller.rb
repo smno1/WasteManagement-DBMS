@@ -5,6 +5,8 @@ class SavingAgainstBaselinesController < ApplicationController
   respond_to :html
 
   def index
+    @column_header=['client_name','site_name','service_account','service_type','service_description','month','collecation_saved',
+    'month_saving','month_extra_saving','month_excluded_cost','month_total_saving','note']
     @companies=Company.all
     @sites=Site.none if @sites.blank?
     @saving_against_baselines = SavingAgainstBaseline.filter(filter_params)
@@ -15,7 +17,7 @@ class SavingAgainstBaselinesController < ApplicationController
       company=Company.find(params[:company_id])
       @saving_against_baselines=params[:month].blank? ? company.saving_against_baselines : company.saving_against_baselines.month(params[:month])
     end
-    @saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
+    #@saving_against_baselines=@saving_against_baselines.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@saving_against_baselines)
   end
 

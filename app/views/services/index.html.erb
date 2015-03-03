@@ -1,8 +1,12 @@
 <h1>Services</h1>
 <%= info_from_site params[:site_id]%>
-<table class='table'>
+<table class='display no-wrap datatable'>
 	<thead>
 		<tr>
+		  <%@column_headers.each do |header|%>
+        	<th><%=header.titleize%></th>
+	  	  <%end%>
+			<!--
 			<th>Client name</th>
 			<th><%=sortable "site_id", "Site Name"%></th>
 			<th><%=sortable "account_number_and_name", "Service account"%>
@@ -16,7 +20,8 @@
 			<th><%=sortable "cost_per_tonne"%></th>
 			<th><%=sortable "note"%></th>
 			<th><%=sortable "collection_frequency"%></th>
-			<th colspan="3"></th>
+			-->
+			<th></th>
 		</tr>
 	</thead>
 
@@ -69,14 +74,13 @@
 							' belong to this service will be erased. Are you sure?' } %></td>
 					</li>
 				</ul>
-			</div></td>
-			<td/>
+			</div>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<br><%=will_paginate @services%> <br>
 <% if params[:site_id].nil? %>
 	<%= link_to 'New Service', new_service_path %>
 <%else%>
