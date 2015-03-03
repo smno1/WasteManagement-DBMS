@@ -1,6 +1,40 @@
-<h2>Hello <%= current_user.user_name%></h2>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Hello <%= current_user.user_name%></h1>
+	</div>
+</div>
 <br />
 <%unless current_user.company.blank?%>
+
+<table class='display responsive no-wrap datatable'>
+	<thead>
+		<tr>
+		  <%@column_headers.each do |header|%>
+        	<th><%=header.titleize%></th>
+	  	  <%end%>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @sites.each do |site| %>
+		<tr>
+			<td><%= site.site_name %></td>
+			<td><%= site.site_address %></td>
+			<td><%= site.number_of_service %></td>
+			<td><%= site.company.client_name %></td>
+			<td><%= number_to_us_currency site.running_total %></td>
+			<td><%= site.waste_company %></td>
+			<td><%= site.region %></td>
+			<td><%= number_to_us_currency site.current_fy_saving %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Chart</h1>
+	</div>
+</div>
 <div class='col-lg-6'>
 	<%= render :partial=>'pie_chart',:sites=>@sites, :pieChart=>@pieChart%>
 </div>

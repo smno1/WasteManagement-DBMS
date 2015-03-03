@@ -34,10 +34,20 @@ var main = function() {
 
 	$('#side-menu').metisMenu();
 	
-	$('.datatable').DataTable({		
-  		responsive: true
+	var table=$('.datatable').DataTable({		
+  		responsive: true,
+  		scrollX: true,
+		bScrollCollapse:false
 	});
 	
+	$('.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+    } );
+    
 	$('.chosen-it').chosen();
 	
 	$("#baseline_invoices_table th a").live(click, function(){

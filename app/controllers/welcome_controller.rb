@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   
   def portal
     unless current_user.company.nil?
+      @column_headers=['site_name','site_address','number_of_service','client_company','running_total','waste_company','region','current_FY_saving']
       @sites=current_user.company.sites
     end
   end
