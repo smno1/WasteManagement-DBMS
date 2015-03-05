@@ -41,12 +41,12 @@
       	<%sabs=service.saving_against_baselines%>
       	<%sab =sabs.find_by(:month=>@month)%>
       	<td class='column-right'><%=count+1%>. <%=service.account_number_and_name%><br /><%=(service.description||"")+" "+(service.service_type||"")%>
-      	  <%unless sab.blank?||sab.month_extra_saving.blank?%>
+      	  <!--<%unless sab.blank?||sab.month_extra_saving.blank?%>
       	    <br /> Month extra saving
 	      <%end%>
       	  <%unless sab.blank?||sab.month_excluded_cost.blank?%>
       	    <br /> Month exclude cost
-      	  <%end%>
+      	  <%end%>-->
       	</td>
       	<%unless service.baseline_datum.blank?%>
       	  <td><%=float_pre_2 service.baseline_datum.monthly_collection%></td>
@@ -69,12 +69,12 @@
       	  		<td  ><%=float_pre_2 sab.collection_saved%></td>
       	  		<td  ><%=number_to_us_currency service.collection_rate%></td>
       	  		<td  ><%=number_to_us_currency sab.month_saving%>      	  
-      	  		  <%unless sab.month_extra_saving.blank?%>
-      	    		<br /><br /> <%=number_to_us_currency sab.month_extra_saving%>
+      	  		  <%unless sab.month_extra_saving.blank?||sab.month_extra_saving==0%>
+      	    		<br /><br />Month extra saving: <%=number_to_us_currency sab.month_extra_saving%>
       	    		<%extra_saving_total+=sab.month_extra_saving%>
 	      			<%end%>
-      	  		  <%unless sab.month_excluded_cost.blank?%>
-      	    		<br /> <%=number_to_us_currency sab.month_excluded_cost%>
+      	  		  <%unless sab.month_excluded_cost.blank?||sab.month_excluded_cost==0%>
+      	    		<br />Month exclude cost: <%=number_to_us_currency sab.month_excluded_cost%>
       	    	  <%end%>
 				</td>
 	      	    <%saving_total+=sab.month_saving%>
