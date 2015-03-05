@@ -11,8 +11,8 @@
 
 User.destroy_all
 UsersRole.delete_all
-User.create(email: ENV["GMAIL_USERNAME"],user_name:"Admin", password: ENV["GMAIL_PASSWORD"], password_confirmation: ENV["GMAIL_PASSWORD"])
-admin=User.find_by :email =>ENV["GMAIL_USERNAME"]
+User.create(email: ENV["ADMIN_USERNAME"],user_name:"Admin", password: ENV["ADMIN_PASSWORD"], password_confirmation: ENV["ADMIN_PASSWORD"])
+admin=User.find_by :email =>ENV["ADMIN_USERNAME"]
 admin.add_role :admin
 CollectionOfSelection.delete_all
 CollectionOfSelection.create(selection_type: 'bin_type', selection_item: 'Compactor')
