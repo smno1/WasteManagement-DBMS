@@ -1,5 +1,5 @@
 class DataUtil
-  
+  # should be mixed into the Date class
   def self.count_number_of_month_between_dates(from_date,to_date)
     (to_date.year*12+to_date.month) - (from_date.year*12+from_date.month)
   end

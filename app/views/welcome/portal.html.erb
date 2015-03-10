@@ -39,8 +39,12 @@
 	<%= render :partial=>'pie_chart',:sites=>@sites, :pieChart=>@pieChart%>
 </div>
 
-<div class='col-lg-8'>
+<div class='col-lg-6'>
 	<%= render :partial=>'line_chart',:sites=>@sites, :lineChart=>@lineChart%>
+</div>
+
+<div class='col-lg-12'>
+	<%= render :partial=>'comparison_line_chart',:sites=>@sites, :c_line_chart=>@c_line_chart%>
 </div>
 
 <%end%>

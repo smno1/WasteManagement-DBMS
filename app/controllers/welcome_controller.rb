@@ -88,4 +88,65 @@ class WelcomeController < ApplicationController
     end
   end
   
+  def update_comparison_line_chart
+    site=Site.find(params[:site_id])
+    from_month=date_select_to_date(params[:collection_date_from])
+    to_month=date_select_to_date(params[:collection_date_to])
+    from_month_2=date_select_to_date(params[:collection_date_from_2])
+    to_month_2=date_select_to_date(params[:collection_date_to_2])
+    
+    baseline_data=site.baseline_data.sum(:monthly_charge).round(2)
+    data_array=get_data_array(from_month,to_month,site)
+    data_array_2=get_data_array(from_month_2,to_month_2,site)
+    baseline_array=Array.new
+    month_array=[DataUtil.count_number_of_month_between_dates(from_month,
+      to_month),DataUtil.count_number_of_month_between_dates(from_month_2,to_month_2)].max
+    month_array.times do 
+      baseline_array<<baseline_data
+    end
+    
+    @c_line_chart=LazyHighCharts::HighChart.new('line') do |f|
+      f.options[:title][:text] = "Cost comparison between "+from_month.strftime("%b %Y")+" - "+to_month.strftime("%b %Y")+" and "+
+        from_month_2.strftime("%b %Y")+" - "+to_month_2.strftime("%b %Y")
+      f.plot_options({
+        :line=>{
+          :dataLabels=>{
+            :enabled=>true,
+            #:format=>'<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      })
+      f.tooltip({
+        :valueSuffix=>'$'
+      })
+      f.series({
+        :name=> from_month.strftime("%b %Y")+" - "+to_month.strftime("%b %Y")+" cost",
+        :data=>data_array
+      }) 
+      f.series({
+        :name=> from_month_2.strftime("%b %Y")+" - "+to_month_2.strftime("%b %Y")+" cost",
+        :data=>data_array_2
+      }) 
+      f.series({
+        :name=> 'baseline_cost_reference',
+        :data=>baseline_array,
+        :color=>'red'
+      }) 
+      f.yAxis({
+        :title=>{
+          :text=>'Cost'
+        }
+      }) 
+    end
+  end
+  private
+  def get_data_array(from_month,to_month,site)
+    current_months=site.current_months.where(:month=>from_month..to_month)
+    month_array=DataUtil.get_month_iter_array(from_month,to_month)
+    data_array=Array.new
+    month_array.each do |month|
+      data_array<<current_months.where(:month=>month).sum(:actual_month_charge).round(2)
+    end
+    return data_array
+  end
 end

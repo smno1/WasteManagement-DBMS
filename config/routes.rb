@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'welcome/portal'
   post 'welcome/update_pie_chart'
   post 'welcome/update_line_chart'
+  post 'welcome/update_comparison_line_chart'
   resources :site_month_savings
 
   resources :current_months
