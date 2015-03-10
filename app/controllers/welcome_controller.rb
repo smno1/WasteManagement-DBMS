@@ -52,7 +52,7 @@ class WelcomeController < ApplicationController
   def update_line_chart
     site=Site.find(params[:site_id])
     from_month=date_select_to_date(params[:collection_date_from])
-    to_month=date_select_to_date(params[:collection_date_to])
+    to_month=date_select_to_date(params[:collection_date_to])+1.month
     baseline_data=site.baseline_data.sum(:monthly_charge).round(2)
     current_months=site.current_months.where(:month=>from_month..to_month)
     month_array=DataUtil.get_month_iter_array(from_month,to_month)
@@ -91,9 +91,9 @@ class WelcomeController < ApplicationController
   def update_comparison_line_chart
     site=Site.find(params[:site_id])
     from_month=date_select_to_date(params[:collection_date_from])
-    to_month=date_select_to_date(params[:collection_date_to])
+    to_month=date_select_to_date(params[:collection_date_to])+1.month
     from_month_2=date_select_to_date(params[:collection_date_from_2])
-    to_month_2=date_select_to_date(params[:collection_date_to_2])
+    to_month_2=date_select_to_date(params[:collection_date_to_2])+1.month
     
     baseline_data=site.baseline_data.sum(:monthly_charge).round(2)
     data_array=get_data_array(from_month,to_month,site)

@@ -7,7 +7,7 @@ class CurrentInvoicesController < ApplicationController
   def index
     @current_invoices = CurrentInvoice.filter(filter_params)
     from_date=date_select_to_date(params[:collection_date_from])
-    to_date=date_select_to_date(params[:collection_date_to])
+    to_date=date_select_to_date(params[:collection_date_to])+1.month
     @current_invoices=@current_invoices.collection_date(from_date,to_date) unless (from_date.nil? ||to_date.nil?)
     @current_invoices=@current_invoices.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@current_invoices)
