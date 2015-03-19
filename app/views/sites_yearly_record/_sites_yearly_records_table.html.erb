@@ -47,7 +47,7 @@
 			<td><%= site.program_start_date %></td>
 			<td><%= site_baseline.blank? ? "" : (number_to_us_currency site_baseline*12) %></td>
 			<td><%= site.baseline_year %></td>
-			<% site_yearly_record=site.site_yearly_records.find_by(Date.today.year.to_i-1)%><!--each fy_actual_cost-->
+			<% site_yearly_record=site.site_yearly_records.find_by(:financial_year=>Date.today.year.to_i-1)%><!--each fy_actual_cost-->
 			<td><%=site_yearly_record.try(:fy_actual_cost)%></td>
 			<td><%= number_to_currency site.current_fy_cost %></td>
 			<td><%= number_to_currency site.fy_projected_cost_remainder %></td>
