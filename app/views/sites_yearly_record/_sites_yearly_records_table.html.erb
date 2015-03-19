@@ -1,0 +1,80 @@
+<%unless @sites.blank?%>
+<div>
+	<br />
+	Toggle column:
+	<br />
+	<%@column_headers.each_with_index do |header, index|%>
+	- <a class="toggle-vis" data-column=<%= index%>><%= header.titleize%></a>
+	<%end%>
+</div>
+<br />
+<table class='display datatable'>
+	<thead>
+		<tr>
+			<%@column_headers[0..1].each do |header|%>
+			<th rowspan="2"><%= header.titleize%></th>
+			<%end%>
+			<th colspan="5"><%="#{date_select_to_date(params[:month]).try(:strftime,"%b %Y")} Monthly Transport Costs & Savings"%></th>
+			<%@column_headers[7..-1].each do |header|%>
+			<th rowspan="2"><%= header.titleize%></th>
+			<%end%>
+			<%if is_admin?%>
+			<th rowspan="2">Operation</th>
+			<%end%>
+		</tr>
+		<tr>
+			<%@column_headers[2..6].each do |header|%>
+			<th><%= header.titleize%></th>
+			<%end%>			
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @sites.each do |site| %>
+		<tr>
+			<td><%= site.site_name %></td>
+			<td><%= site.region %></td>
+			<% site_baseline=site.baseline_data.sum(:monthly_charge)%>
+			<td><%= number_to_currency site_baseline %></td>
+			<td><%= number_to_currency site.monthly_predicted_saving %></td>
+			<% site_month_saving=site.site_month_savings.find_by(:month=>date_select_to_date(params[:month])).try(:month_saving)%>
+			<td><%= number_to_us_currency site_month_saving %></td>
+			<%if site_month_saving.blank?||site_baseline.blank?%> <td></td>
+			<%else%>
+			<td><%= number_with_percentage site_month_saving/site_baseline %></td>
+			<%end%>
+			<td><%= site_month_saving.blank? ? "" : (number_to_us_currency site_month_saving/2) %></td>
+			<td><%= site.program_start_date %></td>
+			<td><%= site_baseline.blank? ? "" : (number_to_us_currency site_baseline*12) %></td>
+			<td><%= site.baseline_year %></td>
+			<% site_yearly_record=site.site_yearly_records.find_by(Date.today.year.to_i-1)%><!--each fy_actual_cost-->
+			<td><%=site_yearly_record.try(:fy_actual_cost)%></td>
+			<td><%= number_to_currency site.current_fy_cost %></td>
+			<td><%= number_to_currency site.fy_projected_cost_remainder %></td>
+			<%projected_cost=(site.fy_projected_cost_remainder||0)+(site.current_fy_cost||0)%>
+			<td><%= number_to_currency projected_cost %></td>
+			<td><%= number_to_currency site_baseline*12-projected_cost %></td>
+			<td><%= site_yearly_record.try(:fy_total_saving)%></td>
+			<td><%= number_to_currency site.current_fy_saving %></td>
+			<td><%= number_to_currency site.running_total %></td>
+			<td><%= site.note %></td>
+			<%if is_admin?%>
+			<td><%=link_to "Edit",sites_yearly_record_edit_path(:site_id=>site.id),:class=>"btn-sm"%></td>
+			<%end%>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%if @inlineJs%>
+<%=javascript_tag do%>
+var table=$('.datatable').DataTable({
+scrollX: true
+});
+$('.toggle-vis').on( 'click', function (e) {
+e.preventDefault();
+var column = table.column( $(this).attr('data-column') );
+column.visible( ! column.visible() );
+} );
+<%end%>
+<%end%>
+<%end%>

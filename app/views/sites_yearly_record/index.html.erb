@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h2 class="page-header">Company Status Report</h2>
+	</div>
+</div>
+<div>
+	<%=form_tag(company_select_path, :method=>'get', :remote=>true) do%>
+	<%if is_admin?%>
+		<%= label_tag 'company'%>
+		<%= company_select_tag @companies%>
+	<%end%>
+	<br />
+	<%= label_tag 'month'%>
+	<%= month_select_tag%>
+	<%= submit_tag "Search"%>
+	<%end%>
+</div>
+<div class='col-lg-12' id='status-report'>
+	<%=render :partial=>'sites_yearly_records_table', :sites=>@sites%>
+</div>

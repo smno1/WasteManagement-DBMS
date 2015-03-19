@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223050333) do
+ActiveRecord::Schema.define(version: 20150318030050) do
 
   create_table "baseline_data", force: true do |t|
     t.float    "monthly_collection"
@@ -205,17 +205,34 @@ ActiveRecord::Schema.define(version: 20150223050333) do
 
   add_index "site_month_savings", ["site_id"], name: "index_site_month_savings_on_site_id"
 
+  create_table "site_yearly_records", force: true do |t|
+    t.decimal  "fy_actual_cost",  precision: 8, scale: 2
+    t.decimal  "fy_total_saving", precision: 8, scale: 2
+    t.integer  "financial_year"
+    t.integer  "site_id",                                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_yearly_records", ["site_id"], name: "index_site_yearly_records_on_site_id"
+
   create_table "sites", force: true do |t|
     t.string   "site_name"
     t.string   "site_address"
-    t.integer  "number_of_service", default: 0
-    t.integer  "company_id",                    null: false
+    t.integer  "number_of_service",                                   default: 0
+    t.integer  "company_id",                                                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "running_total"
     t.float    "current_fy_saving"
     t.string   "waste_company"
     t.string   "region"
+    t.decimal  "monthly_predicted_saving",    precision: 8, scale: 2
+    t.date     "program_start_date"
+    t.string   "baseline_year"
+    t.decimal  "fy_projected_cost_remainder", precision: 8, scale: 2
+    t.decimal  "current_fy_cost",             precision: 8, scale: 2
+    t.string   "note"
   end
 
   create_table "users", force: true do |t|

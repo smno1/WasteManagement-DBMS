@@ -53,6 +53,4 @@ var main = function() {
 		return false;
 	}); 
 };
-
 $(document).ready(main);
-//$(document).on('page:load', main);

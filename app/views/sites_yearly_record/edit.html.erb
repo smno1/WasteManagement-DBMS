@@ -1,0 +1,43 @@
+<h1>SitesYearlyRecord</h1>
+<%=form_tag(sites_yearly_record_update_path, :method=>'get') do%>
+<%=hidden_field_tag :site_id,@site.id%>
+<div class="field">
+	<%= label_tag :predicted_saving %>
+	<br />
+	<%= text_field_tag :monthly_predicted_saving,@site.monthly_predicted_saving%>
+</div>
+<div class="field">
+	<%= label_tag :program_start_date %>
+	<br />
+	<%= date_select :program_start_date,@site.program_start_date%>
+</div>
+<div class="field">
+	<%= label_tag :baseline_year %>
+	<br />
+	<%= text_field_tag :baseline_year,@site.baseline_year%>
+</div>
+<div class="field">
+	<%= label_tag "actual cost for #{@fy-1}" %>
+	<br />
+	<%= text_field_tag :fy_actual_cost,@site_yearly_record.fy_actual_cost%>
+</div>
+<div class="field">
+	<%= label_tag "projected cost for #{@fy}" %>
+	<br />
+	<%= text_field_tag :fy_projected_cost_remainder,@site.fy_projected_cost_remainder%>
+</div>
+<div class="field">
+	<%= label_tag "total saving #{@fy-1}" %>
+	<br />
+	<%= text_field_tag :fy_total_saving,@site_yearly_record.fy_total_saving%>
+</div>
+<div class="field">
+	<%= label_tag :note %>
+	<br />
+	<%= text_field_tag :note,@site.note%>
+</div>
+<br>
+<div class="actions">
+	<%= submit_tag "Update" %>
+</div>
+<%end%>

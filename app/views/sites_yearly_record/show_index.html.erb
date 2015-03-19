@@ -1,0 +1,21 @@
+<h1>Site Year Saving</h1>
+
+
+<table class="display datatable">
+	<thead>
+		<th>Site</th>
+		<%@columns.each do |c|%>
+		<th><%= c.titleize%></th>
+		<%end%>
+	</thead>
+	<tbody>
+		<%@site_yearly_records.each do |record|%>
+			<td>
+			<%= record.site.site_name%>
+			</td>
+			<%@columns.each do |c|%>
+				<td><%= record.send(c)%></td>
+			<%end%>
+		<%end%>
+	</tbody>
+</table>

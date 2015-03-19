@@ -1,25 +1,25 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h2 class="page-header">Site Month Saving</h2>
+		<h3 class="page-header">Generate Report for Site Month Saving</h3>
 	</div>
 </div>
-<%if is_admin?||current_user.company.present?%>
-  <%=form_tag(printable_pdf_path, :method=>'get') do%>
-	<%if is_admin?%>
-	  <%=render :partial=>'layouts/company_site_selection', :companies=>@companies,:sites=>@sites%>
-	<%else%>
-	  <div class='required'>*</div>
-	    <%= label_tag 'site'%>
-	    <%=site_select_tag(@sites,"Select site","form-control chosen-it")%><br />
-	<%end%>
-
-
-	<div class='required'>*</div><%= label_tag 'month'%>
-	<%= date_select :month,'date',
-		{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%>(Default month: Jan)
-	<br>
-	<%= submit_tag "Search"%>
-  <%end%>
+<%=form_tag(printable_pdf_path, :method=>'get') do%>
+<%if is_admin?%>
+<%= render :partial=>'layouts/company_site_selection', :companies=>@companies,:sites=>@sites%>
 <%else%>
-  <h3>Please contact admin to asign the company for you</h3>
+<div class='required'>
+	*
+</div>
+<%= label_tag 'site'%>
+<%= site_select_tag(@sites,"Select site","chosen-it")%>
+<br />
+<%end%>
+
+<div class='required'>
+	*
+</div><%= label_tag 'month'%>
+<%= date_select :month,'date',
+{:discard_day=>true,:include_blank => true, :default => nil,:start_year=>2000}%>(Default month: Jan)
+<br>
+<%= submit_tag "Generate"%>
 <%end%>

@@ -9,9 +9,7 @@ module ApplicationHelper
   def float_pre_2 (number)
     number_with_precision(number,:precision=>2) 
   end
-  def is_admin?
-    return current_user.present? && current_user.has_role?(:admin)
-  end
+  
   def number_to_us_currency(number)
     number_to_currency(number_with_precision(number,:precision=>2),:unit=>'$')
   end
@@ -42,7 +40,10 @@ module ApplicationHelper
       content_tag(:h4,"Client name: "+Company.find(sid).client_name||"")+content_tag(:div,nil,:class=>"line-separator")
     end
   end
-  
+  def company_select_tag(companies)
+     select_tag :company_id, options_from_collection_for_select(companies,'id','client_name',params[:company_id]),
+    :prompt   => "Select an Company", :default => nil
+  end
   def site_select_tag(sites,promot="",className="")
       select_tag :site_id, options_from_collection_for_select(sites,'id','site_name',params[:site_id]),
     :prompt => promot, :default => nil,:id=>'site_select', :class=>className

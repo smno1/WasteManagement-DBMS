@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_fy_actual_cost: 9.99
+  last_fy_total_saving: 9.99
+  fy_project_cost_remainder: 9.99
+  site_id: 
+
+two:
+  last_fy_actual_cost: 9.99
+  last_fy_total_saving: 9.99
+  fy_project_cost_remainder: 9.99
+  site_id: 

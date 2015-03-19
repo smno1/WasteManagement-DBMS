@@ -98,13 +98,19 @@
 							</ul>
 						</li>-->
 							<% if user_signed_in? %>
-								<li>
-									<%= link_to 'Dashboard', welcome_portal_path%>
-								</li>
-								<li>
-									<%=link_to 'Printable Doc', site_month_invoice_path%>
-								</li>
-							<%if is_admin?%>
+						<li>
+							<%= link_to 'Dashboard', welcome_portal_path%>
+						</li>
+						<li>
+							<%= link_to 'Chart', welcome_chart_path%>
+						</li>
+						<li>
+							<%= link_to 'Status Report',sites_yearly_records_path%>
+						</li>
+						<li>
+							<%= link_to 'Printable Doc', site_month_invoice_path%>
+						</li>
+						<%if is_admin?%>
 						<li>
 							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
 							<ul class="nav nav-second-level description-toggle">
@@ -120,14 +126,26 @@
 							</ul>
 						</li>
 						<li>
-							<%=link_to 'User Management', user_management_path%>
+							<%= link_to 'User Management', user_management_path%>
 						</li>
 						<li>
-							<%=link_to 'Saving against baseline', saving_against_baselines_path%>
+							<%= link_to 'Saving against baseline', saving_against_baselines_path%>
 						</li>
 						<li>
-							<%=link_to 'Site month saving', site_month_savings_path%>
+							<%= link_to 'Site month saving', site_month_savings_path%>
 						</li>
+						<li>
+							<%= link_to 'Site year saving', sites_yearly_record_show_index_path%>
+						</li>
+						<%else%>
+						<%unless current_user.company.blank?%>
+						<li>
+							<%= link_to 'Site month saving', site_month_savings_path(:company_id=>current_user.company_id)%>
+						</li>
+						<li>
+							<%= link_to 'Site year saving', sites_yearly_record_show_index_path%>
+						</li>
+						<%end%>
 						<%end%>
 						<%end%>
 					</ul>

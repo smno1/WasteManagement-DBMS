@@ -4,14 +4,15 @@
 	</div>
 </div>
 <br />
-<%unless current_user.company.blank?%>
+
+<%if is_admin?||current_user.company.present?%>
 
 <table class='display responsive no-wrap datatable'>
 	<thead>
 		<tr>
-		  <%@column_headers.each do |header|%>
-        	<th><%=header.titleize%></th>
-	  	  <%end%>
+			<%@column_headers.each do |header|%>
+			<th><%= header.titleize%></th>
+			<%end%>
 		</tr>
 	</thead>
 
@@ -30,21 +31,6 @@
 		<% end %>
 	</tbody>
 </table>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">Chart</h1>
-	</div>
-</div>
-<div class='col-lg-6'>
-	<%= render :partial=>'pie_chart',:sites=>@sites, :pieChart=>@pieChart%>
-</div>
-
-<div class='col-lg-6'>
-	<%= render :partial=>'line_chart',:sites=>@sites, :lineChart=>@lineChart%>
-</div>
-
-<div class='col-lg-12'>
-	<%= render :partial=>'comparison_line_chart',:sites=>@sites, :c_line_chart=>@c_line_chart%>
-</div>
-
+<%else%>
+<h3>Please contact admin to asign the company for you</h3>
 <%end%>

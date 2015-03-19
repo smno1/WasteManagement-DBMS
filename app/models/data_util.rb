@@ -12,4 +12,18 @@ class DataUtil
     return month_array
   end
   
+  def self.get_current_fy_start_date
+    today=Date.today
+    july=Date.new(today.year,7,1)
+    today<july ? july.last_year : july
+  end
+  
+  def self.get_fy_duration fy
+    return Date.new(fy-1,7,1),Date.new(fy,7,1)
+  end
+  
+  def self.get_current_financial_year
+    today=Date.today
+    today.month.to_i>7 ? today.year.to_i+1 :today.year.to_i    
+  end
 end

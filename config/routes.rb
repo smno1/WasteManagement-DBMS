@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'welcome/chart'
+
+  get 'sites_yearly_record/index',:as=>'sites_yearly_records'
+
+  get 'sites_yearly_record/edit'
+  
+  get 'sites_yearly_record/update'
+
+  get 'sites_yearly_record/show_index'
+
+  get 'sites_yearly_record/company_select', :as=>'company_select'
 
   resources :messages, only:[:new, :create]
   resources :conversations, only:[:index,:show,:destroy] do

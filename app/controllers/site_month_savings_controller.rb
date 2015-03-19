@@ -6,7 +6,11 @@ class SiteMonthSavingsController < ApplicationController
   respond_to :html
 
   def index
-    @site_month_savings = SiteMonthSaving.filter(params.slice(:site_id))
+    if params[:company_id].blank?
+      @site_month_savings = SiteMonthSaving.filter(params.slice(:site_id))
+    else
+      @site_month_savings= Company.find(params[:company_id]).site_month_savings
+    end
     #.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
     respond_with(@site_month_savings)
   end

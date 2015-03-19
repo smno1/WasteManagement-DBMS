@@ -7,6 +7,10 @@ class WelcomeController < ApplicationController
     end
   end
   
+  def chart
+      @sites=current_user.company.sites
+  end
+  
   def update_pie_chart
     site=Site.find(params[:site_id])
     month=date_select_to_date(params[:month])

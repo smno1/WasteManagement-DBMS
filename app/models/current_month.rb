@@ -8,6 +8,15 @@ class CurrentMonth < ActiveRecord::Base
   after_update do |cm|
     sab=SavingAgainstBaseline.find_by :service_id=>cm.service_id, :month=>cm.month
     SavingAgainstBaseline.update_sab_data(sab) unless sab.blank?
+    cm.service.site.update_fy_cost
+  end
+
+  after_save do |cm|
+    cm.service.site.update_fy_cost
+  end
+
+  after_destroy do |cm|
+    cm.service.site.update_fy_cost
   end
   
   def complete_attribute
