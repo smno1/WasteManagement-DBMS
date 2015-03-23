@@ -81,7 +81,7 @@
 				<div id="sidebar-wrapper">
 					<ul class="sidebar-nav" id='side-menu'>
 						<li class="sidebar-brand">
-							<%= link_to 'WasteManagement', root_path %>
+							<%= link_to 'Waste Management', root_path %>
 						</li>
 						<!--<li>
 							<a href="#"> Search<span class="fa fa-2x arrow"></span></a>
@@ -111,9 +111,11 @@
 							<%= link_to 'Printable Doc', site_month_invoice_path%>
 						</li>
 						<%if is_admin?%>
-						<li>
+						<!--
+							<li>
 							<a href="#"> DataManagement<span class="fa fa-2x arrow"></span></a>
 							<ul class="nav nav-second-level description-toggle">
+							-->
 								<li>
 									<%= link_to 'Client Company', companies_path %>
 								</li>
@@ -123,27 +125,29 @@
 								<li>
 									<%= link_to 'Services', services_path%>
 								</li>
+						<!--
 							</ul>
 						</li>
+							-->
 						<li>
 							<%= link_to 'User Management', user_management_path%>
 						</li>
 						<li>
-							<%= link_to 'Saving against baseline', saving_against_baselines_path%>
+							<%= link_to 'Saving Against Baseline', saving_against_baselines_path%>
 						</li>
 						<li>
-							<%= link_to 'Site month saving', site_month_savings_path%>
+							<%= link_to 'Site Month Saving', site_month_savings_path%>
 						</li>
 						<li>
-							<%= link_to 'Site year saving', sites_yearly_record_show_index_path%>
+							<%= link_to 'Site Year Saving', sites_yearly_record_show_index_path%>
 						</li>
 						<%else%>
 						<%unless current_user.company.blank?%>
 						<li>
-							<%= link_to 'Site month saving', site_month_savings_path(:company_id=>current_user.company_id)%>
+							<%= link_to 'Site Month Saving', site_month_savings_path(:company_id=>current_user.company_id)%>
 						</li>
 						<li>
-							<%= link_to 'Site year saving', sites_yearly_record_show_index_path%>
+							<%= link_to 'Site Year Saving', sites_yearly_record_show_index_path%>
 						</li>
 						<%end%>
 						<%end%>
