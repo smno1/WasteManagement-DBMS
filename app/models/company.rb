@@ -6,6 +6,6 @@ class Company < ActiveRecord::Base
   has_many :site_month_savings, :through=>:sites
   has_many :site_yearly_records, :through=>:sites
 
-  scope :client_name, ->(name) {where("client_name like ?", "%#{name}%")}
+  scope :client_name, ->(name) {where("lower(client_name) like lower(?)", "%#{name}%")}
   
 end
