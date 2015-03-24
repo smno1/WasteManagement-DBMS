@@ -30,7 +30,8 @@ class CurrentMonth < ActiveRecord::Base
  
   def self.update_current_month_data(sid,mon)
     current_month_data=self.find_or_initialize_by(service_id: sid, month: mon)
-    current_month_data.update(self.current_month_params(sid, mon))
+    params=self.current_month_params(sid, mon)
+    current_month_data.update(params) unless params.blank?
     #current_month_data=CurrentMonth.where("service_id=#{sid} and Month=?",mon)
     #current_month_data.delete_all unless current_month_data.blank?
     #self.create_current_month_data(sid, mon)
