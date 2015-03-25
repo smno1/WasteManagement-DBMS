@@ -36,6 +36,7 @@
   	<%current_total=0%>
   	<%saving_total=0%>
   	<%extra_saving_total=0%>
+  	<%excluded_cost_total=0%>
   	<%@services.each_with_index.map do |service,count|%>
       <tr>
       	<%sabs=service.saving_against_baselines%>
@@ -75,6 +76,7 @@
 	      			<%end%>
       	  		  <%unless sab.month_excluded_cost.blank?||sab.month_excluded_cost==0%>
       	    		<br />Month exclude cost: <%=number_to_us_currency sab.month_excluded_cost%>
+      	    		<%excluded_cost_total+=sab.month_excluded_cost%>
       	    	  <%end%>
 				</td>
 	      	    <%saving_total+=sab.month_saving%>
@@ -90,15 +92,15 @@
       <td colspan="2"></td>
       <td class=" column-right"><%=number_to_us_currency current_total%></td>
       <td colspan="2"></td>
-      <td><%=number_to_us_currency saving_total+extra_saving_total%></td>
+      <td><%=number_to_us_currency saving_total+extra_saving_total-excluded_cost_total%></td>
     </tr>
     <tr class='total_row'>
       <td class="column-right" colspan="9">Total Monthly Saving due to Productivity Improvements</td>
-      <td><%=number_to_us_currency saving_total%>
+      <td><%=number_to_us_currency saving_total+extra_saving_total%>
     </tr>
     <tr class='total_row'>
       <td class="column-right" colspan="9">Total Payment to Kumite-SWM (50% of Agreed Savings in Transportation Costs)</td>
-      <td><%=number_to_us_currency 0.5*saving_total%>
+      <td><%=number_to_us_currency 0.5*(saving_total+extra_saving_total)%>
     </tr>
     <tr class='total_row'>
       <td class="column-right" colspan="9">Current Financial Year Saving</td>
