@@ -49,12 +49,12 @@ module ApplicationHelper
     :prompt => promot, :default => nil,:id=>'site_select', :class=>className
   end
   
-  def month_select_tag(start_year=2000)
+  def month_select_tag(start_year=2010)
      date_select :month,'date', 
       {:discard_day=>true,:include_blank => true, :default => nil,:start_year=>start_year}
   end
   
-  def month_duration_select_tag(start_year=1990)
+  def month_duration_select_tag(start_year=2010)
    date_select( :collection_date_from,'date',
   {:include_blank => true, :default => nil,:start_year=>start_year,:discard_day=>true})  + content_tag(:div," to ",:class=>"inline")+
    date_select( :collection_date_to,'date',

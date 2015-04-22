@@ -4,12 +4,12 @@
 		  Cost Duration Comparison Chart
 		  <br />
 		  Site : <%= site_select_tag(@sites,"Select site","chosen-it")%>
-		  Duration: <%= month_duration_select_tag(2000)%>
+		  Duration: <%= month_duration_select_tag()%>
 		  <br /> <div style='width:19%;text-align:right; float:left; clear:both;'>compares to</div>
 		   <%= date_select( :collection_date_from_2,'date',
-  			{:include_blank => true, :default => nil,:start_year=>2000,:discard_day=>true})%> to
+  			{:include_blank => true, :default => nil,:start_year=>2010,:discard_day=>true})%> to
   				<%=date_select( :collection_date_to_2,'date',
-  			{:include_blank => true, :default => nil,:start_year=>2000,:discard_day=>true})%>
+  			{:include_blank => true, :default => nil,:start_year=>2010,:discard_day=>true})%>
 		  <%= submit_tag 'Display'%>
 		<%end%>
 	</div>
