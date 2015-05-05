@@ -11,7 +11,7 @@ class PrintableController < ApplicationController
   
   def update_sites
     _company=Company.find(params[:company_id])
-    @sites=_company.sites.map{|s| [s.site_name, s.id]}
+    @sites=_company.sites.order(:site_name).map{|s| [s.site_name, s.id]}
   end
   
   def printable_pdf

@@ -1,15 +1,15 @@
-<h1>Current summary</h1>
+<h1>Monthly Summary</h1>
 <%=info_from_service params[:service_id]%>
 <table class='table'>
   <thead>
     <tr>
+      <th>Month</th>
       <th>Month total tonnes</th>
       <th>Month average load</th>
       <th>Actual month collection</th>
       <th>Actual month charge</th>
       <th>Optimal collection</th>
       <th>Days interval</th>
-      <th>Month</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,13 +17,13 @@
   <tbody>
     <% @current_months.each do |current_month| %>
       <tr>
+        <td><%= current_month.month.strftime("%b %Y") %></td>
         <td><%= current_month.month_total_tonnes %></td>
         <td><%= float_pre_2 current_month.month_average_load %></td>
         <td><%= current_month.actual_month_collection %></td>
         <td><%= number_to_us_currency current_month.actual_month_charge %></td>
         <td><%= float_pre_2 current_month.optimal_collection %></td>
         <td><%= float_pre_2 current_month.days_interval %></td>
-        <td><%= current_month.month.strftime("%b %Y") %></td>
         <td><%= link_to 'Edit', edit_current_month_path(current_month,:service_id=>params[:service_id]) %></td>
         <td><%= link_to 'Destroy', current_month, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

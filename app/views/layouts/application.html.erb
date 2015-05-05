@@ -87,7 +87,7 @@
 							<a href="#"> Search<span class="fa fa-2x arrow"></span></a>
 							<ul class="nav nav-second-level description-toggle">
 								<li>
-									<%= link_to 'Client Company', company_search_path %>
+									<%= link_to 'Client', company_search_path %>
 								</li>
 								<li>
 									<%= link_to 'Sites', sites_path%>
@@ -108,7 +108,7 @@
 							<%= link_to 'Status Report',sites_yearly_records_path%>
 						</li>
 						<li>
-							<%= link_to 'Printable Doc', site_month_invoice_path%>
+							<%= link_to 'Cost Saving Report', site_month_invoice_path%>
 						</li>
 						<%if is_admin?%>
 						<!--
@@ -117,7 +117,7 @@
 							<ul class="nav nav-second-level description-toggle">
 							-->
 								<li>
-									<%= link_to 'Client Company', companies_path %>
+									<%= link_to 'Client', companies_path %>
 								</li>
 								<li>
 									<%= link_to 'Sites', sites_path%>

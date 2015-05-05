@@ -1,29 +1,29 @@
 <div class='hidden-print bg-info'><%=link_to 'Download PDF', printable_pdf_path( :format => 'pdf', :site_id=>params[:site_id],:month=>params[:month] )%></div>
 <div>
-<h3>Kumite Sustainability and Waste Management</h3>
-<p>Suite 4, 24 Eastern Road</p>
-<p>South Melbourne VIC 3205</p>
-<p>03 9682 0204</p>
+<h4 class="close-padding">Kumite Sustainability and Waste Management</h4>
+Suite 4, 24 Eastern Road<br/>
+South Melbourne VIC 3205<br/>
+03 9682 0204<br/>
 </div>
 <div class='line-separator'></div>
 <div>
-<h4><%=@site.company.client_name+" "+@site.site_name%> - WASTE COST SAVINGS REPORT</h4>
-<h4><%=@month.strftime("%B %Y")%></h4>
+<h4 class="close-padding"><%=@site.company.client_name+" "+@site.site_name%> - WASTE COST SAVINGS REPORT</h4>
+<p class="close-padding"><%=@month.strftime("%B %Y")%></p>
 </div>
 <table class='table'>
   <thead>
   	<tr >
   		<th class='text-center column-right col-lg-2' rowspan="2">Service</th>
-  		<th class='text-center column-right' colspan="3">Baseline Summary</th>
-  		<th class='text-center column-right' colspan="3">Current Summary</th>
+  		<th class='text-center column-right' colspan="3">Monthly Baseline</th>
+  		<th class='text-center column-right' colspan="3">Current Month</th>
   		<th class='text-center column-right' colspan="3">Monthly Saving against Baseline</th>
   	</tr>
     <tr>
       <th>Monthly collections</th>
-      <th>$Collection rate</th>
+      <th>Collection rate</th>
       <th class='column-right'>Monthly charge</th>
       <th>Monthly collections</th>
-      <th>$Collection rate</th>
+      <th>Collection rate</th>
       <th class='column-right'>Monthly charge</th>
       <th>Collections saved</th>
       <th>Collection rate</th>

@@ -21,7 +21,7 @@
 			<th><%=sortable "note"%></th>
 			<th><%=sortable "collection_frequency"%></th>
 			-->
-			<th></th>
+			<th class="option-col"></th>
 		</tr>
 	</thead>
 
@@ -52,13 +52,13 @@
 						<%= link_to 'Baseline invoice data', service_baseline_invoices_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Current invoice data', service_current_invoices_path(service) %>
+						<%= link_to 'Invoicing Data', service_current_invoices_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Baseline summary', service_baseline_data_path(service) %>
 					</li>
 					<li role="presentation">
-						<%= link_to 'Current summary', service_current_months_path(service) %>
+						<%= link_to 'Monthly summary', service_current_months_path(service) %>
 					</li>
 					<li role="presentation">
 						<%= link_to 'Saving against Baseline', service_saving_against_baselines_path(service) %>

@@ -34,9 +34,15 @@ var main = function() {
 
 	$('#side-menu').metisMenu();
 	
-	var table=$('.datatable').DataTable({		
-  		scrollX: true
-	});
+	var table=$('.datatable').DataTable({    
+      scrollX: true
+  });
+
+/*  $('.service-datatable').DataTable({		
+    "columnDefs": [
+    { targets: 'option-col'}
+    ]
+  });*/
 	
 	$('.toggle-vis').on( 'click', function (e) {
         e.preventDefault();
