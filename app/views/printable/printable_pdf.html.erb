@@ -41,7 +41,7 @@ South Melbourne VIC 3205<br/>
       <tr>
       	<%sabs=service.saving_against_baselines%>
       	<%sab =sabs.find_by(:month=>@month)%>
-      	<td class='column-right'><%=count+1%>. <%=service.account_number_and_name%><br /><%=(service.description||"")+" "+(service.service_type||"")%>
+      	<td class='column-right'><%=count+1%>. <%=service.account_number_and_name%><br /><%=(service.description||"")%>
       	  <!--<%unless sab.blank?||sab.month_extra_saving.blank?%>
       	    <br /> Month extra saving
 	      <%end%>

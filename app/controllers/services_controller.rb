@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.filter(params.slice(:site_id))
-    @column_headers=['client_name','site_name','service_account','description','service_type','recycle','capacity_cubic_meters','target_load',
+    @column_headers=['client_name','site_name','service_account','description','service_type','recycling','capacity_cubic_meters','target_load',
       'collection_rate','monthly_rental_fee','cost_per_tonne','note','collection_frequency']
     #@services=@services.order(sort_column+" "+sort_direction).paginate(:per_page=>15,:page=>params[:page])
   end

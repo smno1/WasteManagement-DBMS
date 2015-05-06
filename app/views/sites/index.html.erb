@@ -1,4 +1,4 @@
-<% provide(:title,"Site")%>
+<% provide(:title,"Sites")%>
 <%=info_from_company(params[:company_id])%>
 <%=form_tag(sites_path, :method=>'get') do%>
 <%unless params[:company_id].blank?%>
