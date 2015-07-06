@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @current_invoice %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Back', service_current_invoices_path(@current_invoice.service) %>

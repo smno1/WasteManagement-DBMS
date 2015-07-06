@@ -15,6 +15,7 @@ class CurrentMonthsController < ApplicationController
 
   def new
     @current_month = CurrentMonth.new
+    @service_last_avg=CurrentMonth.where(:service_id=>params[:service_id]).order('month'+' '+'desc').first.try(:month_average_load)
     respond_with(@current_month)
   end
 

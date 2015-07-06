@@ -9,6 +9,10 @@ module ApplicationHelper
   def float_pre_2 (number)
     number_with_precision(number,:precision=>2) 
   end
+
+  def float_pre precision, number
+    number_with_precision(number,:precision=>precision) 
+  end
   
   def number_to_us_currency(number)
     number_to_currency(number_with_precision(number,:precision=>2),:unit=>'$')

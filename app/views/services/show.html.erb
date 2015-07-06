@@ -1,5 +1,27 @@
 <%= info_from_site @service.site_id%>
-<p id="notice"><%= notice %></p>
+<div class="dropdown navbar-right">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          Operation
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation">
+            <%= link_to 'Baseline Invoice Data', service_baseline_invoices_path(@service) %>
+          </li>
+          <li role="presentation">
+            <%= link_to 'Invoicing Data', service_current_invoices_path(@service) %>
+          </li>
+          <li role="presentation">
+            <%= link_to 'Baseline Summary', service_baseline_data_path(@service) %>
+          </li>
+          <li role="presentation">
+            <%= link_to 'Monthly Summary', service_current_months_path(@service) %>
+          </li>
+          <li role="presentation">
+            <%= link_to 'Saving against Baseline', service_saving_against_baselines_path(@service) %>
+          </li>
+        </ul>
+      </div>
 
 <p>
   <strong>Service type:</strong>

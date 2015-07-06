@@ -21,7 +21,11 @@
 
   <div class="field">
     <div class="required">* </div><%= f.label :month_average_load %><br>
+    <% unless @current_month.persisted? %>
+    <div class="required">* </div><%= f.text_field :month_average_load,:required=>true, :value=>@service_last_avg %>
+    <%else%>
     <div class="required">* </div><%= f.text_field :month_average_load,:required=>true %>
+    <%end%>
   </div>
   <div class="field">
     <div class="required">* </div><%= f.label :actual_month_collection %><br>
