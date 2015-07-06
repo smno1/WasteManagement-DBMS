@@ -1,15 +1,17 @@
 <div class='hidden-print bg-info'><%=link_to 'Download PDF', printable_pdf_path( :format => 'pdf', :site_id=>params[:site_id],:month=>params[:month] )%></div>
-<h4 class="close-padding">Kumite Sustainability and Waste Management</h4>
+<h2 class="close-padding">Kumite Sustainability and Waste Management</h2>
 <div class="close-padding">
-Suite 4, 24 Eastern Road<br/>
+<b>Suite 4, 24 Eastern Road<br/>
 South Melbourne VIC 3205<br/>
-03 9682 0204<br/>
+03 9682 0204<br/></b>
 </div>
 <div class='line-separator'></div>
-<div>
-<p class="close-padding"><%=@site.company.client_name+" "+@site.site_name%> - WASTE COST SAVINGS REPORT</p>
-<p class="close-padding"><%=@month.strftime("%B %Y")%></p>
+<div align="left">
+<h4 class="close-padding"><%=@site.company.client_name+" "+@site.site_name%> - WASTE COST SAVINGS REPORT</h4></div>
+<div align="right">
+<h4 class="close-padding"><%=@month.strftime("%B %Y")%></h4>
 </div>
+<div class='line-separator'></div>
 <table class='table'>
   <thead>
   	<tr >
